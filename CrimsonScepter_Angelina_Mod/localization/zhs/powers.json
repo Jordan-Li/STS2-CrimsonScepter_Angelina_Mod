@@ -1,0 +1,10 @@
+﻿{
+  "CRIMSONSCEPTER_ANGELINA_MOD-IMBALANCE_POWER.title": "失衡",
+  "CRIMSONSCEPTER_ANGELINA_MOD-IMBALANCE_POWER.description": "累计[gold]失衡[/gold]。达到生命上限的一半时（最多按100计算）触发[gold]失重[/gold]，清除当前[gold]失衡[/gold]并失去当前[gold]失衡[/gold]一半的生命。若正处于该目标的当前回合，则立即被[gold]击晕[/gold]。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-IMBALANCE_POWER.smartDescription": "累计[gold]失衡[/gold]。达到生命上限的一半时（最多按100计算）触发[gold]失重[/gold]，清除当前[gold]失衡[/gold]并失去当前[gold]失衡[/gold]一半的生命。若正处于该目标的当前回合，则立即被[gold]击晕[/gold]。\n还需{RemainingToTrigger}点[gold]失衡[/gold]进入[gold]失重[/gold]。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-WEIGHTLESS_POWER.title": "失重",
+  "CRIMSONSCEPTER_ANGELINA_MOD-WEIGHTLESS_POWER.description": "受到的所有伤害翻倍。持续3回合。期间再次获得[gold]失衡[/gold]时，改为失去等量生命。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-WEIGHTLESS_POWER.smartDescription": "受到的所有伤害翻倍。持续{Amount}回合。期间再次获得[gold]失衡[/gold]时，改为失去等量生命。",
+
+}

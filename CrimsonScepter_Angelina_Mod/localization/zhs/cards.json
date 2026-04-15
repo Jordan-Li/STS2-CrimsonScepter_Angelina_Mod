@@ -1,0 +1,30 @@
+﻿{
+  "CRIMSONSCEPTER_ANGELINA_MOD-STRIKE_ANGELINA.title": "打击",
+  "CRIMSONSCEPTER_ANGELINA_MOD-STRIKE_ANGELINA.description": "造成{Damage:diff()}点伤害。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-STRIKE_ANGELINA.upgraded_description": "造成{Damage:diff()}点伤害。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-DEFEND_ANGELINA.title": "防御",
+  "CRIMSONSCEPTER_ANGELINA_MOD-DEFEND_ANGELINA.description": "获得{Block:diff()}点[gold]格挡[/gold]。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-DEFEND_ANGELINA.upgraded_description": "获得{Block:diff()}点[gold]格挡[/gold]。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_GIFT.title": "小礼物",
+  "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_GIFT.description": "造成{Damage:diff()}点伤害，并获得{Block:diff()}点[gold]格挡[/gold]。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_GIFT.upgraded_description": "造成{Damage:diff()}点伤害，并获得{Block:diff()}点[gold]格挡[/gold]。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANTI_GRAVITY.title": "反重力",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANTI_GRAVITY.description": "施加12点[gold]失衡[/gold]。然后造成{Damage:diff()}点法术伤害。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANTI_GRAVITY.upgraded_description": "施加12点[gold]失衡[/gold]。然后造成{Damage:diff()}点法术伤害。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-BALANCED_STRIKE.title": "平衡打击",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BALANCED_STRIKE.description": "造成{Damage:diff()}点伤害。施加8点[gold]失衡[/gold]。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BALANCED_STRIKE.upgraded_description": "造成{Damage:diff()}点伤害。施加10点[gold]失衡[/gold]。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-TOUCH_AND_TUMBLE.title": "一触即摔！",
+  "CRIMSONSCEPTER_ANGELINA_MOD-TOUCH_AND_TUMBLE.description": "若目标敌人有[gold]失衡[/gold]，使目标立刻[gold]失重[/gold]。每因此失去20层[gold]失衡[/gold]，获得{Energy:energyIcons()}。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-TOUCH_AND_TUMBLE.upgraded_description": "[gold]保留[/gold]。若目标敌人有[gold]失衡[/gold]，使目标立刻[gold]失重[/gold]。每因此失去20层[gold]失衡[/gold]，获得{Energy:energyIcons()}。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.title": "重力节点",
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.description": "施加{ImbalancePower}点[gold]失衡[/gold]，造成{Damage}点伤害。若此牌使目标进入[gold]失重[/gold]/斩杀目标，永久使此牌施加的[gold]失衡[/gold]/造成的伤害增加{ImbalanceIncrease}/{DamageIncrease}。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.upgraded_description": "施加{ImbalancePower}点[gold]失衡[/gold]，造成{Damage}点伤害。若此牌使目标进入[gold]失重[/gold]/斩杀目标，永久使此牌施加的[gold]失衡[/gold]/造成的伤害增加{ImbalanceIncrease}/{DamageIncrease}。"
+
+}

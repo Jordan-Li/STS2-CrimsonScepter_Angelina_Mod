@@ -1,0 +1,10 @@
+{
+  "CRIMSONSCEPTER_ANGELINA_MOD-IMBALANCE_POWER.title": "Imbalance",
+  "CRIMSONSCEPTER_ANGELINA_MOD-IMBALANCE_POWER.description": "Accumulate [gold]Imbalance[/gold]. When it reaches half of max HP (up to100), trigger [gold]Weightless[/gold], remove all current [gold]Imbalance[/gold], then lose HP equal to half of the current [gold]Imbalance[/gold]. If it is currently this creature's turn, it is immediately [gold]Stunned[/gold].",
+  "CRIMSONSCEPTER_ANGELINA_MOD-IMBALANCE_POWER.smartDescription": "Accumulate [gold]Imbalance[/gold]. When it reaches half of max HP (up to100), trigger [gold]Weightless[/gold], remove all current [gold]Imbalance[/gold], then lose HP equal to half of the current [gold]Imbalance[/gold]. If it is currently this creature's turn, it is immediately [gold]Stunned[/gold].\nNeeds{RemainingToTrigger}[gold]Imbalance[/gold]to trigger [gold]Weightless[/gold].",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-WEIGHTLESS_POWER.title": "Weightless",
+  "CRIMSONSCEPTER_ANGELINA_MOD-WEIGHTLESS_POWER.description": "Receive double damage for3turns. While in this state, gaining [gold]Imbalance[/gold] instead causes equal HP loss.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-WEIGHTLESS_POWER.smartDescription": "Receive double damage for{Amount}turns. While in this state, gaining [gold]Imbalance[/gold] instead causes equal HP loss.",
+
+}

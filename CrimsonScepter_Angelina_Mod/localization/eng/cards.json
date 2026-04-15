@@ -1,0 +1,31 @@
+{
+  "CRIMSONSCEPTER_ANGELINA_MOD-STRIKE_ANGELINA.title": "Strike",
+  "CRIMSONSCEPTER_ANGELINA_MOD-STRIKE_ANGELINA.description": "Deal{Damage:diff()}damage.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-STRIKE_ANGELINA.upgraded_description": "Deal{Damage:diff()}damage.",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-DEFEND_ANGELINA.title": "Defend",
+  "CRIMSONSCEPTER_ANGELINA_MOD-DEFEND_ANGELINA.description": "Gain{Block:diff()}[gold]Block[/gold].",
+  "CRIMSONSCEPTER_ANGELINA_MOD-DEFEND_ANGELINA.upgraded_description": "Gain{Block:diff()}[gold]Block[/gold].",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_GIFT.title": "Little Gift",
+  "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_GIFT.description": "Deal{Damage:diff()}damage and gain{Block:diff()}[gold]Block[/gold].",
+  "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_GIFT.upgraded_description": "Deal{Damage:diff()}damage and gain{Block:diff()}[gold]Block[/gold].",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANTI_GRAVITY.title": "Anti-Gravity",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANTI_GRAVITY.description": "Apply12[gold]Imbalance[/gold]. Then deal{Damage:diff()}spell damage.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANTI_GRAVITY.upgraded_description": "Apply12[gold]Imbalance[/gold]. Then deal{Damage:diff()}spell damage.",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-BALANCED_STRIKE.title": "Balanced Strike",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BALANCED_STRIKE.description": "Deal{Damage:diff()}damage. Apply8[gold]Imbalance[/gold].",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BALANCED_STRIKE.upgraded_description": "Deal{Damage:diff()}damage. Apply10[gold]Imbalance[/gold].",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-TOUCH_AND_TUMBLE.title": "Touch and Tumble!",
+  "CRIMSONSCEPTER_ANGELINA_MOD-TOUCH_AND_TUMBLE.description": "If the target has[gold]Imbalance[/gold], immediately make it enter[gold]Weightless[/gold]. Gain{Energy:energyIcons()}for every20[gold]Imbalance[/gold]removed this way.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-TOUCH_AND_TUMBLE.upgraded_description": "Retain. If the target has[gold]Imbalance[/gold], immediately make it enter[gold]Weightless[/gold]. Gain{Energy:energyIcons()}for every20[gold]Imbalance[/gold]removed this way.",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.title": "Gravity Node",
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.description": "Apply{ImbalancePower}[gold]Imbalance[/gold], then deal{Damage}damage. If this card makes the target enter[gold]Weightless[/gold]/kills the target, permanently increase this card's applied[gold]Imbalance[/gold]/damage by{ImbalanceIncrease}/{DamageIncrease}.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.upgraded_description": "Apply{ImbalancePower}[gold]Imbalance[/gold], then deal{Damage}damage. If this card makes the target enter[gold]Weightless[/gold]/kills the target, permanently increase this card's applied[gold]Imbalance[/gold]/damage by{ImbalanceIncrease}/{DamageIncrease}."
+
+  
+}

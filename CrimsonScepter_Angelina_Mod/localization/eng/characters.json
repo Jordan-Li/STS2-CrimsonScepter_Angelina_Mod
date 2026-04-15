@@ -1,0 +1,16 @@
+{
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANGELINA.aromaPrinciple": "Lore",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANGELINA.banter.alive.endTurnPing": "Co-op hurry up end turn ping message",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANGELINA.banter.dead.endTurnPing": "...",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANGELINA.cardsModifierDescription": "__ cards will now appear in rewards and shops.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANGELINA.cardsModifierTitle": "__ Cards",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANGELINA.description": "Character Selection\nScreen Description",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANGELINA.eventDeathPrevention": "Co-op survival line",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANGELINA.goldMonologue": "Line spoken when obtaining a large amount of gold",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANGELINA.possessiveAdjective": "his/her/its",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANGELINA.pronounObject": "him/her/it",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANGELINA.pronounPossessive": "his/hers/its",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANGELINA.pronounSubject": "he/she/it",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANGELINA.title": "The Angelina",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANGELINA.titleObject": "The Angelina"
+}
