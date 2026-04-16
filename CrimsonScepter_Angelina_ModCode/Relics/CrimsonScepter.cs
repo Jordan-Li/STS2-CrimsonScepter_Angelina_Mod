@@ -33,7 +33,8 @@ public sealed class CrimsonScepter : AngelinaRelic
         HoverTipFactory.FromPower<FlyPower>(),
         HoverTipFactory.FromPower<ImbalancePower>()
     };
-
+    
+    
     /// <summary>
     /// 监听 Power 层数变化。
     /// 当敌人的 FlyPower 从 >0 下降到 <=0 时，视为“从浮空变为非浮空”，施加失衡。
@@ -46,7 +47,13 @@ public sealed class CrimsonScepter : AngelinaRelic
         CardModel? cardSource)
     {
         _ = applier;
-
+        
+        // 临时飞行到期导致的落地，不触发初始遗物
+        if (TemporaryFlyPower.IsResolvingExpiration)
+        {
+            return;
+        }
+        
         // 只关心飞行层数下降
         if (power is not FlyPower || amount >= 0m)
         {

@@ -6,5 +6,25 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-WISHING_STAR.title": "祈愿星",
   "CRIMSONSCEPTER_ANGELINA_MOD-WISHING_STAR.description": "获得此遗物时，选择5张牌。下次战斗开始时，将这些牌（若仍在牌组中）按选择顺序置于抽牌堆顶，然后失去此遗物。",
   "CRIMSONSCEPTER_ANGELINA_MOD-WISHING_STAR.selectionScreenPrompt": "选择5张牌，在下次战斗开始时置于抽牌堆顶",
-  "CRIMSONSCEPTER_ANGELINA_MOD-WISHING_STAR.flavor": "群星会记住你曾经祈愿的未来。"
+  "CRIMSONSCEPTER_ANGELINA_MOD-WISHING_STAR.flavor": "群星会记住你曾经祈愿的未来。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANCIENT_EXPRESS.title": "先古速递",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANCIENT_EXPRESS.description": "每场战斗开始时，[gold]寄送[/gold]一张随机的[gold]先古牌[/gold]。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANCIENT_EXPRESS.flavor": "涅奥速递！",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-CALIBRATION_MODULE.title": "校准模块",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CALIBRATION_MODULE.description": "你施加的[gold]失衡值[/gold]额外增加{ImbalancePower}点。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CALIBRATION_MODULE.flavor": "更加精准的失衡控制。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-PORTABLE_STARGATE.title": "便携星门",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PORTABLE_STARGATE.description": "当你[gold]寄送[/gold]牌时，抽{Cards}张牌。随后休眠{Turns}回合。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PORTABLE_STARGATE.flavor": "你不会希望对面送来什么东西的……",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-SECRET_CRIMSON_SCEPTER.title": "秘杖·绯红权杖",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SECRET_CRIMSON_SCEPTER.description": "当敌人失去[gold]浮空[/gold]时，使其获得15点[gold]失衡值[/gold]。每回合开始时，给予所有单位1层[gold]临时飞行[/gold]。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SECRET_CRIMSON_SCEPTER.flavor": "绯红，支配天空的权柄，承载着希望与未来的星之彼端。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-STAFF_COUNTERWEIGHT.title": "法杖配重",
+  "CRIMSONSCEPTER_ANGELINA_MOD-STAFF_COUNTERWEIGHT.description": "你的攻击会使目标额外失去{FlyPower}层[gold]飞行[/gold]。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-STAFF_COUNTERWEIGHT.flavor": "另辟蹊径的法杖升级法。"
 }

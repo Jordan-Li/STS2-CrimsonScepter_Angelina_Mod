@@ -224,7 +224,7 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-SPECIAL_GRAVITY_MODULE.upgraded_description": "[gold]固有[/gold]。每当你打出一张[gold]攻击[/gold]牌时，若其目标没有[gold]飞行[/gold]，则给予其{FlyPower:diff()}层[gold]飞行[/gold]。每打出一张牌，处于飞行状态的敌人受到2点伤害。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-PARTICLE_MODE.title": "微粒模式",
-  "CRIMSONSCEPTER_ANGELINA_MOD-PARTICLE_MODE.description": "[gold]消逝[/gold]。你打出的攻击牌造成的伤害减半。每张攻击牌每回合首次打出时，改为返回手牌，并在本回合可以免费打出一次。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PARTICLE_MODE.description": "[gold]消耗[/gold]。你打出的攻击牌造成的伤害减半。每张攻击牌每回合首次打出时，改为返回手牌，并在本回合可以免费打出一次。",
   "CRIMSONSCEPTER_ANGELINA_MOD-PARTICLE_MODE.upgraded_description": "你打出的攻击牌造成的伤害减半。每张攻击牌每回合首次打出时，改为返回手牌，并在本回合可以免费打出一次。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-QUALITY_VISITOR.title": "质素访客",

@@ -6,5 +6,25 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-WISHING_STAR.title": "Wishing Star",
   "CRIMSONSCEPTER_ANGELINA_MOD-WISHING_STAR.description": "When obtained, choose 5 cards. At the start of your next combat, place those cards on top of your draw pile in the chosen order, then lose this relic.",
   "CRIMSONSCEPTER_ANGELINA_MOD-WISHING_STAR.selectionScreenPrompt": "Choose 5 cards to place on top of your draw pile next combat",
-  "CRIMSONSCEPTER_ANGELINA_MOD-WISHING_STAR.flavor": "The stars remember the future you once wished for."
+  "CRIMSONSCEPTER_ANGELINA_MOD-WISHING_STAR.flavor": "The stars remember the future you once wished for.",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANCIENT_EXPRESS.title": "Ancient Express",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANCIENT_EXPRESS.description": "At the start of each combat, [gold]Deliver[/gold] a random [gold]Ancient[/gold] card.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANCIENT_EXPRESS.flavor": "Neow Express!",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-CALIBRATION_MODULE.title": "Calibration Module",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CALIBRATION_MODULE.description": "The [gold]Imbalance[/gold] you apply is increased by {ImbalancePower}.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CALIBRATION_MODULE.flavor": "More precise imbalance control.",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-PORTABLE_STARGATE.title": "Portable Stargate",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PORTABLE_STARGATE.description": "Whenever you [gold]Deliver[/gold] a card, draw {Cards} card(s). Then go dormant for {Turns} turns.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PORTABLE_STARGATE.flavor": "You really would not want to know what might come through it...",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-SECRET_CRIMSON_SCEPTER.title": "Secret Crimson Scepter",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SECRET_CRIMSON_SCEPTER.description": "Whenever an enemy loses [gold]Airborne[/gold], apply 15 [gold]Imbalance[/gold] to it. At the start of each turn, give all units 1 [gold]Temporary Flight[/gold].",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SECRET_CRIMSON_SCEPTER.flavor": "Crimson, the authority over the skies, bearing hope and the starlit future beyond.",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-STAFF_COUNTERWEIGHT.title": "Staff Counterweight",
+  "CRIMSONSCEPTER_ANGELINA_MOD-STAFF_COUNTERWEIGHT.description": "Your Attacks cause targets to lose an additional {FlyPower} [gold]Flight[/gold].",
+  "CRIMSONSCEPTER_ANGELINA_MOD-STAFF_COUNTERWEIGHT.flavor": "An unconventional way to upgrade a staff."
 }
