@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2gqwxhc5the5"
-path="res://.godot/imported/card.png-7246feaa33b9b1d56d4d22a2d52b43be.ctex"
+uid="uid://bp8v0ai42glm3"
+path="res://.godot/imported/card.png-e55283b8d1a43c0f49f18ced83550655.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CrimsonScepter_Angelina_Mod/images/card_portraits/big/card.png"
-dest_files=["res://.godot/imported/card.png-7246feaa33b9b1d56d4d22a2d52b43be.ctex"]
+source_file="res://CrimsonScepter_Angelina_Mod/images/card_portraits/card.png"
+dest_files=["res://.godot/imported/card.png-e55283b8d1a43c0f49f18ced83550655.ctex"]
 
 [params]
 

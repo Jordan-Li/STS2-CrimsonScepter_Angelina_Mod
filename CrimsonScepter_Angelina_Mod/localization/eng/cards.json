@@ -25,7 +25,46 @@
 
   "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.title": "Gravity Node",
   "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.description": "Apply{ImbalancePower}[gold]Imbalance[/gold], then deal{Damage}damage. If this card makes the target enter[gold]Weightless[/gold]/kills the target, permanently increase this card's applied[gold]Imbalance[/gold]/damage by{ImbalanceIncrease}/{DamageIncrease}.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.upgraded_description": "Apply{ImbalancePower}[gold]Imbalance[/gold], then deal{Damage}damage. If this card makes the target enter[gold]Weightless[/gold]/kills the target, permanently increase this card's applied[gold]Imbalance[/gold]/damage by{ImbalanceIncrease}/{DamageIncrease}."
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.upgraded_description": "Apply{ImbalancePower}[gold]Imbalance[/gold], then deal{Damage}damage. If this card makes the target enter[gold]Weightless[/gold]/kills the target, permanently increase this card's applied[gold]Imbalance[/gold]/damage by{ImbalanceIncrease}/{DamageIncrease}.",
 
+  "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_FLOW.title": "Delivery Flow",
+  "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_FLOW.description": "Deal{Damage:diff()}damage. Choose1card in your hand and send it.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_FLOW.upgraded_description": "Deal{Damage:diff()}damage. Choose1card in your hand and send it.",
+  "DELIVERY_FLOW.selectPrompt": "Choose a card to send.",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_PREVIEW.title": "Package Preview",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_PREVIEW.description": "Deal{Damage:diff()}damage. Gain the most recently sent card, then put it on top of your draw pile.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_PREVIEW.upgraded_description": "Deal{Damage:diff()}damage. Gain the most recently sent card, then put it on top of your draw pile.",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-EARLY_DELIVERY.title": "Early Delivery!",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EARLY_DELIVERY.description": "Immediately gain your sent cards. Apply{ImbalancePower:diff()}[gold]Imbalance[/gold]to all enemies.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EARLY_DELIVERY.upgraded_description": "Immediately gain your sent cards. Apply{ImbalancePower:diff()}[gold]Imbalance[/gold]to all enemies.",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-MIRACLE_COURIER.title": "Miracle Courier",
+  "CRIMSONSCEPTER_ANGELINA_MOD-MIRACLE_COURIER.description": "Send all other cards in your hand. Then draw that many cards.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-MIRACLE_COURIER.upgraded_description": "Send all other cards in your hand. Then draw that many cards.",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-CONVERTER.title": "Converter",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CONVERTER.description": "Lose{StrengthPower:diff()}[gold]Strength[/gold]and{DexterityPower:diff()}[gold]Dexterity[/gold]. Gain{FocusPower:diff()}[gold]Focus[/gold]. Send a{LocatorCard}.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CONVERTER.upgraded_description": "Lose{StrengthPower:diff()}[gold]Strength[/gold]and{DexterityPower:diff()}[gold]Dexterity[/gold]. Gain{FocusPower:diff()}[gold]Focus[/gold]. Send a{LocatorCard}.",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-LOCATOR.title": "Locator",
+  "CRIMSONSCEPTER_ANGELINA_MOD-LOCATOR.description": "Lose{FocusPower:diff()}[gold]Focus[/gold]. Gain{StrengthPower:diff()}[gold]Strength[/gold]and{DexterityPower:diff()}[gold]Dexterity[/gold]. Add a{ConverterCard}to your draw pile.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-LOCATOR.upgraded_description": "Lose{FocusPower:diff()}[gold]Focus[/gold]. Gain{StrengthPower:diff()}[gold]Strength[/gold]and{DexterityPower:diff()}[gold]Dexterity[/gold]. Add a{ConverterCard}to your draw pile.",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_EXPRESS.title": "Package Express",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_EXPRESS.description": "Choose1card in your hand and send it. Draw{Cards:diff()}cards.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_EXPRESS.upgraded_description": "Choose1card in your hand and send it. Draw{Cards:diff()}cards.",
+  "PACKAGE_EXPRESS.selectPrompt": "Choose a card to send.",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-SUPPLY_PACKAGE.title": "Supply Package",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SUPPLY_PACKAGE.description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold]. [gold]Delivered[/gold]: Gain {EnergyGain:energyIcons()}.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SUPPLY_PACKAGE.upgraded_description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold]. [gold]Delivered[/gold]: Gain {EnergyGain:energyIcons()}.",
   
+  "DELIVERED.title": "Delivered",
+  "DELIVERED.description": "This card triggers an additional effect when it is[gold]delivered[/gold].",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-BY_THE_WAY.title": "By the Way",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BY_THE_WAY.description": "Gain{Block:diff()}[gold]Block[/gold].[gold]Send[/gold]this.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BY_THE_WAY.upgraded_description": "Gain{Block:diff()}[gold]Block[/gold].[gold]Send[/gold]this."
 }

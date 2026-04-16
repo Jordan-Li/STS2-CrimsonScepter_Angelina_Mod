@@ -25,6 +25,46 @@
 
   "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.title": "重力节点",
   "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.description": "施加{ImbalancePower}点[gold]失衡[/gold]，造成{Damage}点伤害。若此牌使目标进入[gold]失重[/gold]/斩杀目标，永久使此牌施加的[gold]失衡[/gold]/造成的伤害增加{ImbalanceIncrease}/{DamageIncrease}。",
-  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.upgraded_description": "施加{ImbalancePower}点[gold]失衡[/gold]，造成{Damage}点伤害。若此牌使目标进入[gold]失重[/gold]/斩杀目标，永久使此牌施加的[gold]失衡[/gold]/造成的伤害增加{ImbalanceIncrease}/{DamageIncrease}。"
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.upgraded_description": "施加{ImbalancePower}点[gold]失衡[/gold]，造成{Damage}点伤害。若此牌使目标进入[gold]失重[/gold]/斩杀目标，永久使此牌施加的[gold]失衡[/gold]/造成的伤害增加{ImbalanceIncrease}/{DamageIncrease}。",
 
+  "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_FLOW.title": "寄送流程",
+  "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_FLOW.description": "造成{Damage:diff()}点伤害。然后从手牌中选择1张牌，将其寄送。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_FLOW.upgraded_description": "造成{Damage:diff()}点伤害。然后从手牌中选择1张牌，将其寄送。",
+  "DELIVERY_FLOW.selectPrompt": "选择一张要寄送的牌。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_PREVIEW.title": "预览",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_PREVIEW.description": "造成{Damage:diff()}点伤害。获得最近的[gold]寄送[/gold]牌，而后将其置于抽牌堆顶。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_PREVIEW.upgraded_description": "造成{Damage:diff()}点伤害。获得最近的[gold]寄送[/gold]牌，而后将其置于抽牌堆顶。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-EARLY_DELIVERY.title": "提前送达！",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EARLY_DELIVERY.description": "立刻获得你[gold]寄送[/gold]的牌。给予敌方全体{ImbalancePower:diff()}点[gold]失衡[/gold]。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EARLY_DELIVERY.upgraded_description": "立刻获得你[gold]寄送[/gold]的牌。给予敌方全体{ImbalancePower:diff()}点[gold]失衡[/gold]。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-MIRACLE_COURIER.title": "奇迹信使",
+  "CRIMSONSCEPTER_ANGELINA_MOD-MIRACLE_COURIER.description": "[gold]寄送[/gold]所有其他手牌，而后抽等量的牌。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-MIRACLE_COURIER.upgraded_description": "[gold]寄送[/gold]所有其他手牌，而后抽等量的牌。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-CONVERTER.title": "转换器",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CONVERTER.description": "失去{StrengthPower:diff()}点[gold]力量[/gold]与{DexterityPower:diff()}点[gold]敏捷[/gold]，获得{FocusPower:diff()}点[gold]集中[/gold]。[gold]寄送[/gold]一张{LocatorCard}。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CONVERTER.upgraded_description": "失去{StrengthPower:diff()}点[gold]力量[/gold]与{DexterityPower:diff()}点[gold]敏捷[/gold]，获得{FocusPower:diff()}点[gold]集中[/gold]。[gold]寄送[/gold]一张{LocatorCard}。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-LOCATOR.title": "定位器",
+  "CRIMSONSCEPTER_ANGELINA_MOD-LOCATOR.description": "失去{FocusPower:diff()}点[gold]集中[/gold]，获得{StrengthPower:diff()}点[gold]力量[/gold]与{DexterityPower:diff()}点[gold]敏捷[/gold]。将一张{ConverterCard}加入抽牌堆。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-LOCATOR.upgraded_description": "失去{FocusPower:diff()}点[gold]集中[/gold]，获得{StrengthPower:diff()}点[gold]力量[/gold]与{DexterityPower:diff()}点[gold]敏捷[/gold]。将一张{ConverterCard}加入抽牌堆。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_EXPRESS.title": "包裹速递",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_EXPRESS.description": "从手牌中选择1张牌，将其[gold]寄送[/gold]。抽{Cards:diff()}张牌。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_EXPRESS.upgraded_description": "从手牌中选择1张牌，将其[gold]寄送[/gold]。抽{Cards:diff()}张牌。",
+  "PACKAGE_EXPRESS.selectPrompt": "选择一张要寄送的牌。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-SUPPLY_PACKAGE.title": "补给包裹",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SUPPLY_PACKAGE.description": "施加{ImbalancePower:diff()}点[gold]失衡[/gold]。[gold]送达[/gold]：回复{EnergyGain:energyIcons()}。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SUPPLY_PACKAGE.upgraded_description": "施加{ImbalancePower:diff()}点[gold]失衡[/gold]。[gold]送达[/gold]：回复{EnergyGain:energyIcons()}。",
+  
+  "DELIVERED.title": "送达",
+  "DELIVERED.description": "当此牌被[gold]寄送[/gold]返回手牌时，会触发额外效果。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-BY_THE_WAY.title": "捎带",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BY_THE_WAY.description": "获得{Block:diff()}点[gold]格挡[/gold]。[gold]寄送[/gold]此牌。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BY_THE_WAY.upgraded_description": "获得{Block:diff()}点[gold]格挡[/gold]。[gold]寄送[/gold]此牌。"
 }
