@@ -12,7 +12,7 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Abstracts;
 public abstract class AngelinaCard(int cost, CardType type, CardRarity rarity, TargetType target) :
     CustomCardModel(cost, type, rarity, target)
 {
-    private const string FallbackTestCard = "TestCardBase.png";
+    private const string FallbackPortrait = "TestCardBase.png";
 
     private string CardFileName => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png";
 
@@ -33,13 +33,13 @@ public abstract class AngelinaCard(int cost, CardType type, CardRarity rarity, T
     {
         get
         {
-            if (Exists(SmallPortraitPath))
-                return SmallPortraitPath;
-
             if (Exists(BetaSmallPortraitPath))
                 return BetaSmallPortraitPath;
 
-            return FallbackTestCard.CardImagePath();
+            if (Exists(SmallPortraitPath))
+                return SmallPortraitPath;
+
+            return FallbackPortrait.CardImagePath();
         }
     }
 
@@ -47,9 +47,6 @@ public abstract class AngelinaCard(int cost, CardType type, CardRarity rarity, T
     {
         get
         {
-            if (Exists(BigPortraitFilePath))
-                return BigPortraitFilePath;
-
             if (Exists(BetaBigPortraitPath))
                 return BetaBigPortraitPath;
 
@@ -57,7 +54,13 @@ public abstract class AngelinaCard(int cost, CardType type, CardRarity rarity, T
             if (Exists(BetaSmallPortraitPath))
                 return BetaSmallPortraitPath;
 
-            return FallbackTestCard.BigCardImagePath();
+            if (Exists(BigPortraitFilePath))
+                return BigPortraitFilePath;
+
+            if (Exists(SmallPortraitPath))
+                return SmallPortraitPath;
+
+            return FallbackPortrait.CardImagePath();
         }
     }
 
@@ -68,10 +71,7 @@ public abstract class AngelinaCard(int cost, CardType type, CardRarity rarity, T
             if (Exists(BetaSmallPortraitPath))
                 return BetaSmallPortraitPath;
 
-            if (Exists(SmallPortraitPath))
-                return SmallPortraitPath;
-
-            return FallbackTestCard.CardImagePath();
+            return FallbackPortrait.CardImagePath();
         }
     }
 }
