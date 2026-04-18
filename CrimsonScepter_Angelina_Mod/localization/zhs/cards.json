@@ -11,7 +11,7 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-DEFEND_ANGELINA.upgraded_description": "获得{Block:diff()}点[gold]格挡[/gold]。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_GIFT.title": "小礼物",
-  "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_GIFT.description": "造成{DisplayedDamage}点[gold]法术[/gold]伤。获得{DisplayedBlock}点[gold]法术[/gold]格挡。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_GIFT.description": "造成{DisplayedDamage}点[gold]法术[/gold]伤害。获得{DisplayedBlock}点[gold]法术[/gold]格挡。",
   "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_GIFT.upgraded_description": "造成{DisplayedDamage}点[gold]法术[/gold]伤害。获得{DisplayedBlock}点[gold]法术[/gold]格挡。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-ANTI_GRAVITY.title": "反重力",
