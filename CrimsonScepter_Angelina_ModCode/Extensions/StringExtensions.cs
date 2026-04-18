@@ -75,4 +75,9 @@ public static class StringExtensions
     {
         return $"{MainFile.ResPath}/scenes/merchant/characters/{path}";
     }
+
+    public static string HandUiPath(this string path)
+    {
+        return $"{MainFile.ResPath}/images/hands/{path}";
+    }
 }

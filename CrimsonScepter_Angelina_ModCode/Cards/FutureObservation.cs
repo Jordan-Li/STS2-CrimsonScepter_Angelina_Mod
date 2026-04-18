@@ -22,21 +22,15 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 /// </summary>
 public sealed class FutureObservation : AngelinaCard
 {
-    // 这张牌会显示多人模式警告，以及“祈愿星”遗物的悬浮说明。
+    // “祈愿星”遗物的悬浮说明。
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        new HoverTip(
-            new LocString("cards", "FUTURE_OBSERVATION.multiplayerWarningTitle"),
-            new LocString("cards", "FUTURE_OBSERVATION.multiplayerWarningDescription")),
         .. HoverTipFactory.FromRelic<WishingStar>()
     ];
 
     // 若已经持有“祈愿星”，则不能重复打出这张牌。
     protected override bool IsPlayable => base.Owner != null &&
                                           !base.Owner.Relics.Any(relic => relic.Id == ModelDb.Relic<WishingStar>().Id);
-
-    // 可打出时用金色边框提示，提醒这张牌当前可以生效。
-    protected override bool ShouldGlowGoldInternal => IsPlayable;
 
     public FutureObservation()
         : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)

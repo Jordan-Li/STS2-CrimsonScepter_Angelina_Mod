@@ -37,16 +37,20 @@ public sealed class Bandage : AngelinaCard
             new LocString("cards", "DELIVERED.description"))
     ];
 
-    // 动态变量：本牌提供的格挡数值。
+    // 动态变量：
+    // 1. 本牌提供的格挡数值。
+    // 2. EnchantAll 用于稳定刷新“1张手牌 / 所有手牌”的条件文本。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(8m, ValueProp.Move)
+        new BlockVar(8m, ValueProp.Move),
+        new IntVar("EnchantAll", 0m)
     ];
 
     // 初始化卡牌的基础信息：1费、技能、罕见、目标为自己。
     public Bandage()
         : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
+        RefreshEnchantTargetMode();
     }
 
     // 打出时，先获得格挡，再为手牌添加“送达时在本场战斗中升级”的附魔。
@@ -91,5 +95,16 @@ public sealed class Bandage : AngelinaCard
     protected override void OnUpgrade()
     {
         base.DynamicVars.Block.UpgradeValueBy(4m);
+        RefreshEnchantTargetMode();
+    }
+
+    protected override void AfterDowngraded()
+    {
+        RefreshEnchantTargetMode();
+    }
+
+    private void RefreshEnchantTargetMode()
+    {
+        base.DynamicVars["EnchantAll"].BaseValue = base.IsUpgraded ? 1m : 0m;
     }
 }

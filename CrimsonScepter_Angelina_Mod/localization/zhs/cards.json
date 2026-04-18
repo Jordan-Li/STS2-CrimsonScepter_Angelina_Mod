@@ -11,7 +11,7 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-DEFEND_ANGELINA.upgraded_description": "获得{Block:diff()}点[gold]格挡[/gold]。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_GIFT.title": "小礼物",
-  "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_GIFT.description": "造成{DisplayedDamage}点[gold]法术[/gold]伤。获得{DisplayedBlock}点[gold]法术[/gold]格挡。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_GIFT.description": "造成{DisplayedDamage}点[gold]法术[/gold]伤害。获得{DisplayedBlock}点[gold]法术[/gold]格挡。",
   "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_GIFT.upgraded_description": "造成{DisplayedDamage}点[gold]法术[/gold]伤害。获得{DisplayedBlock}点[gold]法术[/gold]格挡。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-ANTI_GRAVITY.title": "反重力",
@@ -27,17 +27,17 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-TOUCH_AND_TUMBLE.upgraded_description": "[gold]保留[/gold]。若目标敌人有[gold]失衡[/gold]，使其立刻[gold]失重[/gold]，清除其当前[gold]失衡[/gold]，使其失去当前[gold]失衡[/gold]一半的生命值并[gold]击晕[/gold]。每因此失去20点[gold]失衡[/gold]，获得{Energy:energyIcons()}。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.title": "重力节点",
-  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.description": "施加{ImbalancePower}点[gold]失衡[/gold]，造成{Damage}点伤害。若此牌斩杀目标或使目标[gold]失重[/gold]，永久使此牌增加{ImbalanceIncrease}点[gold]失衡[/gold]和{DamageIncrease}点伤害。",
-  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.upgraded_description": "施加{ImbalancePower}点[gold]失衡[/gold]，造成{Damage}点伤害。若此牌斩杀目标或使目标[gold]失重[/gold]，永久使此牌增加{ImbalanceIncrease}点[gold]失衡[/gold]和{DamageIncrease}点伤害。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.description": "施加{ImbalancePower}点[gold]失衡[/gold]，造成{Damage}点伤害。若此牌使目标[gold]失重[/gold]，永久增加{ImbalanceIncrease}点[gold]失衡[/gold]；若此牌[gold]斩杀[/gold]目标，永久增加{DamageIncrease}点伤害。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.upgraded_description": "施加{ImbalancePower}点[gold]失衡[/gold]，造成{Damage}点伤害。若此牌使目标[gold]失重[/gold]，永久增加{ImbalanceIncrease}点[gold]失衡[/gold]；若此牌[gold]斩杀[/gold]目标，永久增加{DamageIncrease}点伤害。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_FLOW.title": "寄送流程",
-  "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_FLOW.description": "造成{Damage:diff()}点伤害。寄送1张牌。",
-  "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_FLOW.upgraded_description": "造成{Damage:diff()}点伤害。寄送1张牌。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_FLOW.description": "造成{Damage:diff()}点伤害。[gold]寄送[/gold]1张牌。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_FLOW.upgraded_description": "造成{Damage:diff()}点伤害。[gold]寄送[/gold]1张牌。",
   "DELIVERY_FLOW.selectPrompt": "选择1张要寄送的牌",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_PREVIEW.title": "预览",
-  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_PREVIEW.description": "造成{Damage:diff()}点伤害。将最近寄送的1张牌送达后置于抽牌堆顶。",
-  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_PREVIEW.upgraded_description": "造成{Damage:diff()}点伤害。将最近寄送的1张牌送达后置于抽牌堆顶。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_PREVIEW.description": "造成{Damage:diff()}点伤害。将最近[gold]寄送[/gold]的1张牌[gold]送达[/gold]后置于抽牌堆顶。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_PREVIEW.upgraded_description": "造成{Damage:diff()}点伤害。将最近[gold]寄送[/gold]的1张牌[gold]送达[/gold]后置于抽牌堆顶。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-EARLY_DELIVERY.title": "提前送达！",
   "CRIMSONSCEPTER_ANGELINA_MOD-EARLY_DELIVERY.description": "立刻送达所有寄送的牌。给所有敌方施加{ImbalancePower:diff()}点[gold]失衡[/gold]。",
@@ -102,8 +102,8 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-AERIAL_SUPPRESSION.upgraded_description": "给予目标{FlyPower:diff()}层[gold]飞行[/gold]，使其本回合失去{StrengthLoss:diff()}点力量。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-LIME_STORM.title": "酸橙风暴",
-  "CRIMSONSCEPTER_ANGELINA_MOD-LIME_STORM.description": "对目标造成{DisplayedDamage}点[gold]法术[/gold]伤害。对所有造成{SplashDamage}点伤害。",
-  "CRIMSONSCEPTER_ANGELINA_MOD-LIME_STORM.upgraded_description": "对目标造成{DisplayedDamage}点[gold]法术[/gold]伤害。对所有造成{SplashDamage}点伤害。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-LIME_STORM.description": "对目标造成{DisplayedDamage}点[gold]法术[/gold]伤害。对所有敌人造成{SplashDamage}点伤害。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-LIME_STORM.upgraded_description": "对目标造成{DisplayedDamage}点[gold]法术[/gold]伤害。对所有敌人造成{SplashDamage}点伤害。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-UP_THERE.title": "在上面！",
   "CRIMSONSCEPTER_ANGELINA_MOD-UP_THERE.description": "获得{DisplayedBlock}点[gold]法术[/gold]格挡。若你处于[gold]浮空[/gold]，则对所有不处于[gold]浮空[/gold]的敌方施加{ImbalancePower:diff()}点[gold]失衡值[/gold]。",
@@ -134,8 +134,8 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-PRISM_RAY.upgraded_description": "造成{DisplayedDamage}点[gold]法术[/gold]伤害。变化所有[gold]寄送[/gold]牌并升级。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.title": "包扎带",
-  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.description": "获得{Block:diff()}点格挡。为1张手牌添加[gold]附魔[/gold]：[gold]送达[/gold]时，在本场战斗中获得升级。",
-  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.upgraded_description": "获得{Block:diff()}点格挡。为所有手牌添加[gold]附魔[/gold]：[gold]送达[/gold]时，在本场战斗中获得升级。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.description": "获得{Block:diff()}点格挡。为{EnchantAll:cond:>0?所有手牌|1张手牌}添加[gold]附魔[/gold]：[gold]送达[/gold]时，在本场战斗中获得升级。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.upgraded_description": "获得{Block:diff()}点格挡。为{EnchantAll:cond:>0?所有手牌|1张手牌}添加[gold]附魔[/gold]：[gold]送达[/gold]时，在本场战斗中获得升级。",
   "BANDAGE.selectPrompt": "选择要添加附魔的手牌",
   
   "CRIMSONSCEPTER_ANGELINA_MOD-UPDRAFT.title": "上升气流",
@@ -209,8 +209,8 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-REALITY_MANIPULATION.upgraded_description": "每当消耗牌堆的数量变动时，获得{RealityManipulationPower:diff()}点格挡。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-INVERSION_SYMMETRY.title": "反演对称",
-  "CRIMSONSCEPTER_ANGELINA_MOD-INVERSION_SYMMETRY.description": "消耗X点能量，依次打出弃牌堆顶的前X张牌。不会打出同名卡。",
-  "CRIMSONSCEPTER_ANGELINA_MOD-INVERSION_SYMMETRY.upgraded_description": "消耗X点能量，依次打出弃牌堆顶的前X张牌。不会打出同名卡。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-INVERSION_SYMMETRY.description": "消耗X点能量，依次打出弃牌堆顶的前X张牌。（不会打出反演对称）",
+  "CRIMSONSCEPTER_ANGELINA_MOD-INVERSION_SYMMETRY.upgraded_description": "消耗X点能量，依次打出弃牌堆顶的前X张牌。（不会打出反演对称）",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-SCEPTER_ANTIGRAVITY_MODE.title": "权杖·反重力模式",
   "CRIMSONSCEPTER_ANGELINA_MOD-SCEPTER_ANTIGRAVITY_MODE.description": "对敌方全体施加{ImbalancePower:diff()}点[gold]失衡[/gold]值和{TemporaryFlyPower:diff()}层[gold]临时飞行[/gold]。造成{DisplayedDamage}点[gold]法术[/gold]伤害。",
@@ -243,9 +243,7 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.title": "未来观测",
   "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.description": "打出时，选择5张卡组中的牌出现在你下次战斗的抽牌堆顶部。",
   "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.upgraded_description": "打出时，选择5张卡组中的牌出现在你下次战斗的抽牌堆顶部。",
-  "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.multiplayerWarningTitle": "多人模式警告",
-  "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.multiplayerWarningDescription": "此牌在多人模式下会可能导致异常或不同步。请谨慎在多人模式中选择或使用这张牌！",
-
+  
   "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION.title": "重要委托",
   "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION.description": "在这张牌被打出{Count}次后，每场战斗仅限1次，打出此牌时获得1个随机遗物并[gold]消耗[/gold]。[gold]送达[/gold]：升级需要次数减1，本场战斗中消耗能量减少{Energy:energyIcons()}。",
   "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION.upgraded_description": "在这张牌被打出{Count}次后，每场战斗仅限1次，打出此牌时获得1个随机遗物并[gold]消耗[/gold]。[gold]送达[/gold]：升级需要次数减1，本场战斗中消耗能量减少{Energy:energyIcons()}。",

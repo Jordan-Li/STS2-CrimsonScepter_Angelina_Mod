@@ -13,10 +13,10 @@
 
   "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_POWER.title": "派送中",
   "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_POWER.description": "被寄送的牌会在下个回合抽牌前依次回到手牌。",
-  "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_POWER.smartDescription": "当前寄送{Amount}张牌。下个回合开始时，这些牌会回到手牌：\n{Cards}",
+  "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_POWER.smartDescription": "当前寄送{QueuedCount}张牌。下个回合开始时，这些牌会回到手牌：\n{Cards}",
 
   "SPELL.title": "法术",
-  "SPELL.description": "法术是一种特殊牌标签，会触发施法相关效果。",
+  "SPELL.description": "法术攻击与法术格挡不会受到力量、敏捷、易伤、虚弱等影响，只受到集中的影响。法术攻击不会受到飞行状态减伤，也不会消耗飞行层数。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-SPELL_RHYTHM_POWER.title": "法术节奏",
   "CRIMSONSCEPTER_ANGELINA_MOD-SPELL_RHYTHM_POWER.description": "每回合记录你打出的[gold]法术[/gold]牌数。第2张[gold]法术[/gold]：获得1层[gold]临时飞行[/gold]。第3张[gold]法术[/gold]：选择1张[gold]寄送[/gold]牌送达。",
@@ -30,7 +30,7 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-FLY_POWER.smartDescription": "受到的攻击伤害减半。每次受到未被格挡的攻击伤害时，失去1层。剩余{Amount}层。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-TEMPORARY_FLY_POWER.title": "临时飞行",
-  "CRIMSONSCEPTER_ANGELINA_MOD-TEMPORARY_FLY_POWER.description": "获得等量的飞行。于下个自身回合开始时失去这些飞行。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-TEMPORARY_FLY_POWER.description": "获得等量的[gold]飞行[/gold]。于下个自身回合开始时失去这些[gold]飞行[/gold]。",
   "CRIMSONSCEPTER_ANGELINA_MOD-TEMPORARY_FLY_POWER.smartDescription": "获得{Amount}层飞行。于下个自身回合开始时失去这些飞行。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-UPDRAFT_POWER.title": "上升气流",
@@ -86,7 +86,7 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-REALITY_MANIPULATION_POWER.smartDescription": "每当有牌进入或离开[gold]消耗牌堆[/gold]时，获得{Amount}点格挡。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-STAGGER_POWER.title": "停顿",
-  "CRIMSONSCEPTER_ANGELINA_MOD-STAGGER_POWER.description": "受到的所有伤害提高10%。回合结束时移除。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-STAGGER_POWER.description": "受到的所有伤害提高10%（可叠加）。回合结束时移除。",
   "CRIMSONSCEPTER_ANGELINA_MOD-STAGGER_POWER.smartDescription": "受到的所有伤害提高10%。回合结束时移除。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-SPECIAL_GRAVITY_MODULE_POWER.title": "特限重力模块",
