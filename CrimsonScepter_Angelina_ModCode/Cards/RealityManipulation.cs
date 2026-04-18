@@ -11,37 +11,38 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
-/// 卡牌名：RealityManipulation
-/// 卡牌类型：能力牌
-/// 稀有度：非凡
-/// 费用：1费
-/// 效果：每当你的 Exhaust 数量发生变化时，获得格挡。
-/// 升级后效果：每次触发获得的格挡提高1。
-/// 备注：旧项目真实存在卡牌，按旧逻辑迁移。
+/// 卡牌名：实相操纵
+/// 费用：1
+/// 稀有度：罕见
+/// 卡牌类型：能力
+/// 效果：每当消耗牌堆的数量变动时，获得1点格挡。
+/// 升级后效果：每当消耗牌堆的数量变动时，获得2点格挡。
 /// </summary>
 public sealed class RealityManipulation : AngelinaCard
 {
-    // 额外悬浮说明：现实操纵
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    // 额外悬浮说明：实相操纵。
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<RealityManipulationPower>()
-    };
+    ];
 
-    // 动态变量：现实操纵每次触发给予的格挡值
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
+    // 动态变量：实相操纵每次触发给予的格挡值。
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
         new PowerVar<RealityManipulationPower>(1m)
-    };
+    ];
 
-    // 费用：1费，类型：能力牌，稀有度：非凡，目标：自己
+    // 初始化卡牌的基础信息：1费、能力、罕见、目标为自己。
     public RealityManipulation()
         : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
     {
     }
 
-    // 打出时的效果：获得现实操纵
+    // 打出时，施加一个持续能力 Power：
+    // 每当消耗牌堆的数量发生变动时，获得格挡。
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        // 先播放施法动作，再挂上持续 Power。
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
         await PowerCmd.Apply<RealityManipulationPower>(
             base.Owner.Creature,
@@ -51,7 +52,7 @@ public sealed class RealityManipulation : AngelinaCard
         );
     }
 
-    // 升级后每次触发获得的格挡值 +1
+    // 升级后每次触发获得的格挡值 +1。
     protected override void OnUpgrade()
     {
         base.DynamicVars["RealityManipulationPower"].UpgradeValueBy(1m);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Abstracts;
 using CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Powers;
@@ -15,15 +16,11 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
 /// 卡牌名：重力节点
-/// 卡牌类型：攻击牌
+/// 费用：2
 /// 稀有度：稀有
-/// 费用：2费
-/// 效果：施加10点失衡，造成10点伤害
-/// 额外效果：
-/// 1. 若此牌使目标进入失重，永久增加此牌施加的失衡
-/// 2. 若此牌斩杀目标，永久增加此牌造成的伤害
-/// 升级后效果：两种成长值从+3提升到+5
-/// 备注：这是旧版里的成长型失衡核心牌
+/// 卡牌类型：攻击
+/// 效果：施加10点失衡，造成10点伤害。若此牌斩杀目标或失重，永久使此牌增加3点失衡和伤害。消耗。
+/// 升级后效果：施加10点失衡，造成10点伤害。若此牌斩杀目标或失重，永久使此牌增加5点失衡和伤害。消耗。
 /// </summary>
 public sealed class GravityNode : AngelinaCard
 {
@@ -109,30 +106,30 @@ public sealed class GravityNode : AngelinaCard
     // 2. 当前造成的伤害
     // 3. 每次进入失重后增加的失衡值
     // 4. 每次斩杀后增加的伤害值
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
         new PowerVar<ImbalancePower>(CurrentImbalance),
         new DamageVar(CurrentDamage, ValueProp.Move),
         new IntVar("ImbalanceIncrease", 3m),
         new IntVar("DamageIncrease", 3m)
-    };
+    ];
 
     // 额外悬浮说明：
     // - 消耗
     // - 失衡
     // - 失重
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
         HoverTipFactory.FromPower<ImbalancePower>(),
         HoverTipFactory.FromPower<WeightlessPower>()
-    };
+    ];
 
     // 添加卡牌关键词：消耗
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[]
-    {
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
         CardKeyword.Exhaust
-    };
+    ];
 
     // 费用：2费，类型：攻击牌，稀有度：稀有，目标：任选一个敌人
     public GravityNode()
@@ -146,6 +143,10 @@ public sealed class GravityNode : AngelinaCard
         // 如果没有目标，就直接报错，避免空引用
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
+        // 按照游戏原生 Fatal 的定义，先记录这个目标是否允许触发斩杀奖励。
+        // 爪牙类目标会因为相关 Power 返回 false，从而不被计入斩杀。
+        bool shouldTriggerFatal = cardPlay.Target.Powers.All(p => p.ShouldOwnerDeathTriggerFatal());
+
         // 记录目标打出前是否已经处于失重
         bool wasWeightless = cardPlay.Target.GetPower<WeightlessPower>() != null;
 
@@ -158,27 +159,29 @@ public sealed class GravityNode : AngelinaCard
         );
 
         // 如果目标原本没有失重，但施加后进入了失重，
-        // 就永久提高这张牌的失衡值
+        // 说明这张牌满足了一个永久成长条件。
         bool enteredWeightless = !wasWeightless && cardPlay.Target.GetPower<WeightlessPower>() != null;
-        if (enteredWeightless)
-        {
-            BuffImbalance(base.DynamicVars["ImbalanceIncrease"].IntValue);
-            (base.DeckVersion as GravityNode)?.BuffImbalance(base.DynamicVars["ImbalanceIncrease"].IntValue);
-        }
 
-        // 第二步：如果目标还活着，再造成伤害
+        // 第二步：如果目标还活着，再造成伤害，并记录这次伤害是否完成了真正的斩杀。
+        bool fatalKilledTarget = false;
         if (cardPlay.Target.IsAlive)
         {
-            await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
+            var attackCommand = await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
                 .FromCard(this)
                 .Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_flying_slash")
                 .Execute(choiceContext);
+
+            fatalKilledTarget = shouldTriggerFatal && attackCommand.Results.Any(r => r.WasTargetKilled);
         }
 
-        // 如果这张牌斩杀了目标，就永久提高这张牌的伤害
-        if (!cardPlay.Target.IsAlive)
+        // 只要这张牌让目标进入失重，或按游戏原生 Fatal 规则完成了斩杀，
+        // 就永久同时提高这张牌的失衡和伤害。
+        if (enteredWeightless || fatalKilledTarget)
         {
+            BuffImbalance(base.DynamicVars["ImbalanceIncrease"].IntValue);
+            (base.DeckVersion as GravityNode)?.BuffImbalance(base.DynamicVars["ImbalanceIncrease"].IntValue);
+
             BuffDamage(base.DynamicVars["DamageIncrease"].IntValue);
             (base.DeckVersion as GravityNode)?.BuffDamage(base.DynamicVars["DamageIncrease"].IntValue);
         }

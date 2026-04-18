@@ -16,39 +16,51 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
 /// 卡牌名：彗星连击
-/// 卡牌类型：攻击牌
-/// 稀有度：非凡
-/// 费用：0费
-/// 效果：造成法术伤害。若目标处于失重，则抽牌。
-/// 升级后效果：提高抽牌数。
+/// 费用：0
+/// 稀有度：罕见
+/// 卡牌类型：攻击
+/// 效果：造成3点法术伤害。若目标处于失重，抽1张牌。
+/// 升级后效果：造成3点法术伤害。若目标处于失重，抽2张牌。
 /// </summary>
 public sealed class CometCombo : AngelinaCard
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    public override bool IsSpell => true;
+
+    // 额外悬浮说明：
+    // 1. 失重
+    // 2. 法术
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<WeightlessPower>(),
         new HoverTip(
             new LocString("powers", "SPELL.title"),
             new LocString("powers", "SPELL.description"))
-    };
+    ];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
+    // 动态变量：
+    // 1. 法术伤害
+    // 2. 处于失重时抽牌数
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
         new DamageVar(3m, ValueProp.Unpowered | ValueProp.Move),
         new CardsVar(1)
-    };
+    ];
 
+    // 初始化卡牌的基础信息：0费、攻击、罕见、目标为单体敌人。
     public CometCombo()
         : base(0, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
     }
 
+    // 打出时，先造成法术伤害；若目标原本处于失重，则再抽牌。
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
+        // 第一步：记录目标是否处于失重，用于决定后续是否抽牌。
         bool shouldDraw = cardPlay.Target.GetPower<WeightlessPower>() != null;
 
+        // 第二步：结算法术伤害。
         await SpellHelper.Damage(
             choiceContext,
             base.Owner.Creature,
@@ -57,17 +69,20 @@ public sealed class CometCombo : AngelinaCard
             this
         );
 
+        // 第三步：若目标原本处于失重，则抽牌。
         if (shouldDraw)
         {
             await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
         }
     }
 
+    // 升级后提高抽牌数。
     protected override void OnUpgrade()
     {
         base.DynamicVars.Cards.UpgradeValueBy(1m);
     }
 
+    // 额外描述参数：让描述里的法术伤害显示当前修正后的数值。
     protected override void AddExtraArgsToDescription(LocString description)
     {
         base.AddExtraArgsToDescription(description);

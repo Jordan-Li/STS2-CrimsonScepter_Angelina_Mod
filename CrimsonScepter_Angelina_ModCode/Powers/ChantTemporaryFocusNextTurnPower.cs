@@ -21,18 +21,21 @@ public sealed class ChantTemporaryFocusNextTurnPower : AngelinaPower
 
     public override bool ShouldScaleInMultiplayer => false;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    // 额外悬浮说明：集中。
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<FocusPower>()
-    };
+    ];
 
     public override async Task AfterEnergyReset(Player player)
     {
+        // 仅在自身的下回合开始时触发。
         if (player != base.Owner.Player)
         {
             return;
         }
 
+        // 给予集中，然后移除此延时 Power。
         Flash();
         await PowerCmd.Apply<FocusPower>(base.Owner, base.Amount, base.Owner, null);
         await PowerCmd.Remove(this);

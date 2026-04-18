@@ -16,38 +16,41 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
 /// 卡牌名：反重力
-/// 卡牌类型：攻击牌
-/// 稀有度：基础
-/// 费用：2费
-/// 效果：施加12点失衡值，造成8点法术伤害，并使目标获得1层临时飞行。
-/// 升级后效果：失衡值和法术伤害提高
-/// 备注：基础牌 法术攻击牌
+/// 费用：2
+/// 稀有度：其他
+/// 卡牌类型：攻击
+/// 效果：施加12点失衡，造成8点法术伤害，使目标获得1层临时飞行。
+/// 升级后效果：施加15点失衡，造成12点法术伤害，使目标获得1层临时飞行。
+/// 备注：初始卡牌
 /// </summary>
 public sealed class AntiGravity : AngelinaCard
 {
+    // 这张牌是法术牌，会参与法术相关结算与联动。
+    public override bool IsSpell => true;
+
     // 额外悬浮提示：
     // 1. 失衡
     // 2. 临时飞行
     // 3. 法术
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<ImbalancePower>(),
         HoverTipFactory.FromPower<TemporaryFlyPower>(),
         new HoverTip(
             new LocString("powers", "SPELL.title"),
             new LocString("powers", "SPELL.description"))
-    };
+    ];
 
     // 动态变量：
     // 1. 失衡值
     // 2. 法术伤害
     // 3. 临时飞行层数
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
         new PowerVar<ImbalancePower>(12m),
         new DamageVar(8m, ValueProp.Unpowered | ValueProp.Move),
         new PowerVar<TemporaryFlyPower>(1m)
-    };
+    ];
 
     // 费用：2费，类型：攻击牌，稀有度：基础，目标：任意敌人
     public AntiGravity()

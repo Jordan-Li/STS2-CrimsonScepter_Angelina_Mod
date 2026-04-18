@@ -12,21 +12,29 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
+/// <summary>
+/// 卡牌名：捎带
+/// 费用：0
+/// 稀有度：普通
+/// 卡牌类型：技能
+/// 效果：获得4点格挡。寄送这张牌。
+/// 升级后效果：获得6点格挡。寄送这张牌。
+/// </summary>
 public sealed class ByTheWay : AngelinaCard
 {
     private bool pendingSelfDelivery;
 
     public override bool GainsBlock => true;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<DeliveryPower>()
-    };
+    ];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
         new BlockVar(4m, ValueProp.Move)
-    };
+    ];
 
     public ByTheWay()
         : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
@@ -76,7 +84,7 @@ public sealed class ByTheWay : AngelinaCard
 
         if (deliveryPower != null)
         {
-            await deliveryPower.SetSelectedCard(this);
+            await deliveryPower.EnqueueCard(this);
         }
     }
 

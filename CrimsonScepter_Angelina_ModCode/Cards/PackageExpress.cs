@@ -16,28 +16,27 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
 /// 卡牌名：包裹速递
-/// 卡牌类型：技能牌
-/// 稀有度：非凡
-/// 费用：1费
-/// 效果：从手牌中选择1张牌，将其寄送。抽2张牌。
-/// 升级后效果：抽3张牌。
-/// 备注：已适配新版单图标寄送系统。
+/// 费用：1
+/// 稀有度：罕见
+/// 卡牌类型：技能
+/// 效果：寄送1张牌。抽2张牌。
+/// 升级后效果：寄送1张牌。抽3张牌。
 /// </summary>
 public sealed class PackageExpress : AngelinaCard
 {
     // 动态变量：抽牌数，初始为2
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
         new CardsVar(2)
-    };
+    ];
 
     // 额外悬浮说明：寄送
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<DeliveryPower>()
-    };
+    ];
 
-    // 费用：1费，类型：技能牌，稀有度：非凡，目标：自己
+    // 初始化卡牌的基础信息：1费、技能、罕见、目标为自己。
     public PackageExpress()
         : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
@@ -66,7 +65,7 @@ public sealed class PackageExpress : AngelinaCard
             // 再加入寄送队列
             if (deliveryPower != null)
             {
-                await deliveryPower.SetSelectedCard(selectedCard);
+            await deliveryPower.EnqueueCard(selectedCard);
             }
         }
 

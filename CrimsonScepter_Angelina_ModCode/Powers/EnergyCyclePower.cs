@@ -30,39 +30,46 @@ public sealed class EnergyCyclePower : AngelinaPower
 
     public override int DisplayAmount => base.Amount;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    // 额外悬浮说明：能量图标。
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.ForEnergy(this)
-    };
+    ];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
+    // 动态变量：每次触发时回复的能量。
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
         new EnergyVar(1)
-    };
+    ];
 
     protected override object InitInternalData()
     {
         return new Data();
     }
 
+    // 每当自己打出牌后，检查是否满足高耗能回能条件。
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
+        // 只统计自己打出的牌。
         if (cardPlay.Card.Owner != base.Owner.Player)
         {
             return;
         }
 
+        // 只允许攻击、技能、能力三种类型触发。
         CardType type = cardPlay.Card.Type;
         if (type != CardType.Attack && type != CardType.Skill && type != CardType.Power)
         {
             return;
         }
 
+        // 只有耗能至少为2的牌才会触发。
         if (cardPlay.Resources.EnergyValue < 2)
         {
             return;
         }
 
+        // 每种类型每回合最多触发 base.Amount 次。
         Data data = GetInternalData<Data>();
         data.TriggerCountsByType.TryGetValue(type, out int triggerCount);
         if (triggerCount >= base.Amount)
@@ -75,6 +82,7 @@ public sealed class EnergyCyclePower : AngelinaPower
         await PlayerCmd.GainEnergy(1m, base.Owner.Player);
     }
 
+    // 在自身这一侧回合结束时，清空本回合各牌型的触发计数。
     public override Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
         if (side == base.Owner.Side)

@@ -8,7 +8,6 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Powers;
 
 /// <summary>
-/// Power名：质素访客？
 /// 效果：彩蛋提示用，回合结束时移除。
 /// </summary>
 public sealed class QualityVisitorSecretPower : AngelinaPower
@@ -21,6 +20,7 @@ public sealed class QualityVisitorSecretPower : AngelinaPower
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
+        // 彩蛋提示只持续到己方回合结束。
         if (side == base.Owner.Side)
         {
             await PowerCmd.Remove(this);

@@ -13,28 +13,27 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
 /// 卡牌名：奇迹信使
-/// 卡牌类型：技能牌
+/// 费用：1
 /// 稀有度：稀有
-/// 费用：1费
-/// 效果：寄送所有其他手牌，而后抽等量的牌。
+/// 卡牌类型：技能
+/// 效果：寄送所有其他手牌，抽取相同数量的牌。消耗。
 /// 升级后效果：减1费。
-/// 备注：已适配新版单图标寄送系统。
 /// </summary>
 public sealed class MiracleCourier : AngelinaCard
 {
     // 额外悬浮说明：
     // - 消耗
     // - 寄送
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[]
-    {
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
         CardKeyword.Exhaust
-    };
+    ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
         HoverTipFactory.FromPower<DeliveryPower>()
-    };
+    ];
 
     // 费用：1费，类型：技能牌，稀有度：稀有，目标：自己
     public MiracleCourier()
@@ -73,7 +72,7 @@ public sealed class MiracleCourier : AngelinaCard
             await CardCmd.Exhaust(choiceContext, card);
 
             // 再加入寄送队列
-            await deliveryPower.SetSelectedCard(card);
+            await deliveryPower.EnqueueCard(card);
 
             deliveredCount++;
         }

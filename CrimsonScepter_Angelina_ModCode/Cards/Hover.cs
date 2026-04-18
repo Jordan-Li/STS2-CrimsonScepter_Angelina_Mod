@@ -12,33 +12,32 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
 /// 卡牌名：悬停
-/// 卡牌类型：技能牌
-/// 稀有度：普通
-/// 费用：1费
-/// 效果：获得临时飞行，并抽牌
-/// 升级后效果：临时飞行层数提高
-/// 备注：基础飞行节奏牌
+/// 费用：1
+/// 稀有度：罕见
+/// 卡牌类型：技能
+/// 效果：获得1层临时飞行。抽2张牌。
+/// 升级后效果：获得2层临时飞行。抽2张牌。
 /// </summary>
 public sealed class Hover : AngelinaCard
 {
     // 额外悬浮说明：临时飞行
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<TemporaryFlyPower>()
-    };
+    ];
 
     // 动态变量：
     // 1. 临时飞行层数
     // 2. 抽牌数
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
         new PowerVar<TemporaryFlyPower>(1m),
         new CardsVar(2)
-    };
+    ];
 
-    // 费用：1费，类型：技能牌，稀有度：普通，目标：自己
+    // 初始化卡牌的基础信息：1费、技能、罕见、目标为自己。
     public Hover()
-        : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+        : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
     }
 

@@ -18,26 +18,25 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
 /// 卡牌名：寄送流程
-/// 卡牌类型：攻击牌
+/// 费用：1
 /// 稀有度：普通
-/// 费用：1费
-/// 效果：造成8点伤害。然后从手牌中选择1张牌，将其寄送。
-/// 升级后效果：造成12点伤害。
-/// 备注：这张牌已适配新版单图标寄送系统。
+/// 卡牌类型：攻击
+/// 效果：造成8点伤害。寄送1张牌。
+/// 升级后效果：造成12点伤害。寄送1张牌。
 /// </summary>
 public sealed class DeliveryFlow : AngelinaCard
 {
     // 定义一个动态伤害变量，初始值为8点
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
         new DamageVar(8m, ValueProp.Move)
-    };
+    ];
 
     // 额外悬浮说明：寄送
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<DeliveryPower>()
-    };
+    ];
 
     // 费用：1费，类型：攻击牌，稀有度：普通，目标：任选一个敌人
     public DeliveryFlow()
@@ -81,7 +80,7 @@ public sealed class DeliveryFlow : AngelinaCard
         // 再加入寄送队列
         if (deliveryPower != null)
         {
-            await deliveryPower.SetSelectedCard(selectedCard);
+            await deliveryPower.EnqueueCard(selectedCard);
         }
     }
 

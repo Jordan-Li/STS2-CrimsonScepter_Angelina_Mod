@@ -14,12 +14,11 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
 /// 卡牌名：提前送达！
-/// 卡牌类型：技能牌
-/// 稀有度：稀有
-/// 费用：1费
-/// 效果：立刻获得你寄送的牌。给予敌方全体6点失衡。
-/// 升级后效果：给予敌方全体8点失衡。
-/// 备注：已适配新版单图标寄送系统。
+/// 费用：1
+/// 稀有度：罕见
+/// 卡牌类型：技能
+/// 效果：立刻送达所有寄送的牌。给予所有敌方6点失衡。消耗。
+/// 升级后效果：立刻送达所有寄送的牌。给予所有敌方13点失衡。消耗。
 /// </summary>
 public sealed class EarlyDelivery : AngelinaCard
 {
@@ -27,24 +26,24 @@ public sealed class EarlyDelivery : AngelinaCard
     // - 消耗
     // - 寄送
     // - 失衡
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
         HoverTipFactory.FromPower<DeliveryPower>(),
         HoverTipFactory.FromPower<ImbalancePower>()
-    };
+    ];
 
     // 关键词：消耗
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[]
-    {
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
         CardKeyword.Exhaust
-    };
+    ];
 
     // 动态变量：施加的失衡，初始为6
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
         new PowerVar<ImbalancePower>(6m)
-    };
+    ];
 
     // 费用：1费，类型：技能牌，稀有度：非凡，目标：全体敌人
     public EarlyDelivery()
@@ -55,7 +54,7 @@ public sealed class EarlyDelivery : AngelinaCard
     // 打出时的效果
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 第一步：立刻拿回当前所有寄送牌
+        // 第一步：立刻送达当前所有寄送牌
         DeliveryPower? deliveryPower = base.Owner.Creature.GetPower<DeliveryPower>();
         if (deliveryPower != null)
         {
@@ -74,9 +73,9 @@ public sealed class EarlyDelivery : AngelinaCard
         }
     }
 
-    // 升级后：失衡 +2（6 -> 8）
+    // 升级后：失衡 +7（6 -> 13）
     protected override void OnUpgrade()
     {
-        base.DynamicVars["ImbalancePower"].UpgradeValueBy(2m);
+        base.DynamicVars["ImbalancePower"].UpgradeValueBy(7m);
     }
 }

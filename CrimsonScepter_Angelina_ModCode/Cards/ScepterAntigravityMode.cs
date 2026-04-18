@@ -16,31 +16,35 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
-/// 卡牌名：权杖反重力模式
-/// 卡牌类型：攻击牌
-/// 稀有度：远古
-/// 费用：1费
-/// 效果：对所有敌人施加失衡，造成法术伤害，并赋予临时飞行。
-/// 升级后效果：提高失衡值和伤害。
+/// 费用：1
+/// 稀有度：其他
+/// 卡牌类型：攻击
+/// 效果：对敌方全体施加18点失衡值和1层临时飞行。造成18点法术伤害。
+/// 升级后效果：对敌方全体施加25点失衡值与1层临时飞行。造成25点法术伤害。
 /// </summary>
 public sealed class ScepterAntigravityMode : AngelinaCard
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    // 这张牌会用到失衡、临时飞行、飞行和法术伤害的悬浮说明。
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<ImbalancePower>(),
         HoverTipFactory.FromPower<TemporaryFlyPower>(),
         HoverTipFactory.FromPower<FlyPower>(),
         new HoverTip(
             new LocString("powers", "SPELL.title"),
             new LocString("powers", "SPELL.description"))
-    };
+    ];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
+    // 维护失衡、法术伤害和临时飞行三个动态数值。
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
         new PowerVar<ImbalancePower>(18m),
         new DamageVar(18m, ValueProp.Unpowered | ValueProp.Move),
         new PowerVar<TemporaryFlyPower>(1m)
-    };
+    ];
+
+    // 这是攻击牌，但伤害部分按法术伤害结算。
+    public override bool IsSpell => true;
 
     public ScepterAntigravityMode()
         : base(1, CardType.Attack, CardRarity.Ancient, TargetType.AllEnemies)
@@ -49,7 +53,7 @@ public sealed class ScepterAntigravityMode : AngelinaCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 取当前所有可命中的存活敌人
+        // 先取当前所有可命中的存活敌人；若没有目标，则直接结束。
         List<Creature> enemies = (base.CombatState?.HittableEnemies ?? Enumerable.Empty<Creature>())
             .Where(enemy => enemy.IsAlive)
             .ToList();
@@ -59,14 +63,22 @@ public sealed class ScepterAntigravityMode : AngelinaCard
             return;
         }
 
+        // 在逐个目标结算前，先计算当前法术伤害显示值对应的实际伤害。
         decimal spellDamage = SpellHelper.ModifySpellValue(base.Owner.Creature, base.DynamicVars.Damage.BaseValue);
 
-        // 逐个敌人施加失衡、造成法术伤害、赋予临时飞行
+        // 按表格顺序逐个敌人结算：先施加失衡和临时飞行，再造成法术伤害。
         foreach (Creature enemy in enemies)
         {
             await PowerCmd.Apply<ImbalancePower>(
                 enemy,
                 base.DynamicVars["ImbalancePower"].BaseValue,
+                base.Owner.Creature,
+                this
+            );
+
+            await PowerCmd.Apply<TemporaryFlyPower>(
+                enemy,
+                base.DynamicVars["TemporaryFlyPower"].BaseValue,
                 base.Owner.Creature,
                 this
             );
@@ -78,24 +90,19 @@ public sealed class ScepterAntigravityMode : AngelinaCard
                 spellDamage,
                 this
             );
-
-            await PowerCmd.Apply<TemporaryFlyPower>(
-                enemy,
-                base.DynamicVars["TemporaryFlyPower"].BaseValue,
-                base.Owner.Creature,
-                this
-            );
         }
     }
 
     protected override void OnUpgrade()
     {
+        // 升级后同时提高失衡值和法术伤害。
         base.DynamicVars["ImbalancePower"].UpgradeValueBy(7m);
         base.DynamicVars.Damage.UpgradeValueBy(7m);
     }
 
     protected override void AddExtraArgsToDescription(LocString description)
     {
+        // 为本地化描述补上法术修正后的实际显示伤害。
         base.AddExtraArgsToDescription(description);
 
         decimal displayedDamage = base.DynamicVars.Damage.BaseValue;

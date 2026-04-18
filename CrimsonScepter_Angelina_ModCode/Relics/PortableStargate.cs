@@ -96,7 +96,7 @@ public sealed class PortableStargate : AngelinaRelic
         }
 
         // 兼容新版 DeliveryPower 的队列实现
-        if (deliveryPower.GetSelectedCard() != card && !deliveryPower.GetQueuedCards().Contains(card))
+        if (deliveryPower.PeekLatest() != card && !deliveryPower.GetQueuedCards().Contains(card))
         {
             return;
         }

@@ -25,11 +25,13 @@ public sealed class MessengerCodePower : AngelinaPower
 
     public override bool ShouldScaleInMultiplayer => false;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    // 额外悬浮说明：寄送。
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<DeliveryPower>()
-    };
+    ];
 
+    // 每回合的基础抽牌数额外+1。
     public override decimal ModifyHandDraw(Player player, decimal count)
     {
         if (player != base.Owner.Player)
@@ -40,6 +42,7 @@ public sealed class MessengerCodePower : AngelinaPower
         return count + 1m;
     }
 
+    // 玩家回合开始时，额外选择若干张手牌并寄送。
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != base.Owner.Player)
@@ -47,14 +50,23 @@ public sealed class MessengerCodePower : AngelinaPower
             return;
         }
 
-        CardModel? selectedCard = (await CardSelectCmd.FromHand(
+        // 根据 Power 数值决定本回合要寄送多少张牌；没有手牌时直接结束。
+        int handCount = player.PlayerCombatState?.Hand.Cards.Count ?? 0;
+        int deliveryCount = (int)System.Math.Min(base.Amount, handCount);
+        if (deliveryCount <= 0)
+        {
+            return;
+        }
+
+        // 从手牌中选择对应数量的牌进行寄送。
+        List<CardModel> selectedCards = (await CardSelectCmd.FromHand(
             context: choiceContext,
             player: player,
-            prefs: new CardSelectorPrefs(new LocString("cards", "MESSENGER_CODE.selectPrompt"), 1),
+            prefs: new CardSelectorPrefs(new LocString("cards", "MESSENGER_CODE.selectPrompt"), deliveryCount),
             filter: _ => true,
-            source: null!)).FirstOrDefault();
+            source: null!)).ToList();
 
-        if (selectedCard is null)
+        if (selectedCards.Count == 0)
         {
             return;
         }
@@ -69,7 +81,11 @@ public sealed class MessengerCodePower : AngelinaPower
             return;
         }
 
-        await CardCmd.Exhaust(choiceContext, selectedCard);
-        await deliveryPower.SetSelectedCard(selectedCard);
+        // 将所选牌逐张移入 Exhaust，并逐张加入寄送队列。
+        foreach (CardModel selectedCard in selectedCards)
+        {
+            await CardCmd.Exhaust(choiceContext, selectedCard);
+            await deliveryPower.EnqueueCard(selectedCard);
+        }
     }
 }

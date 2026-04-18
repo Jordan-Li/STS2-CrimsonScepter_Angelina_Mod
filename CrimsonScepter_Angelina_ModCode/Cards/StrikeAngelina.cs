@@ -13,45 +13,45 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
 /// 卡牌名：打击
-/// 卡牌类型：攻击牌
-/// 稀有度：基础
-/// 费用：1费
-/// 效果：造成6点伤害
-/// 升级后效果：造成9点伤害
-/// 备注：基础卡牌
+/// 费用：1
+/// 稀有度：其他
+/// 卡牌类型：攻击
+/// 效果：造成6点伤害。
+/// 升级后效果：造成9点伤害。
+/// 备注：初始卡牌
 /// </summary>
 public sealed class StrikeAngelina : AngelinaCard
 {
-    // 添加卡牌标签：打击
-    protected override HashSet<CardTag> CanonicalTags => new() { CardTag.Strike };
+    // 这张牌带有 Strike 标签，供其他“打击”相关效果识别。
+    protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
 
-    // 定义一个动态伤害变量，初始值为6点
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
+    // 定义这张牌的基础伤害数值，供卡面显示和结算共用。
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
         new DamageVar(6m, ValueProp.Move)
-    };
+    ];
 
-    // 费用：1费，类型：攻击牌，稀有度：基础，打击目标：任选一个目标
+    // 初始化卡牌的基础信息：1费、攻击牌、其他、目标为单体敌人。
     public StrikeAngelina()
         : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
     {
     }
 
-    // 打出时的效果
+    // 打出时，对选中的敌人造成一次普通攻击伤害。
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 如果没有目标，就直接报错，避免空引用
+        // 攻击牌必须有目标，这里先做空检查，避免后续结算时报错。
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
-        // 执行攻击命令
+        // 执行攻击指令，并附带基础斩击特效。
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-            .FromCard(this)                                 // 说明这次伤害来自这张牌
-            .Targeting(cardPlay.Target)                     // 指定攻击目标
-            .WithHitFx("vfx/vfx_flying_slash")          // 命中特效
-            .Execute(choiceContext);                        // 真正执行
+            .FromCard(this)
+            .Targeting(cardPlay.Target)
+            .WithHitFx("vfx/vfx_flying_slash")
+            .Execute(choiceContext);
     }
 
-    // 升级后，将动态伤害变量 DynamicVars 的伤害提高3点
+    // 升级后将伤害提高3点，对应卡面从6提升到9。
     protected override void OnUpgrade()
     {
         base.DynamicVars.Damage.UpgradeValueBy(3m);

@@ -1,0 +1,5 @@
+{
+  "DELIVERED_UPGRADE_ENCHANTMENT.title": "送达升级",
+  "DELIVERED_UPGRADE_ENCHANTMENT.description": "当此牌因[gold]寄送[/gold]回到手牌时，将其[gold]升级[/gold]，然后移除此效果。",
+  "DELIVERED_UPGRADE_ENCHANTMENT.extraCardText": "[gold]送达[/gold]时，升级"
+}

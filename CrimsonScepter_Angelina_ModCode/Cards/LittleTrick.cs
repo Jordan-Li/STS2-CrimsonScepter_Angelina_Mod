@@ -15,20 +15,19 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
 /// 卡牌名：小戏法
-/// 卡牌类型：技能牌
-/// 稀有度：非凡
-/// 费用：1费
-/// 效果：从手牌中选择1张其他牌，复制该牌，并将复制品寄送。
-/// 升级后效果：费用减少1点。
-/// 备注：这张牌本质上是“寄送一个复制品”，不会把原牌送走。
+/// 费用：1
+/// 稀有度：罕见
+/// 卡牌类型：技能
+/// 效果：选择1张牌。寄送其复制品。
+/// 升级后效果：减1费。
 /// </summary>
 public sealed class LittleTrick : AngelinaCard
 {
     // 额外悬浮说明：寄送
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<DeliveryPower>()
-    };
+    ];
 
     // 费用：1费，类型：技能牌，稀有度：非凡，目标：自己
     public LittleTrick()
@@ -68,7 +67,7 @@ public sealed class LittleTrick : AngelinaCard
 
         if (deliveryPower != null)
         {
-            await deliveryPower.SetSelectedCard(copy);
+            await deliveryPower.EnqueueCard(copy);
         }
     }
 

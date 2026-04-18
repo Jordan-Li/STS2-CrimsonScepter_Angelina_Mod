@@ -18,13 +18,16 @@ public sealed class CourierTrainingPower : AngelinaPower
 
     public override bool ShouldScaleInMultiplayer => false;
 
+    // 在自身每回合开始时，给予等量飞行。
     public override async Task AfterEnergyReset(Player player)
     {
+        // 只在自身的回合开始时触发。
         if (player != base.Owner.Player)
         {
             return;
         }
 
+        // 播放闪光提示，然后施加飞行。
         Flash();
         await PowerCmd.Apply<FlyPower>(base.Owner, base.Amount, base.Owner, null);
     }

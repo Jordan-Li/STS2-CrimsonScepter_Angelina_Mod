@@ -15,26 +15,25 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
 /// 卡牌名：预览
-/// 卡牌类型：攻击牌
+/// 费用：1
 /// 稀有度：普通
-/// 费用：1费
-/// 效果：造成10点伤害。获得最近的寄送牌，而后将其置于抽牌堆顶。
-/// 升级后效果：造成15点伤害。
-/// 备注：已适配新版单图标寄送系统。
+/// 卡牌类型：攻击
+/// 效果：造成10点伤害。将最近寄送的1张牌送达后置于抽牌堆顶。
+/// 升级后效果：造成15点伤害。将最近寄送的1张牌送达后置于抽牌堆顶。
 /// </summary>
 public sealed class PackagePreview : AngelinaCard
 {
     // 定义一个动态伤害变量，初始值为10点
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
         new DamageVar(10m, ValueProp.Move)
-    };
+    ];
 
     // 额外悬浮说明：寄送
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<DeliveryPower>()
-    };
+    ];
 
     // 费用：1费，类型：攻击牌，稀有度：普通，目标：任选一个敌人
     public PackagePreview()
@@ -63,19 +62,19 @@ public sealed class PackagePreview : AngelinaCard
         }
 
         // 第三步：取出最近寄送的一张牌
-        CardModel? deliveredCard = deliveryPower.GetSelectedCard();
+        CardModel? deliveredCard = deliveryPower.PeekLatest();
         if (deliveredCard?.Pile?.Type != PileType.Exhaust)
         {
             return;
         }
 
-        // 第四步：先把这张牌从寄送队列中送回手牌
-        if (!await deliveryPower.DeliverNow())
+        // 第四步：先把这张牌真正送达，确保送达效果会照常触发
+        if (!await deliveryPower.DeliverLatestNow())
         {
             return;
         }
 
-        // 第五步：再把它从手牌移到抽牌堆顶
+        // 第五步：再把这张已送达的牌从手牌移到抽牌堆顶
         await CardPileCmd.Add(deliveredCard, PileType.Draw, CardPilePosition.Top, this);
     }
 

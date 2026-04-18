@@ -61,8 +61,8 @@ public class Angelina : PlaceholderCharacterModel
     public override string CustomMapMarkerPath => "map_marker_angelina.png".CharacterUiPath();                          //地图上指针
     
     
-    public override string CustomVisualPath => "angelina.tscn".CustomVisualPath();
-    public override string CustomEnergyCounterPath => "angelina_energy_counter.tscn".CustomEnergyCounterPath();
+    public override string CustomVisualPath => "angelina.tscn".CustomVisualPath();                                      //
+    public override string CustomEnergyCounterPath => "angelina_energy_counter.tscn".CustomEnergyCounterPath();         //
     public override string CustomRestSiteAnimPath => "angelina_rest_site.tscn".CustomRestSiteAnimPath();
     public override string CustomCharacterSelectBg => "char_select_bg_angelina.tscn".CustomCharacterSelectBg();
     public override string CustomMerchantAnimPath => "angelina_merchant.tscn".CustomMerchantPath();

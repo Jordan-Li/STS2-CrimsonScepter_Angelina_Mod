@@ -14,35 +14,44 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
 /// 卡牌名：精密调整
-/// 卡牌类型：技能牌
+/// 费用：0
 /// 稀有度：普通
-/// 费用：0费
-/// 效果：使全体敌方目标获得失衡值。下回合其失去部分失衡值。
-/// 升级后效果：提高施加的失衡值。
+/// 卡牌类型：技能
+/// 效果：对所有敌方施加12点失衡，并在下回合开始时失去5点失衡。
+/// 升级后效果：对所有敌方施加18点失衡，并在下回合开始时失去5点失衡。
 /// </summary>
 public sealed class PrecisionAdjustment : AngelinaCard
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
+    // 动态变量：
+    // 1. 施加的失衡数值
+    // 2. 下回合失去的失衡数值
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
         new PowerVar<ImbalancePower>(12m),
         new PowerVar<PrecisionAdjustmentPower>(5m)
-    };
+    ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    // 额外悬浮说明：
+    // 1. 失衡
+    // 2. 精密调整
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<ImbalancePower>(),
         HoverTipFactory.FromPower<PrecisionAdjustmentPower>()
-    };
+    ];
 
+    // 初始化卡牌的基础信息：0费、技能、普通、目标为所有敌人。
     public PrecisionAdjustment()
         : base(0, CardType.Skill, CardRarity.Common, TargetType.AllEnemies)
     {
     }
 
+    // 打出时，对所有敌人施加失衡，并附加“下回合失去失衡”的延时效果。
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         foreach (Creature enemy in base.CombatState?.HittableEnemies ?? Enumerable.Empty<Creature>())
         {
+            // 第一步：对目标施加失衡。
             await PowerCmd.Apply<ImbalancePower>(
                 enemy,
                 base.DynamicVars["ImbalancePower"].BaseValue,
@@ -50,6 +59,7 @@ public sealed class PrecisionAdjustment : AngelinaCard
                 this
             );
 
+            // 第二步：施加延时 Power，在下回合开始时扣回固定数值的失衡。
             await PowerCmd.Apply<PrecisionAdjustmentPower>(
                 enemy,
                 base.DynamicVars["PrecisionAdjustmentPower"].BaseValue,
@@ -59,8 +69,9 @@ public sealed class PrecisionAdjustment : AngelinaCard
         }
     }
 
+    // 升级后仅提高施加的失衡数值。
     protected override void OnUpgrade()
     {
-        base.DynamicVars["ImbalancePower"].UpgradeValueBy(3m);
+        base.DynamicVars["ImbalancePower"].UpgradeValueBy(6m);
     }
 }

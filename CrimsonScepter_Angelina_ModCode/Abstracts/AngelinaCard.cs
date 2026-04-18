@@ -27,6 +27,8 @@ public abstract class AngelinaCard(int cost, CardType type, CardRarity rarity, T
 
     private static bool Exists(string path) => ResourceLoader.Exists(path);
 
+    public virtual bool IsSpell => false;
+    
     public override string PortraitPath
     {
         get

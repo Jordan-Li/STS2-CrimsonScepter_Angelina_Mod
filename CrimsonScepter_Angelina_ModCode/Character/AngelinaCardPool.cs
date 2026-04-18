@@ -4,14 +4,14 @@ using Godot;
 
 namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Character;
 
-// 安洁莉娜的卡牌池
+// 安洁莉娜的卡牌池定义文件
 
 public class AngelinaCardPool : CustomCardPoolModel
 {
     public override string Title => Angelina.CharacterId; //This is not a display name.
 
-    public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();
-    public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();
+    public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();        //卡牌左上角的能量图片
+public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();          //卡牌描述中的能量图片
 
 
     /* These HSV values will determine the color of your card back.

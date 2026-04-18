@@ -19,17 +19,16 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Powers;
 /// Power名：寄送
 /// Power类型：状态型Power
 /// 效果：
-/// 1. 所有被寄送的牌都整合到同一个Power里显示
-/// 2. Amount显示当前寄送牌数量
-/// 3. 悬浮描述完整显示全部寄送牌名
-/// 4. 在下个回合抽牌前，把所有寄送牌送回手牌
-/// 备注：这是新版单图标寄送实现，用来替代旧版“一张牌一个DeliveryPower图标”的方案
+/// 1. 用单个Power统一管理所有已寄送的牌
+/// 2. 层数显示当前寄送牌数量
+/// 3. 动态描述展示完整寄送列表
+/// 4. 在下个回合抽牌前统一送达
+/// 备注：这是寄送体系的核心状态，不能删
 /// </summary>
 public sealed class DeliveryPower : AngelinaPower
 {
     /// <summary>
-    /// 内部数据：
-    /// QueuedCards = 当前所有被寄送的牌
+    /// 用内部列表保存当前仍停留在消耗牌堆中的寄送牌。
     /// </summary>
     private sealed class Data
     {
@@ -39,24 +38,21 @@ public sealed class DeliveryPower : AngelinaPower
     public override PowerType Type => PowerType.Buff;
 
     /// <summary>
-    /// 单实例Power：所有寄送牌都合并到这一个Power里
+    /// 所有寄送牌共用同一个图标，不再一张牌一个Power。
     /// </summary>
     public override bool IsInstanced => false;
 
     /// <summary>
-    /// 使用计数层数显示当前寄送牌数量
+    /// 层数直接显示当前寄送队列中的牌数。
     /// </summary>
     public override PowerStackType StackType => PowerStackType.Counter;
     public override int DisplayAmount => GetQueuedCards().Count;
     public override bool ShouldScaleInMultiplayer => false;
 
     /// <summary>
-    /// Cards = 当前所有寄送牌的完整名字列表
+    /// Cards 用于把完整寄送列表拼进悬浮说明。
     /// </summary>
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
-        new StringVar("Cards")
-    };
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new StringVar("Cards")];
 
     protected override object InitInternalData()
     {
@@ -64,7 +60,7 @@ public sealed class DeliveryPower : AngelinaPower
     }
 
     /// <summary>
-    /// 在抽牌前，把当前所有寄送牌全部送回手牌
+    /// 每回合抽牌前自动结算全部寄送牌。
     /// </summary>
     public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, CombatState combatState)
     {
@@ -80,46 +76,14 @@ public sealed class DeliveryPower : AngelinaPower
     }
 
     /// <summary>
-    /// 兼容旧版调用。
-    /// 旧版每次只记录一张牌；新版这里改成“加入寄送队列”。
-    /// </summary>
-    public async Task SetSelectedCard(CardModel card)
-    {
-        await EnqueueCard(card);
-    }
-
-    /// <summary>
-    /// 兼容旧版调用。
-    /// 返回最近寄送的一张牌。
-    /// 这个主要给 PackagePreview 之类的牌继续使用。
-    /// </summary>
-    public CardModel? GetSelectedCard()
-    {
-        return PeekLatest();
-    }
-
-    /// <summary>
-    /// 兼容旧版调用。
-    /// 旧版 DeliverNow 默认送回当前这层Power记录的那张牌；
-    /// 新版这里改成送回“最近寄送的一张牌”。
-    /// </summary>
-    public async Task<bool> DeliverNow()
-    {
-        return await DeliverLatestNow();
-    }
-
-    /// <summary>
-    /// 新版：把一张牌加入寄送队列。
-    /// 这里不会额外创建新Power，只会把牌塞进当前单实例Power中。
+    /// 把一张牌加入寄送队列；若被安检拦截则改走安检流程。
     /// </summary>
     public async Task EnqueueCard(CardModel card)
     {
         SecurityCheckPower? securityCheckPower = base.Owner.GetPower<SecurityCheckPower>();
         if (securityCheckPower != null && await securityCheckPower.TryInterceptDelivery(this, card))
         {
-            CleanupQueue();
-            RefreshQueueDisplay();
-            await RemoveSelfIfEmpty();
+            await RefreshAfterQueueChanged();
             return;
         }
 
@@ -130,13 +94,11 @@ public sealed class DeliveryPower : AngelinaPower
             data.QueuedCards.Add(card);
         }
 
-        CleanupQueue();
-        RefreshQueueDisplay();
+        await RefreshAfterQueueChanged();
     }
 
     /// <summary>
-    /// 返回当前所有仍然有效的寄送牌。
-    /// 只保留还在 Exhaust 堆里的牌。
+    /// 返回当前仍有效的寄送牌，只保留还在消耗牌堆中的牌。
     /// </summary>
     public IReadOnlyList<CardModel> GetQueuedCards()
     {
@@ -145,7 +107,7 @@ public sealed class DeliveryPower : AngelinaPower
     }
 
     /// <summary>
-    /// 返回最近寄送的一张仍然有效的牌。
+    /// 查看最近寄送的一张有效牌。
     /// </summary>
     public CardModel? PeekLatest()
     {
@@ -154,8 +116,7 @@ public sealed class DeliveryPower : AngelinaPower
     }
 
     /// <summary>
-    /// 随机选择1张已寄送的牌，立即送达。
-    /// 给 QuickDispatch 未升级版使用。
+    /// 随机立即送达一张寄送牌。
     /// </summary>
     public async Task DeliverRandom(PlayerChoiceContext choiceContext, CardModel source)
     {
@@ -174,8 +135,7 @@ public sealed class DeliveryPower : AngelinaPower
     }
 
     /// <summary>
-    /// 选择1张已寄送的牌，立即送达。
-    /// 给 QuickDispatch 升级版使用。
+    /// 选择一张寄送牌立即送达。
     /// </summary>
     public async Task DeliverChosen(PlayerChoiceContext choiceContext, CardModel source)
     {
@@ -209,8 +169,7 @@ public sealed class DeliveryPower : AngelinaPower
     }
 
     /// <summary>
-    /// 立刻送回指定的一张寄送牌。
-    /// 成功返回 true，失败返回 false。
+    /// 立即送达指定寄送牌。
     /// </summary>
     public async Task<bool> DeliverCardNow(CardModel card)
     {
@@ -225,71 +184,59 @@ public sealed class DeliveryPower : AngelinaPower
         await CardPileCmd.Add(card, PileType.Hand, source: this);
 
         data.QueuedCards.Remove(card);
-        CleanupQueue();
-        RefreshQueueDisplay();
-        await RemoveSelfIfEmpty();
+        await RefreshAfterQueueChanged();
 
         return true;
     }
 
     /// <summary>
-    /// 立刻送回最近寄送的一张牌。
+    /// 立即送达最近寄送的一张牌。
     /// </summary>
-    public async Task<bool> DeliverLatestNow()
+    public Task<bool> DeliverLatestNow()
     {
         CardModel? latestCard = PeekLatest();
-        if (latestCard == null)
-        {
-            return false;
-        }
-
-        return await DeliverCardNow(latestCard);
+        return latestCard == null ? Task.FromResult(false) : DeliverCardNow(latestCard);
     }
 
     /// <summary>
-    /// 立刻送回当前所有寄送牌。
-    /// 返回成功送回的数量。
+    /// 立即送达当前所有寄送牌。
     /// </summary>
     public async Task<int> DeliverAllNow()
     {
         CleanupQueue();
 
-        List<CardModel> queuedCards = GetInternalData<Data>().QueuedCards.ToList();
+        Data data = GetInternalData<Data>();
+        List<CardModel> queuedCards = data.QueuedCards.ToList();
         int deliveredCount = 0;
 
         foreach (CardModel card in queuedCards)
         {
-            if (await DeliverCardNow(card))
+            if (!data.QueuedCards.Contains(card) || card.Pile?.Type != PileType.Exhaust)
             {
-                deliveredCount++;
+                continue;
             }
+
+            await CardPileCmd.Add(card, PileType.Hand, source: this);
+            data.QueuedCards.Remove(card);
+            deliveredCount++;
         }
 
-        CleanupQueue();
-        RefreshQueueDisplay();
-        await RemoveSelfIfEmpty();
+        await RefreshAfterQueueChanged();
 
         return deliveredCount;
     }
 
     /// <summary>
-    /// 清理无效寄送牌：
-    /// - null
-    /// - 已经不在 Exhaust 里的牌
+    /// 清理已经失效的寄送记录，避免显示脏数据。
     /// </summary>
     private void CleanupQueue()
     {
         Data data = GetInternalData<Data>();
-
-        data.QueuedCards = data.QueuedCards
-            .Where(card => card != null && card.Pile?.Type == PileType.Exhaust)
-            .ToList();
+        data.QueuedCards.RemoveAll(card => card == null || card.Pile?.Type != PileType.Exhaust);
     }
 
     /// <summary>
-    /// 刷新：
-    /// 1. Power层数（当前寄送牌数量）
-    /// 2. 悬浮描述中的完整牌名列表
+    /// 刷新层数显示和完整寄送列表描述。
     /// </summary>
     private void RefreshQueueDisplay()
     {
@@ -304,13 +251,22 @@ public sealed class DeliveryPower : AngelinaPower
     }
 
     /// <summary>
-    /// 当寄送队列为空时，移除自身。
+    /// 每次队列发生变化后统一刷新显示，并在空队列时移除自身。
     /// </summary>
-    private async Task RemoveSelfIfEmpty()
+    private async Task RefreshAfterQueueChanged()
     {
-        if (GetInternalData<Data>().QueuedCards.Count == 0)
-        {
-            await PowerCmd.Remove(this);
-        }
+        CleanupQueue();
+        RefreshQueueDisplay();
+        await RemoveSelfIfEmpty();
+    }
+
+    /// <summary>
+    /// 队列为空时移除自身，避免场上残留空壳Power。
+    /// </summary>
+    private Task RemoveSelfIfEmpty()
+    {
+        return GetInternalData<Data>().QueuedCards.Count == 0
+            ? PowerCmd.Remove(this)
+            : Task.CompletedTask;
     }
 }

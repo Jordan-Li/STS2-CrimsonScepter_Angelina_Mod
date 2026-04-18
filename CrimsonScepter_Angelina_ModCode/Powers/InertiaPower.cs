@@ -29,12 +29,13 @@ public sealed class InertiaPower : AngelinaPower
 
     public override bool ShouldScaleInMultiplayer => false;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    // 额外悬浮说明：失重。
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<WeightlessPower>()
-    };
+    ];
 
-    // 在正常抽牌前，如果已经有失重敌人，则额外抽牌
+    // 在正常抽牌前，如果已经有失重敌人，则额外抽牌。
     public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, CombatState combatState)
     {
         if (player != base.Owner.Player || !HasWeightlessEnemy())
@@ -46,7 +47,7 @@ public sealed class InertiaPower : AngelinaPower
         await CardPileCmd.Draw(choiceContext, base.Amount, player);
     }
 
-    // 当任意 Power 数值变化后，尝试监听敌方新增的失重
+    // 当任意 Power 数值变化后，尝试监听敌方新增的失重。
     public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (amount > 0m)
@@ -55,7 +56,7 @@ public sealed class InertiaPower : AngelinaPower
         }
     }
 
-    // 如果是敌方新获得失重，则立刻额外抽牌
+    // 如果是敌方新获得失重，则立刻额外抽牌。
     private async Task TryTriggerFromPower(PowerModel power)
     {
         if (power is not WeightlessPower || power.Owner.Side == base.Owner.Side || base.Owner.Player == null)
@@ -67,6 +68,7 @@ public sealed class InertiaPower : AngelinaPower
         await CardPileCmd.Draw(new ThrowingPlayerChoiceContext(), base.Amount, base.Owner.Player);
     }
 
+    // 当前场上是否存在处于失重的敌方单位。
     private bool HasWeightlessEnemy()
     {
         return (base.CombatState?.HittableEnemies ?? Enumerable.Empty<Creature>())

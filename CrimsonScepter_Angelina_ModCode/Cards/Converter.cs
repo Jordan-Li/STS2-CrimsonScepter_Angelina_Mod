@@ -15,12 +15,11 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
 /// 卡牌名：转换器
-/// 卡牌类型：技能牌
-/// 稀有度：非凡
-/// 费用：0费
-/// 效果：失去2点力量与2点敏捷，获得2点集中。寄送一张定位器。
-/// 升级后效果：三项数值都提高1点。
-/// 备注：已适配新版单图标寄送系统。
+/// 费用：0
+/// 稀有度：罕见
+/// 卡牌类型：技能
+/// 效果：失去2点力量与2点敏捷，获得2点集中。寄送1张定位器。消耗。
+/// 升级后效果：失去3点力量与3点敏捷，获得3点集中。寄送1张定位器。消耗。
 /// </summary>
 public sealed class Converter : AngelinaCard
 {
@@ -30,33 +29,33 @@ public sealed class Converter : AngelinaCard
     // - 集中
     // - 寄送
     // - 定位器
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<StrengthPower>(),
         HoverTipFactory.FromPower<DexterityPower>(),
         HoverTipFactory.FromPower<FocusPower>(),
         HoverTipFactory.FromPower<DeliveryPower>(),
         HoverTipFactory.FromCard<Locator>(base.IsUpgraded)
-    };
+    ];
 
     // 动态变量：
     // 1. 力量变化值
     // 2. 敏捷变化值
     // 3. 集中变化值
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
         new PowerVar<StrengthPower>(2m),
         new PowerVar<DexterityPower>(2m),
         new PowerVar<FocusPower>(2m)
-    };
+    ];
 
     // 关键词：消耗
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new[]
-    {
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
         CardKeyword.Exhaust
-    };
+    ];
 
-    // 费用：0费，类型：技能牌，稀有度：非凡，目标：自己
+    // 初始化卡牌的基础信息：0费、技能、罕见、目标为自己。
     public Converter()
         : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
@@ -99,11 +98,11 @@ public sealed class Converter : AngelinaCard
 
         if (deliveryPower != null)
         {
-            await deliveryPower.SetSelectedCard(locator);
+            await deliveryPower.EnqueueCard(locator);
         }
     }
 
-    // 升级后：三项数值都 +1
+    // 升级后，力量、敏捷和集中对应的数值都提高1点。
     protected override void OnUpgrade()
     {
         base.DynamicVars["StrengthPower"].UpgradeValueBy(1m);

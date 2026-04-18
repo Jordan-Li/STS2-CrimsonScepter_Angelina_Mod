@@ -27,27 +27,33 @@ public sealed class NaturalBurstPower : AngelinaPower
 
     public override bool ShouldScaleInMultiplayer => false;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    // 额外悬浮说明：
+    // 1. 中毒
+    // 2. 法术
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<PoisonPower>(),
         new HoverTip(
             new LocString("powers", "SPELL.title"),
             new LocString("powers", "SPELL.description"))
-    };
+    ];
 
-    // 当拥有者用“法术伤害”打中敌人后，对所有敌人上毒
+    // 当拥有者用“法术伤害”打中敌人后，对所有敌人上毒。
     public override async Task AfterDamageGiven(PlayerChoiceContext choiceContext, Creature? dealer, DamageResult result, ValueProp props, Creature target, CardModel? cardSource)
     {
+        // 只在自己对敌方造成了未被完全格挡的伤害时触发。
         if (dealer != base.Owner || result.UnblockedDamage <= 0 || target.Side == base.Owner.Side)
         {
             return;
         }
 
+        // 只有法术伤害才会触发自然爆发。
         if (!props.HasFlag(ValueProp.Move) || !props.HasFlag(ValueProp.Unpowered))
         {
             return;
         }
 
+        // 找出当前仍然存活且可被作用的所有敌方单位。
         List<Creature> enemies = base.CombatState
             .GetOpponentsOf(base.Owner)
             .Where(enemy => enemy.IsAlive && enemy.IsHittable)
@@ -58,6 +64,7 @@ public sealed class NaturalBurstPower : AngelinaPower
             return;
         }
 
+        // 对所有敌方施加等同于本 Power 层数的中毒。
         Flash();
         await PowerCmd.Apply<PoisonPower>(enemies, base.Amount, base.Owner, cardSource);
     }

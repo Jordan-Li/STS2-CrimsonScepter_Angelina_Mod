@@ -11,11 +11,15 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_POWER.description": "Sent cards return to your hand at the start of your next turn.",
   "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_POWER.smartDescription": "{Amount}cards are queued. At the start of your next turn, these cards return to your hand:\n{Cards}",
 
+  "FOCUS_POWER.title": "Focus",
+  "FOCUS_POWER.description": "Increases the effectiveness of Orb effects, as well as [gold]spell[/gold] damage and [gold]spell[/gold] Block.",
+  "FOCUS_POWER.smartDescription": "{Amount:cond:<0?Decreases|Increases} the effectiveness of Orb effects, as well as [gold]spell[/gold] damage and [gold]spell[/gold] Block.",
+
   "SPELL.title": "Spell",
   "SPELL.description": "Spell damage and spell Block ignore Strength, Dexterity, Vulnerable, Weak, Frail, and similar modifiers, but are affected by [gold]Focus[/gold].",
 
   "AIRBORNE.title": "Airborne",
-  "AIRBORNE.description": "A target is considered [gold]Airborne[/gold] while it is in an elevated state. Currently implemented airborne sources include [gold]Fly[/gold].",
+  "AIRBORNE.description": "A target is considered [gold]Airborne[/gold] while it has [gold]Fly[/gold] or [gold]Flutter[/gold].",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-FLY_POWER.title": "Fly",
   "CRIMSONSCEPTER_ANGELINA_MOD-FLY_POWER.description": "Halve incoming attack damage. Lose 1 stack each time you take unblocked attack damage.",
@@ -38,8 +42,8 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-PRECISION_ADJUSTMENT_POWER.smartDescription": "At the start of next turn, lose {Amount} [gold]Imbalance[/gold].",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-CHANT.title": "Chant",
-  "CRIMSONSCEPTER_ANGELINA_MOD-CHANT.description": "Gain {DisplayedBlock} [gold]spell[/gold] Block. Next turn, gain {ChantTemporaryFocusNextTurnPower:diff()} Focus.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-CHANT.upgraded_description": "Gain {DisplayedBlock} [gold]spell[/gold] Block. Next turn, gain {ChantTemporaryFocusNextTurnPower:diff()} Focus.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CHANT.description": "Gain {DisplayedBlock} [gold]spell[/gold] Block. Next turn, gain {ChantTemporaryFocusNextTurnPower:diff()} [gold]Focus[/gold].",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CHANT.upgraded_description": "Gain {DisplayedBlock} [gold]spell[/gold] Block. Next turn, gain {ChantTemporaryFocusNextTurnPower:diff()} [gold]Focus[/gold].",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-PART_TIME_JOB.title": "Part-Time Job",
   "CRIMSONSCEPTER_ANGELINA_MOD-PART_TIME_JOB.description": "At end of turn, if you did not play an Attack this turn, heal {Heal}.",
@@ -67,8 +71,8 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-COURIER_TRAINING_POWER.smartDescription": "At the start of each turn, gain {Amount} Fly.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-ENERGY_CYCLE_POWER.title": "Energy Cycle",
-  "CRIMSONSCEPTER_ANGELINA_MOD-ENERGY_CYCLE_POWER.description": "Each turn, when you play an Attack, Skill, or Power card costing at least 2 Energy, each type can trigger at most once: gain 1 Energy.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-ENERGY_CYCLE_POWER.smartDescription": "Each turn, when you play an Attack, Skill, or Power card costing at least 2 Energy, each type can trigger at most {Amount} times: gain 1 Energy.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ENERGY_CYCLE_POWER.description": "Each turn, when you play an Attack, Skill, or Power card costing at least 2 Energy, each card type can trigger at most once: gain 1 Energy.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ENERGY_CYCLE_POWER.smartDescription": "Each turn, when you play an Attack, Skill, or Power card costing at least 2 Energy, each card type can trigger at most {Amount} times: gain 1 Energy.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-FAST_CHARGE_MODE_POWER.title": "Fast Charge Mode",
   "CRIMSONSCEPTER_ANGELINA_MOD-FAST_CHARGE_MODE_POWER.description": "This turn, double the [gold]Imbalance[/gold] you apply.",
@@ -87,8 +91,8 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-NATURAL_BURST_POWER.smartDescription": "Whenever you deal [gold]Spell[/gold] damage to an enemy, apply {Amount} [gold]Poison[/gold] to all enemies.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-REALITY_MANIPULATION_POWER.title": "Reality Manipulation",
-  "CRIMSONSCEPTER_ANGELINA_MOD-REALITY_MANIPULATION_POWER.description": "Whenever a card enters or leaves your [gold]Exhaust[/gold] pile, gain Block.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-REALITY_MANIPULATION_POWER.smartDescription": "Whenever a card enters or leaves your [gold]Exhaust[/gold] pile, gain {Amount} Block.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-REALITY_MANIPULATION.description": "Whenever the number of cards in your [gold]Exhaust[/gold] pile changes, gain {RealityManipulationPower:diff()} Block.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-REALITY_MANIPULATION.upgraded_description": "Whenever the number of cards in your [gold]Exhaust[/gold] pile changes, gain {RealityManipulationPower:diff()} Block.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-STAGGER_POWER.title": "Stagger",
   "CRIMSONSCEPTER_ANGELINA_MOD-STAGGER_POWER.description": "Take 10% more damage. Remove at end of turn.",
@@ -111,6 +115,14 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-QUALITY_VISITOR_SECRET_POWER.smartDescription": "You triggered the easter egg! While [gold]Quality Visitor[/gold] is active, Attacks have a 10% chance to be played an additional time.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-SECURITY_CHECK_POWER.title": "Security Check",
-  "CRIMSONSCEPTER_ANGELINA_MOD-SECURITY_CHECK_POWER.description": "Whenever you [gold]Deliver[/gold] a Status or Curse, [gold]Exhaust[/gold] it instead and apply [gold]Imbalance[/gold] to all enemies.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-SECURITY_CHECK_POWER.smartDescription": "Whenever you [gold]Deliver[/gold] a Status or Curse, [gold]Exhaust[/gold] it instead and apply {Amount} [gold]Imbalance[/gold] to all enemies."
+  "CRIMSONSCEPTER_ANGELINA_MOD-SECURITY_CHECK_POWER.description": "Whenever you [gold]Deliver[/gold] a Status or Curse, [gold]Exhaust[/gold] it and apply [gold]Imbalance[/gold] to all enemies.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SECURITY_CHECK_POWER.smartDescription": "Whenever you [gold]Deliver[/gold] a Status or Curse, [gold]Exhaust[/gold] it and apply {Amount} [gold]Imbalance[/gold] to all enemies.",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION_REWARD_LOCK_POWER.title": "Important Commission Reward Lock",
+  "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION_REWARD_LOCK_POWER.description": "This combat, you have already gained a random Relic from [gold]Important Commission[/gold].",
+  "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION_REWARD_LOCK_POWER.smartDescription": "This combat, you have already gained a random Relic from [gold]Important Commission[/gold].",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE_NO_CARD_REWARD_POWER.title": "Annihilation Particle",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE_NO_CARD_REWARD_POWER.description": "This combat grants no card rewards.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE_NO_CARD_REWARD_POWER.smartDescription": "This combat grants no card rewards."
 }

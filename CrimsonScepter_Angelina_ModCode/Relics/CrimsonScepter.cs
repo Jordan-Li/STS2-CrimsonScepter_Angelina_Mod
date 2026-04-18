@@ -16,7 +16,8 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Relics;
 /// <summary>
 /// 遗物名：绯红权杖
 /// 稀有度：初始
-/// 效果：当敌方角色从浮空状态变为非浮空状态时，使其获得失衡值。
+/// 效果：
+/// 当敌方角色从浮空状态变为非浮空状态时，使其获得失衡值。
 /// </summary>
 public sealed class CrimsonScepter : AngelinaRelic
 {
@@ -33,8 +34,7 @@ public sealed class CrimsonScepter : AngelinaRelic
         HoverTipFactory.FromPower<FlyPower>(),
         HoverTipFactory.FromPower<ImbalancePower>()
     };
-    
-    
+
     /// <summary>
     /// 监听 Power 层数变化。
     /// 当敌人的 FlyPower 从 >0 下降到 <=0 时，视为“从浮空变为非浮空”，施加失衡。

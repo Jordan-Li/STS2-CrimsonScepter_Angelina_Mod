@@ -12,41 +12,41 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
 /// 卡牌名：防御
-/// 卡牌类型：技能牌
-/// 稀有度：基础
-/// 费用：1费
-/// 效果：获得5点格挡
-/// 升级后效果：获得8点格挡
-/// 备注：基础卡牌
+/// 费用：1
+/// 稀有度：其他
+/// 卡牌类型：技能
+/// 效果：获得5点格挡。
+/// 升级后效果：获得8点格挡。
+/// 备注：初始卡牌
 /// </summary>
 public sealed class DefendAngelina : AngelinaCard
 {
-    // 这张牌会提供格挡，供游戏UI和系统识别
+    // 这张牌会提供格挡，供游戏 UI 和相关系统识别。
     public override bool GainsBlock => true;
 
-    // 添加卡牌标签：防御
+    // 这张牌带有 Defend 标签，供其他“防御”相关效果识别。
     protected override HashSet<CardTag> CanonicalTags => new() { CardTag.Defend };
 
-    // 定义一个动态格挡变量，初始值为5点
+    // 定义这张牌的基础格挡数值，供卡面显示和结算共用。
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new BlockVar(5m, ValueProp.Move)
     };
 
-    // 费用：1费，类型：技能牌，稀有度：基础，目标：自己
+    // 初始化卡牌的基础信息：1费、技能牌、其他、目标为自己。
     public DefendAngelina()
         : base(1, CardType.Skill, CardRarity.Basic, TargetType.Self)
     {
     }
 
-    // 打出时的效果
+    // 打出时，为自己提供一次基础格挡。
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 获得格挡
+        // 执行获得格挡的结算。
         await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
     }
 
-    // 升级后，将动态变量 DynamicVars 的格挡提高3点
+    // 升级后将格挡提高3点，对应卡面从5提升到8。
     protected override void OnUpgrade()
     {
         base.DynamicVars.Block.UpgradeValueBy(3m);

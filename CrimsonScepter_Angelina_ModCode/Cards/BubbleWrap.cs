@@ -16,31 +16,32 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
 /// 卡牌名：泡沫纸
-/// 卡牌类型：攻击牌
+/// 费用：0
 /// 稀有度：普通
-/// 费用：0费
-/// 效果：造成法术伤害，并寄送这张牌的复制品
-/// 升级后效果：伤害提高
-/// 备注：寄送体系中的自复制法术牌
+/// 卡牌类型：攻击
+/// 效果：造成4点法术伤害。寄送这张牌的复制品。
+/// 升级后效果：造成6点法术伤害。寄送这张牌的复制品。
 /// </summary>
 public sealed class BubbleWrap : AngelinaCard
 {
+    public override bool IsSpell => true;
+
     // 额外悬浮说明：
     // 1. 寄送
     // 2. 法术
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<DeliveryPower>(),
         new HoverTip(
             new LocString("powers", "SPELL.title"),
             new LocString("powers", "SPELL.description"))
-    };
+    ];
 
     // 动态变量：法术伤害，初始值为4
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
         new DamageVar(4m, ValueProp.Unpowered | ValueProp.Move)
-    };
+    ];
 
     // 费用：0费，类型：攻击牌，稀有度：普通，目标：任意敌人
     public BubbleWrap()
@@ -51,10 +52,7 @@ public sealed class BubbleWrap : AngelinaCard
     // 打出时的效果
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Target == null)
-        {
-            return;
-        }
+        ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
         // 第一步：造成法术伤害
         decimal damage = SpellHelper.ModifySpellValue(base.Owner.Creature, base.DynamicVars.Damage.BaseValue);
@@ -76,7 +74,7 @@ public sealed class BubbleWrap : AngelinaCard
 
         if (deliveryPower != null)
         {
-            await deliveryPower.SetSelectedCard(copy);
+            await deliveryPower.EnqueueCard(copy);
         }
     }
 

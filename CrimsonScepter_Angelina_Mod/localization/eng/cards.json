@@ -11,67 +11,67 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-DEFEND_ANGELINA.upgraded_description": "Gain{Block:diff()}[gold]Block[/gold].",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_GIFT.title": "Little Gift",
-  "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_GIFT.description": "Deal {DisplayedDamage} [gold]spell[/gold] damage and gain {DisplayedBlock} [gold]spell[/gold] Block.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_GIFT.upgraded_description": "Deal {DisplayedDamage} [gold]spell[/gold] damage and gain {DisplayedBlock} [gold]spell[/gold] Block.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_GIFT.description": "Deal {DisplayedDamage} [gold]spell[/gold] DMG. Gain {DisplayedBlock} [gold]spell[/gold] Block.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_GIFT.upgraded_description": "Deal {DisplayedDamage} [gold]spell[/gold] damage. Gain {DisplayedBlock} [gold]spell[/gold] Block.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-ANTI_GRAVITY.title": "Anti Gravity",
-  "CRIMSONSCEPTER_ANGELINA_MOD-ANTI_GRAVITY.description": "Apply {ImbalancePower:diff()} Imbalance, deal {DisplayedDamage} [gold]spell[/gold] damage, and give the target {TemporaryFlyPower:diff()} Temporary Fly.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-ANTI_GRAVITY.upgraded_description": "Apply {ImbalancePower:diff()} Imbalance, deal {DisplayedDamage} [gold]spell[/gold] damage, and give the target {TemporaryFlyPower:diff()} Temporary Fly.",
-  
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANTI_GRAVITY.description": "Apply {ImbalancePower:diff()} Imbalance, deal {DisplayedDamage} [gold]spell[/gold] damage, and make the target gain {TemporaryFlyPower:diff()} Temporary Flight.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANTI_GRAVITY.upgraded_description": "Apply {ImbalancePower:diff()} Imbalance, deal {DisplayedDamage} [gold]spell[/gold] damage, and make the target gain {TemporaryFlyPower:diff()} Temporary Flight.",
+
   "CRIMSONSCEPTER_ANGELINA_MOD-BALANCED_STRIKE.title": "Balanced Strike",
   "CRIMSONSCEPTER_ANGELINA_MOD-BALANCED_STRIKE.description": "Deal{Damage:diff()}damage. Apply8[gold]Imbalance[/gold].",
   "CRIMSONSCEPTER_ANGELINA_MOD-BALANCED_STRIKE.upgraded_description": "Deal{Damage:diff()}damage. Apply10[gold]Imbalance[/gold].",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-TOUCH_AND_TUMBLE.title": "Touch and Tumble!",
-  "CRIMSONSCEPTER_ANGELINA_MOD-TOUCH_AND_TUMBLE.description": "If the target has[gold]Imbalance[/gold], immediately make it enter[gold]Weightless[/gold]. Gain{Energy:energyIcons()}for every20[gold]Imbalance[/gold]removed this way.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-TOUCH_AND_TUMBLE.upgraded_description": "Retain. If the target has[gold]Imbalance[/gold], immediately make it enter[gold]Weightless[/gold]. Gain{Energy:energyIcons()}for every20[gold]Imbalance[/gold]removed this way.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-TOUCH_AND_TUMBLE.description": "If the target has [gold]Imbalance[/gold], make it immediately become [gold]Weightless[/gold], remove its current [gold]Imbalance[/gold], make it lose HP equal to half that [gold]Imbalance[/gold], and [gold]Stun[/gold] it. Gain {Energy:energyIcons()} for every 20 [gold]Imbalance[/gold] removed this way. [gold]Exhaust[/gold].",
+  "CRIMSONSCEPTER_ANGELINA_MOD-TOUCH_AND_TUMBLE.upgraded_description": "[gold]Retain[/gold]. If the target has [gold]Imbalance[/gold], make it immediately become [gold]Weightless[/gold], remove its current [gold]Imbalance[/gold], make it lose HP equal to half that [gold]Imbalance[/gold], and [gold]Stun[/gold] it. Gain {Energy:energyIcons()} for every 20 [gold]Imbalance[/gold] removed this way. [gold]Exhaust[/gold].",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.title": "Gravity Node",
-  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.description": "Apply{ImbalancePower}[gold]Imbalance[/gold], then deal{Damage}damage. If this card makes the target enter[gold]Weightless[/gold]/kills the target, permanently increase this card's applied[gold]Imbalance[/gold]/damage by{ImbalanceIncrease}/{DamageIncrease}.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.upgraded_description": "Apply{ImbalancePower}[gold]Imbalance[/gold], then deal{Damage}damage. If this card makes the target enter[gold]Weightless[/gold]/kills the target, permanently increase this card's applied[gold]Imbalance[/gold]/damage by{ImbalanceIncrease}/{DamageIncrease}.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.description": "Apply {ImbalancePower} [gold]Imbalance[/gold], then deal {Damage} damage. If this card deals a fatal blow or makes the target become [gold]Weightless[/gold], permanently increase this card's [gold]Imbalance[/gold] by {ImbalanceIncrease} and its damage by {DamageIncrease}.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.upgraded_description": "Apply {ImbalancePower} [gold]Imbalance[/gold], then deal {Damage} damage. If this card deals a fatal blow or makes the target become [gold]Weightless[/gold], permanently increase this card's [gold]Imbalance[/gold] by {ImbalanceIncrease} and its damage by {DamageIncrease}.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_FLOW.title": "Delivery Flow",
-  "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_FLOW.description": "Deal{Damage:diff()}damage. Choose1card in your hand and send it.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_FLOW.upgraded_description": "Deal{Damage:diff()}damage. Choose1card in your hand and send it.",
-  "DELIVERY_FLOW.selectPrompt": "Choose a card to send.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_FLOW.description": "Deal {Damage:diff()} damage. Send a card.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_FLOW.upgraded_description": "Deal {Damage:diff()} damage. Send a card.",
+  "DELIVERY_FLOW.selectPrompt": "Choose a card to send",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_PREVIEW.title": "Package Preview",
-  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_PREVIEW.description": "Deal{Damage:diff()}damage. Gain the most recently sent card, then put it on top of your draw pile.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_PREVIEW.upgraded_description": "Deal{Damage:diff()}damage. Gain the most recently sent card, then put it on top of your draw pile.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_PREVIEW.description": "Deal {Damage:diff()} damage. Deliver the most recently sent card, then place it on top of your draw pile.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_PREVIEW.upgraded_description": "Deal {Damage:diff()} damage. Deliver the most recently sent card, then place it on top of your draw pile.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-EARLY_DELIVERY.title": "Early Delivery!",
-  "CRIMSONSCEPTER_ANGELINA_MOD-EARLY_DELIVERY.description": "Immediately gain your sent cards. Apply{ImbalancePower:diff()}[gold]Imbalance[/gold]to all enemies.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-EARLY_DELIVERY.upgraded_description": "Immediately gain your sent cards. Apply{ImbalancePower:diff()}[gold]Imbalance[/gold]to all enemies.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EARLY_DELIVERY.description": "Immediately deliver all sent cards. Apply {ImbalancePower:diff()} [gold]Imbalance[/gold] to all enemies. [gold]Exhaust[/gold].",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EARLY_DELIVERY.upgraded_description": "Immediately deliver all sent cards. Apply {ImbalancePower:diff()} [gold]Imbalance[/gold] to all enemies. [gold]Exhaust[/gold].",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-MIRACLE_COURIER.title": "Miracle Courier",
-  "CRIMSONSCEPTER_ANGELINA_MOD-MIRACLE_COURIER.description": "Send all other cards in your hand. Then draw that many cards.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-MIRACLE_COURIER.upgraded_description": "Send all other cards in your hand. Then draw that many cards.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-MIRACLE_COURIER.description": "Send all other cards in your hand. Draw the same number of cards. [gold]Exhaust[/gold].",
+  "CRIMSONSCEPTER_ANGELINA_MOD-MIRACLE_COURIER.upgraded_description": "Send all other cards in your hand. Draw the same number of cards. [gold]Exhaust[/gold].",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-CONVERTER.title": "Converter",
-  "CRIMSONSCEPTER_ANGELINA_MOD-CONVERTER.description": "Lose{StrengthPower:diff()}[gold]Strength[/gold]and{DexterityPower:diff()}[gold]Dexterity[/gold]. Gain{FocusPower:diff()}[gold]Focus[/gold]. Send a{LocatorCard}.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-CONVERTER.upgraded_description": "Lose{StrengthPower:diff()}[gold]Strength[/gold]and{DexterityPower:diff()}[gold]Dexterity[/gold]. Gain{FocusPower:diff()}[gold]Focus[/gold]. Send a{LocatorCard}.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CONVERTER.description": "Lose {StrengthPower:diff()} [gold]Strength[/gold] and {DexterityPower:diff()} [gold]Dexterity[/gold]. Gain {FocusPower:diff()} [gold]Focus[/gold]. [gold]Send[/gold] 1 {LocatorCard}. [gold]Exhaust[/gold].",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CONVERTER.upgraded_description": "Lose {StrengthPower:diff()} [gold]Strength[/gold] and {DexterityPower:diff()} [gold]Dexterity[/gold]. Gain {FocusPower:diff()} [gold]Focus[/gold]. [gold]Send[/gold] 1 {LocatorCard}. [gold]Exhaust[/gold].",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-LOCATOR.title": "Locator",
-  "CRIMSONSCEPTER_ANGELINA_MOD-LOCATOR.description": "Lose{FocusPower:diff()}[gold]Focus[/gold]. Gain{StrengthPower:diff()}[gold]Strength[/gold]and{DexterityPower:diff()}[gold]Dexterity[/gold]. Add a{ConverterCard}to your draw pile.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-LOCATOR.upgraded_description": "Lose{FocusPower:diff()}[gold]Focus[/gold]. Gain{StrengthPower:diff()}[gold]Strength[/gold]and{DexterityPower:diff()}[gold]Dexterity[/gold]. Add a{ConverterCard}to your draw pile.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-LOCATOR.description": "Lose {FocusPower:diff()} [gold]Focus[/gold]. Gain {StrengthPower:diff()} [gold]Strength[/gold] and {DexterityPower:diff()} [gold]Dexterity[/gold]. Add 1 Converter to your draw pile. [gold]Exhaust[/gold].",
+  "CRIMSONSCEPTER_ANGELINA_MOD-LOCATOR.upgraded_description": "Lose {FocusPower:diff()} [gold]Focus[/gold]. Gain {StrengthPower:diff()} [gold]Strength[/gold] and {DexterityPower:diff()} [gold]Dexterity[/gold]. Add 1 Converter to your draw pile. [gold]Exhaust[/gold].",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_EXPRESS.title": "Package Express",
-  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_EXPRESS.description": "Choose1card in your hand and send it. Draw{Cards:diff()}cards.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_EXPRESS.upgraded_description": "Choose1card in your hand and send it. Draw{Cards:diff()}cards.",
-  "PACKAGE_EXPRESS.selectPrompt": "Choose a card to send.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_EXPRESS.description": "Send 1 card. Draw {Cards:diff()} cards.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PACKAGE_EXPRESS.upgraded_description": "Send 1 card. Draw {Cards:diff()} cards.",
+  "PACKAGE_EXPRESS.selectPrompt": "Choose a card to send",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-SUPPLY_PACKAGE.title": "Supply Package",
   "CRIMSONSCEPTER_ANGELINA_MOD-SUPPLY_PACKAGE.description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold]. [gold]Delivered[/gold]: Gain {EnergyGain:energyIcons()}.",
   "CRIMSONSCEPTER_ANGELINA_MOD-SUPPLY_PACKAGE.upgraded_description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold]. [gold]Delivered[/gold]: Gain {EnergyGain:energyIcons()}.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-BY_THE_WAY.title": "By the Way",
-  "CRIMSONSCEPTER_ANGELINA_MOD-BY_THE_WAY.description": "Gain{Block:diff()}[gold]Block[/gold].[gold]Send[/gold]this.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-BY_THE_WAY.upgraded_description": "Gain{Block:diff()}[gold]Block[/gold].[gold]Send[/gold]this.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BY_THE_WAY.description": "Gain {Block:diff()} [gold]Block[/gold]. [gold]Send[/gold] this card.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BY_THE_WAY.upgraded_description": "Gain {Block:diff()} [gold]Block[/gold]. [gold]Send[/gold] this card.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_TRICK.title": "Little Trick",
   "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_TRICK.description": "Choose 1 other card in your hand. Create a copy of it and [gold]send[/gold] the copy.",
   "CRIMSONSCEPTER_ANGELINA_MOD-LITTLE_TRICK.upgraded_description": "Choose 1 other card in your hand. Create a copy of it and [gold]send[/gold] the copy.",
-  "LITTLE_TRICK.selectPrompt": "Choose a card to copy and send.",
+  "LITTLE_TRICK.selectPrompt": "Choose a card to copy and send",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-BUBBLE_WRAP.title": "Bubble Wrap",
   "CRIMSONSCEPTER_ANGELINA_MOD-BUBBLE_WRAP.description": "Deal {DisplayedDamage} [gold]spell[/gold] damage. [gold]Send[/gold] a copy of this card.",
@@ -82,11 +82,11 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-HOVER.upgraded_description": "Gain {TemporaryFlyPower:diff()} Temporary Fly. Draw {Cards} cards.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-CHARGED_IMPACT.title": "Charged Impact",
-  "CRIMSONSCEPTER_ANGELINA_MOD-CHARGED_IMPACT.description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold]. Deal {DisplayedDamage} [gold]spell[/gold] damage.\n[gold]Delivered[/gold]: Randomize this combat's energy cost.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-CHARGED_IMPACT.upgraded_description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold]. Deal {DisplayedDamage} [gold]spell[/gold] damage.\n[gold]Delivered[/gold]: Randomize this combat's energy cost.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CHARGED_IMPACT.description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold]. Deal {DisplayedDamage} [gold]spell[/gold] damage.\n[gold]Delivered[/gold]: Randomize this card's energy cost for this combat.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CHARGED_IMPACT.upgraded_description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold]. Deal {DisplayedDamage} [gold]spell[/gold] damage.\n[gold]Delivered[/gold]: Randomize this card's energy cost for this combat.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-HORIZON_LINE.title": "Horizon Line",
-  "CRIMSONSCEPTER_ANGELINA_MOD-HORIZON_LINE.description": "All units gain {FlyPower:diff()} [gold]Fly[/gold].",
+  "CRIMSONSCEPTER_ANGELINA_MOD-HORIZON_LINE.description": "All units gain {FlyPower:diff()} [gold]Fly[/gold]. [gold]Exhaust[/gold].",
   "CRIMSONSCEPTER_ANGELINA_MOD-HORIZON_LINE.upgraded_description": "All units gain {FlyPower:diff()} [gold]Fly[/gold].",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-SUSPENDED.title": "Suspended",
@@ -102,52 +102,57 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-AERIAL_SUPPRESSION.upgraded_description": "Give the target {FlyPower:diff()} [gold]Fly[/gold] and make it lose {StrengthLoss:diff()} Strength this turn.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-LIME_STORM.title": "Lime Storm",
-  "CRIMSONSCEPTER_ANGELINA_MOD-LIME_STORM.description": "Deal {DisplayedDamage} [gold]spell[/gold] damage to the target. Deal {SplashDamage} damage to all enemies.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-LIME_STORM.upgraded_description": "Deal {DisplayedDamage} [gold]spell[/gold] damage to the target. Deal {SplashDamage} damage to all enemies.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-LIME_STORM.description": "Deal {DisplayedDamage} [gold]spell[/gold] damage to the target. Deal {SplashDamage} damage to all.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-LIME_STORM.upgraded_description": "Deal {DisplayedDamage} [gold]spell[/gold] damage to the target. Deal {SplashDamage} damage to all.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-UP_THERE.title": "Up There!",
   "CRIMSONSCEPTER_ANGELINA_MOD-UP_THERE.description": "Gain {DisplayedBlock} [gold]spell[/gold] Block. If you are [gold]Airborne[/gold], apply {ImbalancePower:diff()} [gold]Imbalance[/gold] to all enemies that are not [gold]Airborne[/gold].",
   "CRIMSONSCEPTER_ANGELINA_MOD-UP_THERE.upgraded_description": "Gain {DisplayedBlock} [gold]spell[/gold] Block. If you are [gold]Airborne[/gold], apply {ImbalancePower:diff()} [gold]Imbalance[/gold] to all enemies that are not [gold]Airborne[/gold].",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-DOWN_HERE.title": "Down Here!",
-  "CRIMSONSCEPTER_ANGELINA_MOD-DOWN_HERE.description": "If you are not [gold]Airborne[/gold], apply {WeakPower:diff()} [gold]Weak[/gold] and {ImbalancePower} [gold]Imbalance[/gold] to all [gold]Airborne[/gold] enemies. Deal {Damage:diff()} damage.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-DOWN_HERE.upgraded_description": "If you are not [gold]Airborne[/gold], apply {WeakPower:diff()} [gold]Weak[/gold] and {ImbalancePower} [gold]Imbalance[/gold] to all [gold]Airborne[/gold] enemies. Deal {Damage:diff()} damage.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-DOWN_HERE.description": "If you are not [gold]Airborne[/gold], apply {WeakPower:diff()} [gold]Weak[/gold] and {ImbalancePower:diff()} [gold]Imbalance[/gold] to all [gold]Airborne[/gold] enemies. Deal {Damage:diff()} damage.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-DOWN_HERE.upgraded_description": "If you are not [gold]Airborne[/gold], apply {WeakPower:diff()} [gold]Weak[/gold] and {ImbalancePower:diff()} [gold]Imbalance[/gold] to all [gold]Airborne[/gold] enemies. Deal {Damage:diff()} damage.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-MISSED_TRAP.title": "Missed Trap",
-  "CRIMSONSCEPTER_ANGELINA_MOD-MISSED_TRAP.description": "Deal {Damage:diff()} damage twice. If this damage causes the enemy to leave [gold]Airborne[/gold], gain {EnergyGain:energyIcons()}.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-MISSED_TRAP.upgraded_description": "Deal {Damage:diff()} damage twice. If this damage causes the enemy to leave [gold]Airborne[/gold], gain {EnergyGain:energyIcons()}.",
-
+  "CRIMSONSCEPTER_ANGELINA_MOD-MISSED_TRAP.description": "Deal {Damage:diff()} damage twice. If the enemy leaves [gold]Airborne[/gold], gain {EnergyGain:energyIcons()}.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-MISSED_TRAP.upgraded_description": "Deal {Damage:diff()} damage twice. If the enemy leaves [gold]Airborne[/gold], gain {EnergyGain:energyIcons()}.",
+  
   "CRIMSONSCEPTER_ANGELINA_MOD-EMERGENCY_TAKEOFF.title": "Emergency Takeoff",
-  "CRIMSONSCEPTER_ANGELINA_MOD-EMERGENCY_TAKEOFF.description": "Gain {ImbalancePower} [gold]Imbalance[/gold]. Gain {FlyPower:diff()} [gold]Fly[/gold]. Gain {DisplayedBlock} [gold]spell[/gold] Block.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-EMERGENCY_TAKEOFF.upgraded_description": "Gain {ImbalancePower} [gold]Imbalance[/gold]. Gain {FlyPower:diff()} [gold]Fly[/gold]. Gain {DisplayedBlock} [gold]spell[/gold] Block.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EMERGENCY_TAKEOFF.description": "Gain {FlyPower:diff()} [gold]Fly[/gold]. Gain {DisplayedBlock} [gold]spell[/gold] Block.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EMERGENCY_TAKEOFF.upgraded_description": "Gain {FlyPower:diff()} [gold]Fly[/gold]. Gain {DisplayedBlock} [gold]spell[/gold] Block.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-SOARING_KIT.title": "Soaring Kit",
-  "CRIMSONSCEPTER_ANGELINA_MOD-SOARING_KIT.description": "Give yourself {FlyPower:diff()} [gold]Fly[/gold].\n[gold]Delivered[/gold]: Give all enemies 1 [gold]Fly[/gold].",
-  "CRIMSONSCEPTER_ANGELINA_MOD-SOARING_KIT.upgraded_description": "Give yourself {FlyPower:diff()} [gold]Fly[/gold].\n[gold]Delivered[/gold]: Give all enemies 1 [gold]Fly[/gold].",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SOARING_KIT.description": "Give yourself {FlyPower:diff()} [gold]Fly[/gold].\n[gold]Delivered[/gold]: Give all enemies 1 [gold]Fly[/gold]. [gold]Exhaust[/gold].",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SOARING_KIT.upgraded_description": "Give yourself {FlyPower:diff()} [gold]Fly[/gold].\n[gold]Delivered[/gold]: Give all enemies 1 [gold]Fly[/gold]. [gold]Exhaust[/gold].",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-COMET_COMBO.title": "Comet Combo",
   "CRIMSONSCEPTER_ANGELINA_MOD-COMET_COMBO.description": "Deal {DisplayedDamage} [gold]spell[/gold] damage. If the target is in [gold]Imbalance[/gold], draw {Cards:diff()} cards.",
   "CRIMSONSCEPTER_ANGELINA_MOD-COMET_COMBO.upgraded_description": "Deal {DisplayedDamage} [gold]spell[/gold] damage. If the target is in [gold]Imbalance[/gold], draw {Cards:diff()} cards.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-PRISM_RAY.title": "Prism Ray",
-  "CRIMSONSCEPTER_ANGELINA_MOD-PRISM_RAY.description": "Deal {DisplayedDamage} [gold]spell[/gold] damage. Transform all [gold]delivered[/gold] cards{IfUpgraded:show: and upgrade them}.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PRISM_RAY.description": "Deal {DisplayedDamage} [gold]spell[/gold] damage. Transform all [gold]delivered[/gold] cards.",
   "CRIMSONSCEPTER_ANGELINA_MOD-PRISM_RAY.upgraded_description": "Deal {DisplayedDamage} [gold]spell[/gold] damage. Transform all [gold]delivered[/gold] cards and upgrade them.",
 
+  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.title": "Bandage",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.description": "Gain {Block:diff()} Block. Add an enchantment to 1 card in your hand: Delivered, upgrade it.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.upgraded_description": "Gain {Block:diff()} Block. Add an enchantment to 2 cards in your hand: Delivered, upgrade them.",
+  "BANDAGE.selectPrompt": "Choose card(s) to enchant",
+
   "CRIMSONSCEPTER_ANGELINA_MOD-UPDRAFT.title": "Updraft",
-  "CRIMSONSCEPTER_ANGELINA_MOD-UPDRAFT.description": "At the start of your turn, gain 1 [gold]Temporary Fly[/gold]. If you become [gold]grounded[/gold] by an attack, shuffle a Dazed into your draw pile.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-UPDRAFT.upgraded_description": "At the start of your turn, gain 1 [gold]Temporary Fly[/gold]. If you become [gold]grounded[/gold] by an attack, shuffle a Dazed into your draw pile.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-UPDRAFT.description": "At the start of your turn, gain 1 [gold]Temporary Fly[/gold]. If you leave [gold]Airborne[/gold] because of an attack, add a Dazed to your draw pile.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-UPDRAFT.upgraded_description": "At the start of your turn, gain 1 [gold]Temporary Fly[/gold]. If you leave [gold]Airborne[/gold] because of an attack, add a Dazed to your draw pile.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_BARRIER.title": "Gravity Barrier",
-  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_BARRIER.description": "Gain {DisplayedBlock} [gold]spell[/gold] Block. This turn, whenever damage from an enemy is fully blocked, apply {GravityBarrierPower:diff()} [gold]Imbalance[/gold] to the source.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_BARRIER.description": "Gain {DisplayedBlock} [gold]spell[/gold] Block. This turn, whenever damage from an enemy is fully blocked, apply {GravityBarrierPower:diff()} [gold]Imbalance[/gold] to the damage source.",
   "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_BARRIER.upgraded_description": "Gain {DisplayedBlock} [gold]spell[/gold] Block. This turn, whenever damage from an enemy is fully blocked, apply {GravityBarrierPower:diff()} [gold]Imbalance[/gold] to the source.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-PRECISION_ADJUSTMENT.title": "Precision Adjustment",
-  "CRIMSONSCEPTER_ANGELINA_MOD-PRECISION_ADJUSTMENT.description": "All enemies gain {ImbalancePower:diff()} [gold]Imbalance[/gold]. Next turn, they lose {PrecisionAdjustmentPower} [gold]Imbalance[/gold].",
-  "CRIMSONSCEPTER_ANGELINA_MOD-PRECISION_ADJUSTMENT.upgraded_description": "All enemies gain {ImbalancePower:diff()} [gold]Imbalance[/gold]. Next turn, they lose {PrecisionAdjustmentPower} [gold]Imbalance[/gold].",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PRECISION_ADJUSTMENT.description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold] to all enemies. At the start of next turn, they lose {PrecisionAdjustmentPower} [gold]Imbalance[/gold].",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PRECISION_ADJUSTMENT.upgraded_description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold] to all enemies. At the start of next turn, they lose {PrecisionAdjustmentPower} [gold]Imbalance[/gold].",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-EMERGENCY_SPELL.title": "Emergency Spell",
-  "CRIMSONSCEPTER_ANGELINA_MOD-EMERGENCY_SPELL.description": "Shuffle a [gold]Dazed[/gold] into your discard pile. Gain {Energy:energyIcons()}. Draw {Cards} card.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-EMERGENCY_SPELL.upgraded_description": "Shuffle a [gold]Dazed[/gold] into your discard pile. Gain {Energy:energyIcons()}. Draw {Cards} card.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EMERGENCY_SPELL.description": "Shuffle 1 [gold]Dazed[/gold] into your discard pile. Gain {Energy:energyIcons()}. Draw {Cards} card(s).",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EMERGENCY_SPELL.upgraded_description": "Shuffle 1 [gold]Dazed[/gold] into your discard pile. Gain {Energy:energyIcons()}. Draw {Cards} card(s).",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-COURIER_TRAINING.title": "Courier Training",
   "CRIMSONSCEPTER_ANGELINA_MOD-COURIER_TRAINING.description": "At the start of each turn, gain {CourierTrainingPower:diff()} [gold]Fly[/gold].",
@@ -158,9 +163,14 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-QUICK_DISPATCH.upgraded_description": "Choose 1 [gold]delivered[/gold] card and deliver it immediately.",
   "QUICK_DISPATCH.selectPrompt": "Choose a card to deliver immediately",
 
-  "CRIMSONSCEPTER_ANGELINA_MOD-WEIGHT_CALIBRATION.title": "Weight Calibration",
-  "CRIMSONSCEPTER_ANGELINA_MOD-WEIGHT_CALIBRATION.description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold]. If the target is already [gold]Weightless[/gold], apply it again.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-WEIGHT_CALIBRATION.upgraded_description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold]. If the target is already [gold]Weightless[/gold], apply it again.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PART_TIME_JOB.title": "Part Time Job",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PART_TIME_JOB.description": "At the end of the turn, if you did not play an Attack this turn, heal {Heal} HP. [gold]Exhaust[/gold].",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PART_TIME_JOB.upgraded_description": "At the end of the turn, if you did not play an Attack this turn, heal {Heal} HP. [gold]Exhaust[/gold].",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-MESSENGER_CODE.title": "Messenger Code",
+  "CRIMSONSCEPTER_ANGELINA_MOD-MESSENGER_CODE.description": "Draw 1 extra card each turn, then [gold]send[/gold] 1 card.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-MESSENGER_CODE.upgraded_description": "Draw 1 extra card each turn, then [gold]send[/gold] 3 cards.",
+  "MESSENGER_CODE.selectPrompt": "Choose card(s) to send",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-IM_COMING_DOWN.title": "I'm Coming Down!",
   "CRIMSONSCEPTER_ANGELINA_MOD-IM_COMING_DOWN.description": "Lose all [gold]Fly[/gold]. For each stack lost, deal {Damage:diff()} damage to all enemies.",
@@ -183,57 +193,60 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-DECEL_BINDER.upgraded_description": "Whenever you play an Attack, apply 1 [gold]Stagger[/gold] to its target.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-INERTIA.title": "Inertia",
-  "CRIMSONSCEPTER_ANGELINA_MOD-INERTIA.description": "Whenever an enemy becomes [gold]Weightless[/gold], or before drawing if any enemy is [gold]Weightless[/gold], draw {InertiaPower:diff()} card(s).",
-  "CRIMSONSCEPTER_ANGELINA_MOD-INERTIA.upgraded_description": "Whenever an enemy becomes [gold]Weightless[/gold], or before drawing if any enemy is [gold]Weightless[/gold], draw {InertiaPower:diff()} card(s).",
+  "CRIMSONSCEPTER_ANGELINA_MOD-INERTIA.description": "Whenever an enemy becomes [gold]Weightless[/gold], or if any enemy is [gold]Weightless[/gold] at the start of the turn, draw {InertiaPower:diff()} cards.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-INERTIA.upgraded_description": "Whenever an enemy becomes [gold]Weightless[/gold], or if any enemy is [gold]Weightless[/gold] at the start of the turn, draw {InertiaPower:diff()} cards.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-NATURAL_BURST.title": "Natural Burst",
-  "CRIMSONSCEPTER_ANGELINA_MOD-NATURAL_BURST.description": "Whenever you deal [gold]Spell[/gold] damage to an enemy, apply {NaturalBurstPower:diff()} [gold]Poison[/gold] to all enemies.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-NATURAL_BURST.upgraded_description": "Whenever you deal [gold]Spell[/gold] damage to an enemy, apply {NaturalBurstPower:diff()} [gold]Poison[/gold] to all enemies.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-NATURAL_BURST.description": "Whenever you deal [gold]spell[/gold] damage to an enemy, apply {NaturalBurstPower:diff()} [gold]Poison[/gold] to all enemies.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-NATURAL_BURST.upgraded_description": "Whenever you deal [gold]spell[/gold] damage to an enemy, apply {NaturalBurstPower:diff()} [gold]Poison[/gold] to all enemies.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-REALITY_MANIPULATION.title": "Reality Manipulation",
   "CRIMSONSCEPTER_ANGELINA_MOD-REALITY_MANIPULATION.description": "Whenever a card enters or leaves your [gold]Exhaust[/gold] pile, gain {RealityManipulationPower:diff()} Block.",
   "CRIMSONSCEPTER_ANGELINA_MOD-REALITY_MANIPULATION.upgraded_description": "Whenever a card enters or leaves your [gold]Exhaust[/gold] pile, gain {RealityManipulationPower:diff()} Block.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-INVERSION_SYMMETRY.title": "Inversion Symmetry",
-  "CRIMSONSCEPTER_ANGELINA_MOD-INVERSION_SYMMETRY.description": "Spend up to X Energy. Play the differently named cards among the top X cards of your discard pile from top to bottom. Unspent Energy is retained.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-INVERSION_SYMMETRY.upgraded_description": ". Spend up to X Energy. Play the differently named cards among the top X cards of your discard pile from top to bottom. Unspent Energy is retained.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-INVERSION_SYMMETRY.description": "Spend X Energy. Play the differently named cards among the top X cards of your discard pile from top to bottom.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-INVERSION_SYMMETRY.upgraded_description": "Spend X Energy. Play the differently named cards among the top X cards of your discard pile from top to bottom.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-SCEPTER_ANTIGRAVITY_MODE.title": "Scepter Antigravity Mode",
-  "CRIMSONSCEPTER_ANGELINA_MOD-SCEPTER_ANTIGRAVITY_MODE.description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold] to all enemies, deal {DisplayedDamage} [gold]Spell[/gold] damage, and give them {TemporaryFlyPower:diff()} Temporary Flight.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-SCEPTER_ANTIGRAVITY_MODE.upgraded_description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold] to all enemies, deal {DisplayedDamage} [gold]Spell[/gold] damage, and give them {TemporaryFlyPower:diff()} Temporary Flight.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SCEPTER_ANTIGRAVITY_MODE.description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold] and {TemporaryFlyPower:diff()} [gold]Temporary Fly[/gold] to all enemies. Deal {DisplayedDamage} [gold]spell[/gold] damage.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SCEPTER_ANTIGRAVITY_MODE.upgraded_description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold] and {TemporaryFlyPower:diff()} [gold]Temporary Fly[/gold] to all enemies. Deal {DisplayedDamage} [gold]spell[/gold] damage.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-ULTIMATE_BIG_BANG.title": "Ultimate Big Bang",
-  "CRIMSONSCEPTER_ANGELINA_MOD-ULTIMATE_BIG_BANG.description": "Lose 1 Relic. Deal {DisplayedDamage} [gold]Spell[/gold] damage to all enemies. This card costs 1 more this combat.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-ULTIMATE_BIG_BANG.upgraded_description": "Lose 1 Relic. Deal {DisplayedDamage} [gold]Spell[/gold] damage to all enemies. This card costs 1 more this combat.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ULTIMATE_BIG_BANG.description": "Deal {DisplayedDamage} [gold]spell[/gold] damage to all enemies. Lose your rightmost Relic. This card costs 1 more this combat.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ULTIMATE_BIG_BANG.upgraded_description": "Deal {DisplayedDamage} [gold]spell[/gold] damage to all enemies. Lose your rightmost Relic. This card costs 1 more this combat.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-SPECIAL_GRAVITY_MODULE.title": "Special Gravity Module",
-  "CRIMSONSCEPTER_ANGELINA_MOD-SPECIAL_GRAVITY_MODULE.description": "Whenever you play an [gold]Attack[/gold], if its target does not have [gold]Flight[/gold], give it {FlyPower:diff()} [gold]Flight[/gold]. Whenever you play a card, enemies with Flight take 2 damage.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-SPECIAL_GRAVITY_MODULE.upgraded_description": "[gold]Innate[/gold]. Whenever you play an [gold]Attack[/gold], if its target does not have [gold]Flight[/gold], give it {FlyPower:diff()} [gold]Flight[/gold]. Whenever you play a card, enemies with Flight take 2 damage.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SPECIAL_GRAVITY_MODULE.description": "Whenever you play an [gold]Attack[/gold], if its target is not [gold]Airborne[/gold], give it {FlyPower:diff()} [gold]Fly[/gold]. Whenever you play a card, [gold]Airborne[/gold] enemies take 2 damage.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SPECIAL_GRAVITY_MODULE.upgraded_description": "Whenever you play an [gold]Attack[/gold], if its target is not [gold]Airborne[/gold], give it {FlyPower:diff()} [gold]Fly[/gold]. Whenever you play a card, [gold]Airborne[/gold] enemies take 2 damage.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-PARTICLE_MODE.title": "Particle Mode",
-  "CRIMSONSCEPTER_ANGELINA_MOD-PARTICLE_MODE.description": "[gold]Ethereal[/gold]. Your Attacks deal half damage. The first time each Attack is played each turn, return it to your hand and make it free to play once this turn.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-PARTICLE_MODE.upgraded_description": "Your Attacks deal half damage. The first time each Attack is played each turn, return it to your hand and make it free to play once this turn.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PARTICLE_MODE.description": "Your Attacks deal half damage. The first time each Attack is played each turn, return it to your hand, and the next time it is played this turn it costs no Energy.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-PARTICLE_MODE.upgraded_description": "Your Attacks deal half damage. The first time each Attack is played each turn, return it to your hand, and the next time it is played this turn it costs no Energy.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-QUALITY_VISITOR.title": "Quality Visitor",
   "CRIMSONSCEPTER_ANGELINA_MOD-QUALITY_VISITOR.description": "At the start of the next {QualityVisitorPower} turns, gain 1 [gold]Strength[/gold], 1 [gold]Dexterity[/gold], and 1 [gold]Focus[/gold].",
   "CRIMSONSCEPTER_ANGELINA_MOD-QUALITY_VISITOR.upgraded_description": "At the start of the next {QualityVisitorPower} turns, gain 1 [gold]Strength[/gold], 1 [gold]Dexterity[/gold], and 1 [gold]Focus[/gold].",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-SECURITY_CHECK.title": "Security Check",
-  "CRIMSONSCEPTER_ANGELINA_MOD-SECURITY_CHECK.description": "Whenever you [gold]Deliver[/gold] a Status or Curse, [gold]Exhaust[/gold] it instead and apply {SecurityCheckPower} [gold]Imbalance[/gold] to all enemies.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-SECURITY_CHECK.upgraded_description": "Whenever you [gold]Deliver[/gold] a Status or Curse, [gold]Exhaust[/gold] it instead and apply {SecurityCheckPower} [gold]Imbalance[/gold] to all enemies.",
-
-  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.title": "Bandage",
-  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.description": "Gain {Block:diff()} Block. Add an enchantment to a card in your hand: Upgrade it when delivered.{IfUpgraded:show:\nThis affects all valid cards in your hand instead.}",
-  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.upgraded_description": "Gain {Block:diff()} Block. Add an enchantment to all valid cards in your hand: Upgrade them when delivered.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.selectPrompt": "Choose a card to gain delivered upgrade",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SECURITY_CHECK.description": "Whenever you [gold]Deliver[/gold] a Status or Curse, [gold]Exhaust[/gold] it and apply {SecurityCheckPower} [gold]Imbalance[/gold] to all enemies.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SECURITY_CHECK.upgraded_description": "Whenever you [gold]Deliver[/gold] a Status or Curse, [gold]Exhaust[/gold] it and apply {SecurityCheckPower} [gold]Imbalance[/gold] to all enemies.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-CHAIN_TECHNIQUE.title": "Chain Technique",
-  "CRIMSONSCEPTER_ANGELINA_MOD-CHAIN_TECHNIQUE.description": "Apply {ImbalancePower} [gold]Imbalance[/gold] to a target. Gain {HotfixPower} [gold]Temporary Focus[/gold]. If this card causes the target to become [gold]Weightless[/gold], gain {FocusPower} [gold]Focus[/gold] instead.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-CHAIN_TECHNIQUE.upgraded_description": "Apply {ImbalancePower} [gold]Imbalance[/gold] to a target. Gain {HotfixPower} [gold]Temporary Focus[/gold]. If this card causes the target to become [gold]Weightless[/gold], gain {FocusPower} [gold]Focus[/gold] instead.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CHAIN_TECHNIQUE.description": "Apply {ImbalancePower} [gold]Imbalance[/gold]. Gain {ChantTemporaryFocusNextTurnPower} [gold]Temporary Focus[/gold]. If this card causes the target to become [gold]Weightless[/gold], gain {FocusPower} [gold]Focus[/gold] instead.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CHAIN_TECHNIQUE.upgraded_description": "Apply {ImbalancePower} [gold]Imbalance[/gold]. Gain {ChantTemporaryFocusNextTurnPower} [gold]Temporary Focus[/gold]. If this card causes the target to become [gold]Weightless[/gold], gain {FocusPower} [gold]Focus[/gold] instead.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.title": "Future Observation",
-  "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.description": "Choose 5 cards in your deck. They will appear on top of your draw pile next combat.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.upgraded_description": "Choose 5 cards in your deck. They will appear on top of your draw pile next combat.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.description": "When played, choose 5 cards in your deck to appear on top of your draw pile next combat.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.upgraded_description": "When played, choose 5 cards in your deck to appear on top of your draw pile next combat.",
   "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.multiplayerWarningTitle": "Multiplayer Warning",
-  "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.multiplayerWarningDescription": "This card may cause desyncs or other issues in multiplayer. Use or pick it with caution in multiplayer games!"
+  "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.multiplayerWarningDescription": "This card may cause desyncs or other issues in multiplayer. Use or pick it with caution in multiplayer games!",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION.title": "Important Commission",
+  "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION.description": "After this card has been played {Count} times, once per combat, playing it grants 1 random Relic and [gold]Exhausts[/gold] it. [gold]Delivered[/gold]: reduce the required count by 1 and reduce its cost this combat by {Energy:energyIcons()}.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION.upgraded_description": "After this card has been played {Count} times, once per combat, playing it grants 1 random Relic and [gold]Exhausts[/gold] it. [gold]Delivered[/gold]: reduce the required count by 1 and reduce its cost this combat by {Energy:energyIcons()}.",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE.title": "Annihilation Particle",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE.description": "Deal {DisplayedDamage} [gold]spell[/gold] damage to all enemies. If any target is [gold]Fatally[/gold] killed, this combat grants no card rewards.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE.upgraded_description": "Deal {DisplayedDamage} [gold]spell[/gold] damage to all enemies. If any target is [gold]Fatally[/gold] killed, this combat grants no card rewards."
 }

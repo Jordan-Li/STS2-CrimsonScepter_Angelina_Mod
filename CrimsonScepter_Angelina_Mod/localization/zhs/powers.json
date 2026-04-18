@@ -7,15 +7,23 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-WEIGHTLESS_POWER.description": "受到的所有伤害翻倍。持续3回合。期间再次获得[gold]失衡[/gold]时，改为失去等量生命。",
   "CRIMSONSCEPTER_ANGELINA_MOD-WEIGHTLESS_POWER.smartDescription": "受到的所有伤害翻倍。持续{Amount}回合。期间再次获得[gold]失衡[/gold]时，改为失去等量生命。",
 
+  "FOCUS_POWER.title": "集中",
+  "FOCUS_POWER.description": "提升充能球效果，以及[gold]法术[/gold]伤害与[gold]法术[/gold]格挡的效力。",
+  "FOCUS_POWER.smartDescription": "{Amount:cond:<0?降低|提升}充能球效果，以及[gold]法术[/gold]伤害与[gold]法术[/gold]格挡的效力。",
+
   "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_POWER.title": "派送中",
   "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_POWER.description": "被寄送的牌会在下个回合抽牌前依次回到手牌。",
   "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_POWER.smartDescription": "当前寄送{Amount}张牌。下个回合开始时，这些牌会回到手牌：\n{Cards}",
 
   "SPELL.title": "法术",
-  "SPELL.description": "法术伤害与法术格挡无视力量、敏捷、易伤、虚弱、脆弱等修正，但会受到[gold]集中[/gold]的影响。",
+  "SPELL.description": "法术是一种特殊牌标签，会触发施法相关效果。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-SPELL_RHYTHM_POWER.title": "法术节奏",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SPELL_RHYTHM_POWER.description": "每回合记录你打出的[gold]法术[/gold]牌数。第2张[gold]法术[/gold]：获得1层[gold]临时飞行[/gold]。第3张[gold]法术[/gold]：选择1张[gold]寄送[/gold]牌送达。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SPELL_RHYTHM_POWER.smartDescription": "本回合已打出{SpellCount}张[gold]法术[/gold]牌。第2张[gold]法术[/gold]：获得1层[gold]临时飞行[/gold]。第3张[gold]法术[/gold]：选择1张[gold]寄送[/gold]牌送达。",
 
   "AIRBORNE.title": "浮空",
-  "AIRBORNE.description": "若目标处于[gold]飞行[/gold]状态时，视为[gold]浮空[/gold]。",
+  "AIRBORNE.description": "若目标处于[gold]飞行[/gold]或[gold]振翅[/gold]状态时，视为[gold]浮空[/gold]。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-FLY_POWER.title": "飞行",
   "CRIMSONSCEPTER_ANGELINA_MOD-FLY_POWER.description": "受到的攻击伤害减半。每次受到未被格挡的攻击伤害时，失去1层。",
@@ -54,8 +62,8 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-COURIER_TRAINING_POWER.smartDescription": "每回合开始时，获得{Amount}层飞行。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-ENERGY_CYCLE_POWER.title": "能量循环",
-  "CRIMSONSCEPTER_ANGELINA_MOD-ENERGY_CYCLE_POWER.description": "每回合中，打出耗能至少为2的[gold]攻击[/gold]、[gold]技能[/gold]或[gold]能力[/gold]牌时，每种类型至多各触发1次：回复1点能量。",
-  "CRIMSONSCEPTER_ANGELINA_MOD-ENERGY_CYCLE_POWER.smartDescription": "每回合中，打出耗能至少为2的[gold]攻击[/gold]、[gold]技能[/gold]或[gold]能力[/gold]牌时，每种类型至多各触发{Amount}次：回复1点能量。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ENERGY_CYCLE_POWER.description": "每回合中，打出耗能至少为2的[gold]攻击[/gold]、[gold]技能[/gold]或[gold]能力[/gold]牌时，每种类型牌至多各触发1次：回复1点能量。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ENERGY_CYCLE_POWER.smartDescription": "每回合中，打出耗能至少为2的[gold]攻击[/gold]、[gold]技能[/gold]或[gold]能力[/gold]牌时，每种类型牌至多各触发{Amount}次：回复1点能量。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-FAST_CHARGE_MODE_POWER.title": "速充模式",
   "CRIMSONSCEPTER_ANGELINA_MOD-FAST_CHARGE_MODE_POWER.description": "本回合内，你赋予的[gold]失衡值[/gold]翻倍。",
@@ -98,6 +106,14 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-QUALITY_VISITOR_SECRET_POWER.smartDescription": "你触发了彩蛋效果！当持有效果[gold]质素访客[/gold]时，有10%概率打出攻击牌时额外打出一次",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-SECURITY_CHECK_POWER.title": "安全检查",
-  "CRIMSONSCEPTER_ANGELINA_MOD-SECURITY_CHECK_POWER.description": "当[gold]寄送[/gold]一张状态牌或诅咒牌时，改为将其消耗，并对敌方全体施加[gold]失衡值[/gold]。",
-  "CRIMSONSCEPTER_ANGELINA_MOD-SECURITY_CHECK_POWER.smartDescription": "当[gold]寄送[/gold]一张状态牌或诅咒牌时，改为将其消耗，并对敌方全体施加{Amount}点[gold]失衡值[/gold]。"
+  "CRIMSONSCEPTER_ANGELINA_MOD-SECURITY_CHECK_POWER.description": "当[gold]寄送[/gold]一张状态牌或诅咒牌时，将其[gold]消耗[/gold]并对所有敌方施加[gold]失衡[/gold]。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SECURITY_CHECK_POWER.smartDescription": "当[gold]寄送[/gold]一张状态牌或诅咒牌时，将其[gold]消耗[/gold]并对所有敌方施加{Amount}点[gold]失衡[/gold]。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION_REWARD_LOCK_POWER.title": "重要委托奖励锁",
+  "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION_REWARD_LOCK_POWER.description": "本场战斗中，已通过[gold]重要委托[/gold]获得过随机遗物。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION_REWARD_LOCK_POWER.smartDescription": "本场战斗中，已通过[gold]重要委托[/gold]获得过随机遗物。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE_NO_CARD_REWARD_POWER.title": "湮灭粒子",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE_NO_CARD_REWARD_POWER.description": "本场战斗不再获得卡牌奖励。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE_NO_CARD_REWARD_POWER.smartDescription": "本场战斗不再获得卡牌奖励。"
 }

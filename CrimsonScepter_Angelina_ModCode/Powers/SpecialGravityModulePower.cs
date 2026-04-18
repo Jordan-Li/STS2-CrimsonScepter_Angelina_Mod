@@ -12,10 +12,9 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Powers;
 
 /// <summary>
-/// Power名：特限重力模块
 /// 效果：
-/// 1. 每当你打出一张攻击牌时，若其目标没有飞行，则给予其等同于本 Power 层数的飞行
-/// 2. 每打出一张牌，对所有处于飞行状态的敌人造成2点无强化伤害
+/// 1. 每当你打出一张攻击牌时，若其目标没有浮空，则给予其等同于本 Power 层数的飞行。
+/// 2. 每打出一张牌，对所有处于浮空状态的敌人造成2点无强化伤害。
 /// </summary>
 public sealed class SpecialGravityModulePower : AngelinaPower
 {
@@ -27,6 +26,7 @@ public sealed class SpecialGravityModulePower : AngelinaPower
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
+        // 只响应自己打出的牌。
         if (cardPlay.Card.Owner != base.Owner.Player)
         {
             return;
@@ -34,7 +34,7 @@ public sealed class SpecialGravityModulePower : AngelinaPower
 
         bool appliedFlyThisTime = false;
 
-        // 若打出的是攻击牌，且目标是敌人、当前不处于飞行，则给予飞行
+        // 若打出的是攻击牌，且目标是敌人、当前没有浮空，则给予飞行。
         if (cardPlay.Card.Type == CardType.Attack)
         {
             Creature? target = cardPlay.Target;
@@ -45,12 +45,12 @@ public sealed class SpecialGravityModulePower : AngelinaPower
             }
         }
 
-        // 找出所有当前处于飞行状态的敌人
-        Creature[] flyingEnemies = (base.CombatState?.HittableEnemies ?? Enumerable.Empty<Creature>())
-            .Where(enemy => (enemy.GetPower<FlyPower>()?.Amount ?? 0m) > 0m)
+        // 找出所有当前处于浮空状态的敌人；这里统一使用浮空判定入口。
+        Creature[] airborneEnemies = (base.CombatState?.HittableEnemies ?? Enumerable.Empty<Creature>())
+            .Where(AirborneHelper.IsAirborne)
             .ToArray();
 
-        if (flyingEnemies.Length == 0)
+        if (airborneEnemies.Length == 0)
         {
             if (appliedFlyThisTime)
             {
@@ -60,8 +60,8 @@ public sealed class SpecialGravityModulePower : AngelinaPower
             return;
         }
 
-        // 每打出一张牌，都对飞行敌人造成固定伤害
+        // 每打出一张牌，都对浮空敌人造成固定伤害。
         Flash();
-        await CreatureCmd.Damage(context, flyingEnemies, FlyingDamage, ValueProp.Unpowered, base.Owner, cardPlay.Card);
+        await CreatureCmd.Damage(context, airborneEnemies, FlyingDamage, ValueProp.Unpowered, base.Owner, cardPlay.Card);
     }
 }

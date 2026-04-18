@@ -12,29 +12,28 @@ using MegaCrit.Sts2.Core.Models;
 namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
-/// 卡牌名：反演对称
-/// 卡牌类型：技能牌
+/// 费用：X+
 /// 稀有度：稀有
-/// 费用：X费
-/// 效果：将弃牌堆中最近的X张其他牌依次打出。
-/// 升级后效果：获得保留。
+/// 卡牌类型：能力
+/// 效果：消耗X点能量，依次打出弃牌堆顶的前X张牌。不会打出同名卡。
+/// 升级后效果：保留。
 /// </summary>
 public sealed class InversionSymmetry : AngelinaCard
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => IsUpgraded
-        ? new CardKeyword[] { CardKeyword.Retain }
-        : Array.Empty<CardKeyword>();
+    // 升级后获得保留，关键字会由游戏自动追加到卡牌显示中。
+    public override IEnumerable<CardKeyword> CanonicalKeywords => IsUpgraded ? [CardKeyword.Retain] : [];
 
+    // 这是一张 X 费能力牌，实际消耗在打出时结算。
     protected override bool HasEnergyCostX => true;
 
     public InversionSymmetry()
-        : base(-1, CardType.Skill, CardRarity.Rare, TargetType.Self)
+        : base(-1, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 结算本次 X 费实际消耗
+        // 先结算这次实际消耗的 X 费；若没有投入能量，则不继续执行。
         int spentEnergy = ResolveEnergyXValue();
         if (spentEnergy <= 0)
         {
@@ -54,7 +53,7 @@ public sealed class InversionSymmetry : AngelinaCard
             .DistinctBy(card => card.Id)
             .ToList();
 
-        // 依次打出这些牌
+        // 按顺序依次打出这些牌；一旦战斗进入结束态，就停止继续打牌。
         foreach (CardModel card in cards)
         {
             if (CombatManager.Instance.IsOverOrEnding)
@@ -64,17 +63,11 @@ public sealed class InversionSymmetry : AngelinaCard
 
             await CardCmd.AutoPlay(choiceContext, card, null, skipXCapture: true);
         }
-
-        // 未能实际用于重放的 X 费在结算后返还。
-        int refundedEnergy = spentEnergy - cards.Count;
-        if (refundedEnergy > 0)
-        {
-            await PlayerCmd.GainEnergy(refundedEnergy, base.Owner);
-        }
     }
 
     protected override void OnUpgrade()
     {
+        // 升级后获得保留。
         AddKeyword(CardKeyword.Retain);
     }
 }

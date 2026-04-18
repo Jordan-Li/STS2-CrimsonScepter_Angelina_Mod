@@ -65,7 +65,7 @@ public sealed class AncientExpress : AngelinaRelic
 
         if (deliveryPower != null)
         {
-            await deliveryPower.SetSelectedCard(deliveredCard);
+                await deliveryPower.EnqueueCard(deliveredCard);
         }
 
         Flash();

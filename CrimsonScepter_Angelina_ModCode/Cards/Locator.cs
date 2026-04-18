@@ -14,12 +14,12 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
 /// 卡牌名：定位器
-/// 卡牌类型：技能牌
-/// 稀有度：衍生
-/// 费用：0费
-/// 效果：失去2点集中，获得2点力量与2点敏捷。将一张转换器加入抽牌堆。
-/// 升级后效果：三项数值都提高1点。
-/// 备注：这是转换器生成的衍生牌。
+/// 费用：0
+/// 稀有度：其他
+/// 卡牌类型：技能
+/// 效果：失去2点集中，获得2点力量和2点敏捷。将1张转换器加入到抽牌堆中。消耗。
+/// 升级后效果：失去3点集中，获得3点力量和3点敏捷。将1张转换器加入到抽牌堆中。消耗。
+/// 备注：衍生牌。
 /// </summary>
 public sealed class Locator : AngelinaCard
 {
@@ -28,33 +28,32 @@ public sealed class Locator : AngelinaCard
     // - 敏捷
     // - 集中
     // - 转换器
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<StrengthPower>(),
         HoverTipFactory.FromPower<DexterityPower>(),
         HoverTipFactory.FromPower<FocusPower>(),
         HoverTipFactory.FromCard<Converter>(base.IsUpgraded)
-    };
+    ];
 
     // 动态变量：
     // 1. 力量变化值
     // 2. 敏捷变化值
     // 3. 集中变化值
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
         new PowerVar<StrengthPower>(2m),
         new PowerVar<DexterityPower>(2m),
         new PowerVar<FocusPower>(2m)
-    };
+    ];
 
-    // 关键词：消耗、保留
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new[]
-    {
+    // 关键词：消耗
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
         CardKeyword.Exhaust,
-        CardKeyword.Retain
-    };
+    ];
 
-    // 费用：0费，类型：技能牌，稀有度：衍生，目标：自己
+    // 初始化卡牌的基础信息：0费、技能、衍生牌、目标为自己。
     public Locator()
         : base(0, CardType.Skill, CardRarity.Token, TargetType.Self)
     {
@@ -94,7 +93,7 @@ public sealed class Locator : AngelinaCard
         await Cmd.Wait(0.5f);
     }
 
-    // 升级后：三项数值都 +1
+    // 升级后，集中、力量和敏捷对应的数值都提高1点。
     protected override void OnUpgrade()
     {
         base.DynamicVars["StrengthPower"].UpgradeValueBy(1m);

@@ -13,10 +13,9 @@ using MegaCrit.Sts2.Core.Models;
 namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Powers;
 
 /// <summary>
-/// Power名：质素访客
 /// 效果：
-/// 1. 接下来若干回合开始时，获得1点力量、1点敏捷和1点集中
-/// 2. 彩蛋：打出攻击牌时有10%概率额外打出一次
+/// 1. 接下来若干回合开始时，获得1点力量、1点敏捷和1点集中。
+/// 2. 彩蛋：打出攻击牌时有10%概率额外打出一次。
 /// </summary>
 public sealed class QualityVisitorPower : AngelinaPower
 {
@@ -28,15 +27,16 @@ public sealed class QualityVisitorPower : AngelinaPower
 
     public override bool ShouldScaleInMultiplayer => false;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<StrengthPower>(),
         HoverTipFactory.FromPower<DexterityPower>(),
         HoverTipFactory.FromPower<FocusPower>()
-    };
+    ];
 
     public override int ModifyCardPlayCount(CardModel card, Creature? target, int playCount)
     {
+        // 彩蛋逻辑：只有自己打出的攻击牌，才有概率额外多打一次。
         if (card.Owner.Creature != base.Owner)
         {
             return playCount;
@@ -62,6 +62,7 @@ public sealed class QualityVisitorPower : AngelinaPower
 
     public override async Task AfterModifyingCardPlayCount(CardModel card)
     {
+        // 若成功触发彩蛋，则显示一次隐藏提示能力。
         if (card.Owner.Creature != base.Owner || card.Type != CardType.Attack)
         {
             return;
@@ -73,6 +74,7 @@ public sealed class QualityVisitorPower : AngelinaPower
 
     public override async Task AfterEnergyReset(Player player)
     {
+        // 每回合开始时获得力量、敏捷和集中各 1 点，然后减少持续回合数。
         if (player != base.Owner.Player)
         {
             return;

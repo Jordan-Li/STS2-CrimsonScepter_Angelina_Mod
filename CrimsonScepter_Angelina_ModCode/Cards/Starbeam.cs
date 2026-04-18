@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Abstracts;
 using CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Helpers;
-using CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Powers;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -15,38 +14,48 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
 /// 卡牌名：星芒
-/// 卡牌类型：攻击牌
+/// 费用：1
 /// 稀有度：普通
-/// 费用：1费
-/// 效果：造成法术伤害。若目标处于浮空，再造成一次同样的法术伤害。
-/// 升级后效果：伤害提高。
+/// 卡牌类型：攻击
+/// 效果：造成8点法术伤害。若目标处于浮空，再造成8点法术伤害。
+/// 升级后效果：造成10点法术伤害。若目标处于浮空，再造成10点法术伤害。
 /// </summary>
 public sealed class Starbeam : AngelinaCard
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
-        HoverTipFactory.FromPower<FlyPower>(),
+    // 额外悬浮说明：
+    // 1. 浮空
+    // 2. 法术
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        new HoverTip(
+            new LocString("powers", "AIRBORNE.title"),
+            new LocString("powers", "AIRBORNE.description")),
         new HoverTip(
             new LocString("powers", "SPELL.title"),
             new LocString("powers", "SPELL.description"))
-    };
+    ];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
+    // 动态变量：法术伤害。
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
         new DamageVar(8m, ValueProp.Unpowered | ValueProp.Move)
-    };
+    ];
 
+    // 初始化卡牌的基础信息：1费、攻击、普通、目标为单体敌人。
     public Starbeam()
         : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
     }
 
+    // 打出时，先造成一次法术伤害；若目标处于浮空，再追加一次同样的法术伤害。
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
+        // 第一步：计算法术修正后的伤害。
         decimal damage = SpellHelper.ModifySpellValue(base.Owner.Creature, base.DynamicVars.Damage.BaseValue);
 
+        // 第二步：先对目标结算一次法术伤害。
         await SpellHelper.Damage(
             choiceContext,
             base.Owner.Creature,
@@ -55,7 +64,8 @@ public sealed class Starbeam : AngelinaCard
             this
         );
 
-        if (cardPlay.Target.GetPower<FlyPower>() != null)
+        // 第三步：若目标处于浮空，再追加一次同样的法术伤害。
+        if (AirborneHelper.IsAirborne(cardPlay.Target))
         {
             await SpellHelper.Damage(
                 choiceContext,
@@ -67,11 +77,13 @@ public sealed class Starbeam : AngelinaCard
         }
     }
 
+    // 升级后提高法术伤害。
     protected override void OnUpgrade()
     {
         base.DynamicVars.Damage.UpgradeValueBy(2m);
     }
 
+    // 额外描述参数：让描述里的法术伤害显示当前修正后的数值。
     protected override void AddExtraArgsToDescription(LocString description)
     {
         base.AddExtraArgsToDescription(description);

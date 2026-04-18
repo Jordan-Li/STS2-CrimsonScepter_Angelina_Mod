@@ -12,11 +12,10 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Powers;
 
 /// <summary>
-/// Power名：微粒模式
 /// 效果：
-/// 1. 自己打出的攻击牌伤害减半
-/// 2. 每张攻击牌每回合首次打出后，改为回到手牌
-/// 3. 返回手牌后，本回合下一次打出前费用变为0
+/// 1. 自己打出的攻击牌伤害减半。
+/// 2. 每张攻击牌每回合首次打出后，改为回到手牌。
+/// 3. 返回手牌后，本回合下一次打出前费用变为0。
 /// </summary>
 public sealed class ParticleModePower : AngelinaPower
 {
@@ -34,7 +33,7 @@ public sealed class ParticleModePower : AngelinaPower
         return new Data();
     }
 
-    // 自己打出的攻击牌伤害减半
+    // 自己打出的攻击牌伤害减半。
     public override decimal ModifyDamageMultiplicative(
         Creature? target,
         decimal amount,
@@ -65,7 +64,7 @@ public sealed class ParticleModePower : AngelinaPower
         return Task.CompletedTask;
     }
 
-    // 每张攻击牌每回合首次打出后，改为回到手牌
+    // 每张攻击牌每回合首次打出后，改为回到手牌。
     public override (PileType, CardPilePosition) ModifyCardPlayResultPileTypeAndPosition(
         CardModel card,
         bool isAutoPlay,
@@ -93,7 +92,7 @@ public sealed class ParticleModePower : AngelinaPower
         return (PileType.Hand, CardPilePosition.Bottom);
     }
 
-    // 回到手牌后，本回合费用变为0
+    // 回到手牌后，本回合费用变为0。
     public override async Task AfterModifyingCardPlayResultPileOrPosition(
         CardModel card,
         PileType pileType,
@@ -111,7 +110,7 @@ public sealed class ParticleModePower : AngelinaPower
         await Task.CompletedTask;
     }
 
-    // 回合结束时清空“本回合已返回过”的记录
+    // 回合结束时清空“本回合已返回过”的记录。
     public override Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
         if (side == base.Owner.Side)

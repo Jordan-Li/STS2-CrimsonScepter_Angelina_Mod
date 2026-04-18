@@ -21,24 +21,28 @@ public sealed class DecelBinderPower : AngelinaPower
 
     public override bool ShouldScaleInMultiplayer => false;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    // 额外悬浮说明：停顿。
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<StaggerPower>()
-    };
+    ];
 
-    // 打出攻击牌后，对被指定的目标施加迟滞
+    // 打出攻击牌后，对被指定的目标施加停顿。
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
+        // 只在自己打出攻击牌时触发。
         if (cardPlay.Card.Owner.Creature != base.Owner || cardPlay.Card.Type != CardType.Attack)
         {
             return;
         }
 
+        // 没有目标或目标已死亡时，不施加停顿。
         if (cardPlay.Target == null || !cardPlay.Target.IsAlive)
         {
             return;
         }
 
+        // 对攻击目标施加等同于本 Power 层数的停顿。
         Flash();
         await PowerCmd.Apply<StaggerPower>(cardPlay.Target, base.Amount, base.Owner, cardPlay.Card);
     }

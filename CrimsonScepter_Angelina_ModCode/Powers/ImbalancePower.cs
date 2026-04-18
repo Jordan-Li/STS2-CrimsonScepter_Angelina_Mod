@@ -18,74 +18,53 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Powers;
 /// <summary>
 /// Power名：失衡
 /// Power类型：计数型Power
-/// 效果：累计失衡层数，达到阈值后触发失重
-/// 触发规则：
-/// 1. 阈值 = 目标最大生命值的一半，最多按100计算
-/// 2. 触发后移除当前失衡层数
-/// 3. 目标进入持续3回合的“失重”状态
-/// 4. 目标失去当前失衡层数一半的生命
-/// 5. 如果目标正处于自己的回合：
-///    - 玩家：直接结束回合
-///    - 敌人：直接击晕
+/// 效果：
+/// 1. 累积失衡层数
+/// 2. 达到阈值后触发失重
+/// 3. 触发时移除当前失衡并造成一次生命损失
+/// 4. 若目标正处于自己的回合，还会追加回合打断效果
+/// 备注：这是安洁莉娜整套体系的核心异常状态，不能删
 /// </summary>
 public sealed class ImbalancePower : AngelinaPower
 {
-    // 内部数据：防止一次失衡触发尚未结算完成时重复进入
+    /// <summary>
+    /// 防止一次触发尚未结算完成时重复进入。
+    /// </summary>
     private sealed class Data
     {
         public bool IsResolvingTrigger;
     }
 
-    // 失衡触发阈值最多按100计算
     private const int MaxThreshold = 100;
-
-    // 失重状态持续3回合
     private const int WeightlessDuration = 3;
 
-    // 当前先按旧工程逻辑，显示为Buff
     public override PowerType Type => PowerType.Buff;
-
-    // 这是一个计数型Power
     public override PowerStackType StackType => PowerStackType.Counter;
-
     public override bool ShouldScaleInMultiplayer => false;
 
-    // 定义一个额外动态变量：
-    // RemainingToTrigger = 距离触发失重还差多少层
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
-        new DynamicVar("RemainingToTrigger", 0m)
-    };
+    /// <summary>
+    /// RemainingToTrigger 用于显示离触发失重还差多少层。
+    /// </summary>
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("RemainingToTrigger", 0m)];
 
-    // 鼠标悬浮时额外显示：
-    // - 失重状态的HoverTip
-    // - 击晕的HoverTip
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
-        HoverTipFactory.FromPower<WeightlessPower>(),
-        HoverTipFactory.Static(StaticHoverTip.Stun)
-    };
+    /// <summary>
+    /// 顺带提示失重和击晕，方便读懂触发后果。
+    /// </summary>
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<WeightlessPower>(), HoverTipFactory.Static(StaticHoverTip.Stun)];
 
-    // 计算失衡触发阈值：
-    // 最大生命值的一半，向上取整，最多100
-    private int TriggerThreshold
-    {
-        get
-        {
-            decimal halfMaxHp = Math.Ceiling(base.Owner.MaxHp / 2m);
-            return (int)Math.Min(MaxThreshold, halfMaxHp);
-        }
-    }
+    /// <summary>
+    /// 失衡阈值 = 最大生命值的一半，向上取整，且最多按 100 计算。
+    /// </summary>
+    private int TriggerThreshold => (int)Math.Min(MaxThreshold, Math.Ceiling(base.Owner.MaxHp / 2m));
 
     protected override object InitInternalData()
     {
         return new Data();
     }
 
-    // 当失衡第一次被施加后：
-    // 1. 先规范化数值
-    // 2. 刷新“还差多少层触发”
-    // 3. 尝试触发失重
+    /// <summary>
+    /// 初次施加后立即刷新说明，并检查是否直接触发失重。
+    /// </summary>
     public override async Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
         if (await NormalizeAmount())
@@ -97,11 +76,9 @@ public sealed class ImbalancePower : AngelinaPower
         await TryTriggerWeightless(applier, cardSource);
     }
 
-    // 当失衡层数变化时：
-    // 1. 只处理自己这层Power的数值变化
-    // 2. 先规范化数值
-    // 3. 刷新“还差多少层触发”
-    // 4. 只有在数值增加时，才尝试触发失重
+    /// <summary>
+    /// 层数变化后刷新说明；只有在层数增加时才尝试触发。
+    /// </summary>
     public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (power != this)
@@ -122,11 +99,11 @@ public sealed class ImbalancePower : AngelinaPower
         }
     }
 
-    // 规范化当前失衡层数：
-    // - 小于等于0时直接移除这层Power
+    /// <summary>
+    /// 失衡层数降到 0 或以下时直接移除。
+    /// </summary>
     private async Task<bool> NormalizeAmount()
     {
-        
         if (base.Amount <= 0)
         {
             await PowerCmd.Remove(this);
@@ -136,18 +113,25 @@ public sealed class ImbalancePower : AngelinaPower
         return false;
     }
 
-    // 刷新 DynamicVars 中的 RemainingToTrigger
+    /// <summary>
+    /// 刷新离下次触发还差多少层。
+    /// </summary>
     private void RefreshSmartVars()
     {
         base.DynamicVars["RemainingToTrigger"].BaseValue = Math.Max(0m, TriggerThreshold - base.Amount);
     }
 
-    // 真正的失重触发逻辑
+    /// <summary>
+    /// 达到阈值后结算失重：
+    /// 1. 清空当前失衡
+    /// 2. 施加失重
+    /// 3. 按当前失衡一半造成生命损失
+    /// 4. 若目标正处于自己的回合，则追加打断
+    /// </summary>
     private async Task TryTriggerWeightless(Creature? applier, CardModel? cardSource)
     {
         Data data = GetInternalData<Data>();
 
-        // 如果正在结算，或者当前层数还没达到阈值，就不触发
         if (data.IsResolvingTrigger || base.Amount < TriggerThreshold)
         {
             return;
@@ -157,18 +141,14 @@ public sealed class ImbalancePower : AngelinaPower
 
         try
         {
-            // 记录本次触发时的失衡层数
             decimal triggeredAmount = base.Amount;
 
-            // 计算本次触发后要失去的生命值 = 当前失衡层数的一半
             decimal hpLoss = triggeredAmount / 2m;
 
             Flash();
 
-            // 移除当前这层失衡
             await PowerCmd.Remove(this);
 
-            // 给目标施加持续3回合的“失重”状态
             await PowerCmd.Apply<WeightlessPower>(base.Owner, WeightlessDuration, applier ?? base.Owner, cardSource);
 
             if (!base.Owner.IsAlive)
@@ -176,9 +156,6 @@ public sealed class ImbalancePower : AngelinaPower
                 return;
             }
 
-            // 让目标失去生命：
-            // - 不可格挡
-            // - 不吃额外Power修正
             await CreatureCmd.Damage(
                 new ThrowingPlayerChoiceContext(),
                 base.Owner,
@@ -193,27 +170,29 @@ public sealed class ImbalancePower : AngelinaPower
                 return;
             }
 
-            // 如果目标正处于自己的回合：
-            // - 玩家直接结束回合
-            // - 敌人直接击晕
-            if (base.Owner.IsPlayer)
-            {
-                if (base.CombatState.CurrentSide == base.Owner.Side)
-                {
-                    if (base.Owner.Player != null)
-                    {
-                        PlayerCmd.EndTurn(base.Owner.Player, canBackOut: false);
-                    }
-                }
-            }
-            else
-            {
-                await CreatureCmd.Stun(base.Owner);
-            }
+            await InterruptCurrentTurnIfNeeded();
         }
         finally
         {
             data.IsResolvingTrigger = false;
         }
+    }
+
+    /// <summary>
+    /// 失衡触发后，若目标正处于自己的回合，则立刻打断其行动。
+    /// </summary>
+    private async Task InterruptCurrentTurnIfNeeded()
+    {
+        if (base.Owner.IsPlayer)
+        {
+            if (base.CombatState.CurrentSide == base.Owner.Side && base.Owner.Player != null)
+            {
+                PlayerCmd.EndTurn(base.Owner.Player, canBackOut: false);
+            }
+
+            return;
+        }
+
+        await CreatureCmd.Stun(base.Owner);
     }
 }

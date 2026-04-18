@@ -15,39 +15,47 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
 /// 卡牌名：酸橙风暴
-/// 卡牌类型：攻击牌
+/// 费用：1
 /// 稀有度：普通
-/// 费用：1费
-/// 效果：对目标造成法术伤害，对敌方全体造成伤害。
-/// 升级后效果：提高两段伤害。
+/// 卡牌类型：攻击
+/// 效果：对目标造成5点法术伤害。对所有造成5点伤害。
+/// 升级后效果：对目标造成7点法术伤害。对所有敌方造成7点伤害。
 /// </summary>
 public sealed class LimeStorm : AngelinaCard
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    // 额外悬浮说明：法术。
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         new HoverTip(
             new LocString("powers", "SPELL.title"),
             new LocString("powers", "SPELL.description"))
-    };
+    ];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
+    // 动态变量：
+    // 1. 单体法术伤害
+    // 2. 群体普通伤害
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
         new DamageVar(5m, ValueProp.Unpowered | ValueProp.Move),
         new DynamicVar("SplashDamage", 5m)
-    };
+    ];
 
+    // 初始化卡牌的基础信息：1费、攻击、普通、目标为单体敌人。
     public LimeStorm()
         : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
     }
 
+    // 打出时，先对目标造成法术伤害，再对所有敌人造成普通伤害。
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
 
+        // 第一步：计算法术修正后的单体伤害并结算。
         decimal spellDamage = SpellHelper.ModifySpellValue(base.Owner.Creature, base.DynamicVars.Damage.BaseValue);
         await SpellHelper.Damage(choiceContext, base.Owner.Creature, cardPlay.Target, spellDamage, this);
 
+        // 第二步：对所有敌人结算群体普通伤害。
         var combatState = base.CombatState ?? throw new InvalidOperationException("CombatState is null during LimeStorm.OnPlay.");
         await CreatureCmd.Damage(
             choiceContext,
@@ -59,12 +67,14 @@ public sealed class LimeStorm : AngelinaCard
         );
     }
 
+    // 升级后同时提高单体法术伤害和群体普通伤害。
     protected override void OnUpgrade()
     {
         base.DynamicVars.Damage.UpgradeValueBy(2m);
         base.DynamicVars["SplashDamage"].UpgradeValueBy(2m);
     }
 
+    // 额外描述参数：让描述里的法术伤害显示当前修正后的数值，并显示群体伤害。
     protected override void AddExtraArgsToDescription(LocString description)
     {
         base.AddExtraArgsToDescription(description);
