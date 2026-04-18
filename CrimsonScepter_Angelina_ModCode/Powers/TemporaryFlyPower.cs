@@ -34,16 +34,19 @@ public sealed class TemporaryFlyPower : AngelinaPower
 
     public override bool ShouldScaleInMultiplayer => false;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
+    // 临时飞行本质上是“延迟移除飞行”的包装，因此只补飞行说明。
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
         HoverTipFactory.FromPower<FlyPower>()
-    };
+    ];
 
+    // 某些效果会先手动同步飞行层数，因此允许跳过下一次自动联动。
     public void IgnoreNextInstance()
     {
         _shouldIgnoreNextInstance = true;
     }
 
+    // 施加临时飞行时，立刻给予等量飞行。
     public override async Task BeforeApplied(Creature target, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (_shouldIgnoreNextInstance)
@@ -55,6 +58,7 @@ public sealed class TemporaryFlyPower : AngelinaPower
         await PowerCmd.Apply<FlyPower>(target, amount, applier, cardSource, silent: true);
     }
 
+    // 自身层数变化时，同步修改飞行层数。
     public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (power != this || amount == base.Amount)
@@ -71,8 +75,12 @@ public sealed class TemporaryFlyPower : AngelinaPower
         await PowerCmd.Apply<FlyPower>(base.Owner, amount, applier, cardSource, silent: true);
     }
 
+    // 到拥有者回合开始时，移除这层临时飞行，并扣掉等量飞行。
     public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
     {
+        _ = choiceContext;
+        _ = combatState;
+
         if (side != base.Owner.Side)
         {
             return;

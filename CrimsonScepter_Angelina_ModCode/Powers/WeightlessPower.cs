@@ -21,41 +21,37 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Powers;
 /// </summary>
 public sealed class WeightlessPower : AngelinaPower
 {
-    // 内部数据：
-    // PendingRedirectedHpLoss = 本次被转成“失去生命”的失衡累计量
-    // IgnoreNextDamageMultiplier = 避免刚进入失重状态时，某些结算被误判成翻倍伤害
     private sealed class Data
     {
+        // 本次被改写为“失去生命”的失衡累计量
         public decimal PendingRedirectedHpLoss;
 
+        // 避免刚进入失重或刚结算转血时，把同一批伤害再次翻倍
         public bool IgnoreNextDamageMultiplier;
     }
 
-    // 当前先按旧工程逻辑，显示为Buff
+    // 当前按旧工程逻辑仍显示为 Buff。
     public override PowerType Type => PowerType.Buff;
 
-    // 这是一个计数型Power
     public override PowerStackType StackType => PowerStackType.Counter;
 
     public override bool ShouldScaleInMultiplayer => false;
 
-    protected override object InitInternalData()
-    {
-        return new Data();
-    }
+    protected override object InitInternalData() => new Data();
 
-    // 当失重状态第一次被施加时：
-    // 先忽略下一次伤害翻倍判定，避免和触发当帧的其他结算打架
+    // 首次进入失重时，先忽略下一次伤害翻倍，避免和进入当帧的其他结算打架。
     public override Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
+        _ = applier;
+        _ = cardSource;
         GetInternalData<Data>().IgnoreNextDamageMultiplier = true;
         return Task.CompletedTask;
     }
 
-    // 当目标已经处于“失重”状态时，如果再次获得失衡：
-    // 就不再正常叠失衡，而是把这部分量记录到待掉血数值中
+    // 失重期间再次获得失衡时，不再叠失衡，而是把数值改记成待失去生命。
     public override bool TryModifyPowerAmountReceived(PowerModel canonicalPower, Creature target, decimal amount, Creature? applier, out decimal modifiedAmount)
     {
+        _ = applier;
         modifiedAmount = amount;
 
         if (target != base.Owner)
@@ -73,8 +69,7 @@ public sealed class WeightlessPower : AngelinaPower
         return true;
     }
 
-    // 在上面的“转向修改”完成后，
-    // 把累计的失衡改成等量失去生命
+    // 把上一阶段累计的失衡改写成等量失去生命。
     public override async Task AfterModifyingPowerAmountReceived(PowerModel power)
     {
         Data data = GetInternalData<Data>();
@@ -100,9 +95,14 @@ public sealed class WeightlessPower : AngelinaPower
         );
     }
 
-    // 失重状态下，目标受到的伤害翻倍
+    // 失重状态下，目标受到的伤害翻倍。
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
+        _ = amount;
+        _ = props;
+        _ = dealer;
+        _ = cardSource;
+
         if (target != base.Owner)
         {
             return 1m;
@@ -119,11 +119,12 @@ public sealed class WeightlessPower : AngelinaPower
         return 2m;
     }
 
-    // 在拥有者所属阵营的回合开始时：
-    // - 持续时间减少1
-    // - 归0时移除这层Power
+    // 在拥有者所属阵营的回合开始时，持续时间减 1；归零时移除。
     public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
     {
+        _ = choiceContext;
+        _ = combatState;
+
         if (side != base.Owner.Side)
         {
             return;
