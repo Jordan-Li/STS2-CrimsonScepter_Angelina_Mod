@@ -17,12 +17,12 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Helpers;
 /// <summary>
 /// 兼容原版特定遗物对安洁莉娜的特殊处理：
 /// 1. Touch of Orobas 会把绯红权杖升级为秘杖·绯红权杖。
-/// 2. Archaic Tooth 会把初始卡“反重力”对应成“秘杖·反重力模式”。
+/// 2. Archaic Tooth 会把起始卡“反重力”替换成“秘杖·反重力模式”。
 /// </summary>
 [HarmonyPatch(typeof(TouchOfOrobas), nameof(TouchOfOrobas.GetUpgradedStarterRelic))]
 internal static class AngelinaTouchOfOrobasUpgradePatch
 {
-    // 当原版逻辑尝试升级安洁莉娜的初始遗物时，改为返回隐藏版秘杖。
+    // 原版尝试升级安洁莉娜的初始遗物时，改为返回隐藏版秘杖。
     private static bool Prefix(RelicModel starterRelic, ref RelicModel __result)
     {
         if (starterRelic.Id != ModelDb.Relic<CrimsonScepter>().Id)
@@ -39,15 +39,15 @@ internal static class AngelinaTouchOfOrobasUpgradePatch
 internal static class AngelinaArchaicToothSetupPatch
 {
     private static readonly MethodInfo StarterCardSetter =
-        AccessTools.PropertySetter(typeof(ArchaicTooth), nameof(ArchaicTooth.StarterCard));
+        AccessTools.PropertySetter(typeof(ArchaicTooth), nameof(ArchaicTooth.StarterCard))!;
 
     private static readonly MethodInfo AncientCardSetter =
-        AccessTools.PropertySetter(typeof(ArchaicTooth), nameof(ArchaicTooth.AncientCard));
+        AccessTools.PropertySetter(typeof(ArchaicTooth), nameof(ArchaicTooth.AncientCard))!;
 
-    // 让原版远古之牙识别安洁莉娜的初始卡，并准备好对应的远古替代卡。
+    // 让原版远古之牙识别安洁莉娜的起始卡，并准备好对应的远古替代卡。
     private static bool Prefix(ArchaicTooth __instance, Player player, ref bool __result)
     {
-        if (!TryGetAngelinaArchaicCards(player, out CardModel? starterCard, out CardModel? ancientCard))
+        if (!TryGetAngelinaArchaicCards(player, out CardModel starterCard, out CardModel ancientCard))
         {
             return true;
         }
@@ -58,12 +58,12 @@ internal static class AngelinaArchaicToothSetupPatch
         return false;
     }
 
-    private static bool TryGetAngelinaArchaicCards(Player player, out CardModel? starterCard, out CardModel? ancientCard)
+    private static bool TryGetAngelinaArchaicCards(Player player, out CardModel starterCard, out CardModel ancientCard)
     {
-        starterCard = player.Deck.Cards.FirstOrDefault(card => card.Id == ModelDb.Card<AntiGravity>().Id);
+        starterCard = player.Deck.Cards.FirstOrDefault(card => card.Id == ModelDb.Card<AntiGravity>().Id)!;
         if (starterCard == null)
         {
-            ancientCard = null;
+            ancientCard = null!;
             return false;
         }
 
@@ -73,7 +73,12 @@ internal static class AngelinaArchaicToothSetupPatch
 
     internal static CardModel CreateUpgradedAncientCard(CardModel starterCard)
     {
-        CardModel ancientCard = starterCard.Owner.RunState.CreateCard<ScepterAntigravityMode>(starterCard.Owner);
+        Player owner = starterCard.Owner
+            ?? throw new System.InvalidOperationException("AntiGravity should have an owner when transformed by Archaic Tooth.");
+        var runState = owner.RunState
+            ?? throw new System.InvalidOperationException("Owner should have a run state when transformed by Archaic Tooth.");
+
+        CardModel ancientCard = runState.CreateCard<ScepterAntigravityMode>(owner);
 
         if (starterCard.IsUpgraded)
         {

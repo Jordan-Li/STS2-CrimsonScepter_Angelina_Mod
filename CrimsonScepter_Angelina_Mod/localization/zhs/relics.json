@@ -1,6 +1,6 @@
 ﻿{
   "CRIMSONSCEPTER_ANGELINA_MOD-CRIMSON_SCEPTER.title": "绯红权杖",
-  "CRIMSONSCEPTER_ANGELINA_MOD-CRIMSON_SCEPTER.description": "当敌方角色从[gold]浮空[/gold]状态变为非[gold]浮空[/gold]状态时，使其获得{ImbalancePower}点[gold]失衡[/gold]。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CRIMSON_SCEPTER.description": "当敌方角色从[gold]浮空[/gold]状态因受击脱离[gold]浮空[/gold]时，施加{ImbalancePower}点[gold]失衡[/gold]。",
   "CRIMSONSCEPTER_ANGELINA_MOD-CRIMSON_SCEPTER.flavor": "“是不是感觉轻飘飘的？”",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-WISHING_STAR.title": "祈愿星",
@@ -13,7 +13,7 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-ANCIENT_EXPRESS.flavor": "涅奥速递！",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-CALIBRATION_MODULE.title": "校准模块",
-  "CRIMSONSCEPTER_ANGELINA_MOD-CALIBRATION_MODULE.description": "你施加的[gold]失衡值[/gold]额外增加{ImbalancePower}点。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CALIBRATION_MODULE.description": "你施加的[gold]失衡[/gold]额外增加{ImbalancePower}点。",
   "CRIMSONSCEPTER_ANGELINA_MOD-CALIBRATION_MODULE.flavor": "更加精准的失衡控制。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-PORTABLE_STARGATE.title": "便携星门",
@@ -21,7 +21,7 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-PORTABLE_STARGATE.flavor": "你不会希望对面送来什么东西的……",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-SECRET_CRIMSON_SCEPTER.title": "秘杖·绯红权杖",
-  "CRIMSONSCEPTER_ANGELINA_MOD-SECRET_CRIMSON_SCEPTER.description": "当敌人失去[gold]浮空[/gold]时，使其获得15点[gold]失衡值[/gold]。每回合开始时，给予所有单位1层[gold]临时飞行[/gold]。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SECRET_CRIMSON_SCEPTER.description": "当敌方角色从[gold]浮空[/gold]状态因受击脱离[gold]浮空[/gold]时，施加{ImbalancePower}点[gold]失衡[/gold]。每回合开始时，给予所有单位1层临时飞行。",
   "CRIMSONSCEPTER_ANGELINA_MOD-SECRET_CRIMSON_SCEPTER.flavor": "绯红，支配天空的权柄，承载着希望与未来的星之彼端。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-STAFF_COUNTERWEIGHT.title": "法杖配重",
