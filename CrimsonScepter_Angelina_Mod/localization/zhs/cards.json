@@ -134,8 +134,8 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-PRISM_RAY.upgraded_description": "造成{DisplayedDamage}点[gold]法术[/gold]伤害。变化所有[gold]寄送[/gold]牌并升级。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.title": "包扎带",
-  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.description": "获得{Block:diff()}点格挡。为1张手牌添加[gold]附魔[/gold]：[gold]送达[/gold]时，升级。",
-  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.upgraded_description": "获得{Block:diff()}点格挡。为2张手牌添加附魔：送达时，升级。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.description": "获得{Block:diff()}点格挡。为1张手牌添加[gold]附魔[/gold]：[gold]送达[/gold]时，在本场战斗中获得升级。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.upgraded_description": "获得{Block:diff()}点格挡。为所有手牌添加[gold]附魔[/gold]：[gold]送达[/gold]时，在本场战斗中获得升级。",
   "BANDAGE.selectPrompt": "选择要添加附魔的手牌",
   
   "CRIMSONSCEPTER_ANGELINA_MOD-UPDRAFT.title": "上升气流",

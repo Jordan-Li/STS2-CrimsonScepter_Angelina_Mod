@@ -134,8 +134,8 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-PRISM_RAY.upgraded_description": "Deal {DisplayedDamage} [gold]spell[/gold] damage. Transform all [gold]delivered[/gold] cards and upgrade them.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.title": "Bandage",
-  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.description": "Gain {Block:diff()} Block. Add an enchantment to 1 card in your hand: Delivered, upgrade it.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.upgraded_description": "Gain {Block:diff()} Block. Add an enchantment to 2 cards in your hand: Delivered, upgrade them.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.description": "Gain {Block:diff()} Block. Add an enchantment to 1 card in your hand: [gold]Delivered[/gold], it gains an upgrade this combat.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.upgraded_description": "Gain {Block:diff()} Block. Add an enchantment to all cards in your hand: [gold]Delivered[/gold], they gain upgrades this combat.",
   "BANDAGE.selectPrompt": "Choose card(s) to enchant",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-UPDRAFT.title": "Updraft",
