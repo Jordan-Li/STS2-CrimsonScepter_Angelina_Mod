@@ -183,7 +183,7 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.description": "When played, choose 5 cards in your deck to appear on top of your draw pile next combat.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION.title": "Important Commission",
-  "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION.description": "After this card has been played {Count} times, once per combat, playing it grants 1 random Relic and [gold]Exhausts[/gold] it. [gold]Delivered[/gold]: reduce the required count by 1 and reduce its cost this combat by {Energy:energyIcons()}.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION.description": "When this card is played or [gold]Delivered[/gold] {Count} times, once per combat, gain 1 random Relic,remove this card from your deck, add {IfUpgraded:show:an [gold]Important Commission+[/gold]|an [gold]Important Commission[/gold]} to your deck.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE.title": "Annihilation Particle",
   "CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE.description": "Deal {DisplayedDamage} [gold]spell[/gold] damage to all enemies. If any target is [gold]Fatally[/gold] killed, this combat grants no card rewards."

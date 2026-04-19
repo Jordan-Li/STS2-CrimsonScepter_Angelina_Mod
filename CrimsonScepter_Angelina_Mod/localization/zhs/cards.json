@@ -186,7 +186,7 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.description": "打出时，选择5张卡组中的牌出现在你下次战斗的抽牌堆顶部。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION.title": "重要委托",
-  "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION.description": "在这张牌被打出{Count}次后，每场战斗仅限1次，打出此牌时获得1个随机遗物并[gold]消耗[/gold]。[gold]送达[/gold]：升级需要次数减1，本场战斗中消耗能量减少{Energy:energyIcons()}。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION.description": "当此牌被打出或[gold]送达[/gold]{Count}次后，每场战斗限一次，获得1个随机遗物，将此牌从牌组中移除，将一张{IfUpgraded:show:[gold]重要委托+[/gold]|[gold]重要委托[/gold]}加入牌组。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE.title": "湮灭粒子",
   "CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE.description": "对所有敌方造成{DisplayedDamage}点[gold]法术[/gold]伤害。如果有目标被[gold]斩杀[/gold]，则这场战斗不再有卡牌奖励。"
