@@ -12,7 +12,7 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
 /// 卡牌名：信使训练
-/// 费用：1
+/// 费用：2
 /// 稀有度：稀有
 /// 卡牌类型：能力
 /// 效果：每回合开始时，获得1层飞行。
@@ -46,9 +46,9 @@ public sealed class CourierTraining : AngelinaCard
         new PowerVar<CourierTrainingPower>(1m)
     ];
 
-    // 初始化卡牌的基础信息：1费、能力、稀有、目标为自己。
+    // 初始化卡牌的基础信息：2费、能力、稀有、目标为自己。
     public CourierTraining()
-        : base(1, CardType.Power, CardRarity.Rare, TargetType.Self)
+        : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
     }
 

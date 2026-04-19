@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
-using CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Helpers;
+using CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Enchantments;
 
 namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
@@ -20,8 +20,8 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 /// 费用：1
 /// 稀有度：罕见
 /// 卡牌类型：技能
-/// 效果：获得8点格挡。为1张手牌添加附魔：送达时，升级。
-/// 升级后效果：获得12点格挡。为2张手牌添加附魔：送达时，升级。
+/// 效果：获得8点格挡。为1张手牌添加附魔：送达时，在本场战斗中获得升级。
+/// 升级后效果：获得12点格挡。为所有手牌添加附魔：送达时，在本场战斗中获得升级。
 /// </summary>
 public sealed class Bandage : AngelinaCard
 {
@@ -37,19 +37,23 @@ public sealed class Bandage : AngelinaCard
             new LocString("cards", "DELIVERED.description"))
     ];
 
-    // 动态变量：本牌提供的格挡数值。
+    // 动态变量：
+    // 1. 本牌提供的格挡数值。
+    // 2. EnchantAll 用于稳定刷新“1张手牌 / 所有手牌”的条件文本。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(8m, ValueProp.Move)
+        new BlockVar(8m, ValueProp.Move),
+        new IntVar("EnchantAll", 0m)
     ];
 
     // 初始化卡牌的基础信息：1费、技能、罕见、目标为自己。
     public Bandage()
         : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
+        RefreshEnchantTargetMode();
     }
 
-    // 打出时，先获得格挡，再为手牌添加“送达时升级”的附魔。
+    // 打出时，先获得格挡，再为手牌添加“送达时在本场战斗中升级”的附魔。
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         // 第一步：先获得格挡。
@@ -68,28 +72,39 @@ public sealed class Bandage : AngelinaCard
             return;
         }
 
-        // 第三步：根据升级状态决定要附魔的目标数量。
-        int enchantCount = base.IsUpgraded ? 2 : 1;
-        enchantCount = int.Min(enchantCount, validHandCards.Count);
+        // 第三步：
+        // 未升级时，选择1张手牌附魔。
+        // 升级后，直接为所有符合条件的手牌附魔。
+        List<CardModel> selectedCards = base.IsUpgraded
+            ? validHandCards
+            : (await CardSelectCmd.FromHand(
+                context: choiceContext,
+                player: base.Owner,
+                prefs: new CardSelectorPrefs(new LocString("cards", "BANDAGE.selectPrompt"), 1),
+                filter: card => card.IsUpgradable && deliveredUpgrade.CanEnchant(card),
+                source: this)).ToList();
 
-        // 第四步：从手牌中选择对应数量的目标牌。
-        List<CardModel> selectedCards = (await CardSelectCmd.FromHand(
-            context: choiceContext,
-            player: base.Owner,
-            prefs: new CardSelectorPrefs(new LocString("cards", "BANDAGE.selectPrompt"), enchantCount),
-            filter: card => card.IsUpgradable && deliveredUpgrade.CanEnchant(card),
-            source: this)).ToList();
-
-        // 第五步：为被选中的手牌添加“送达时升级”附魔。
+        // 第四步：为被选中的手牌添加“送达时在本场战斗中升级”附魔。
         foreach (CardModel selectedCard in selectedCards)
         {
             CardCmd.Enchant<DeliveredUpgradeEnchantment>(selectedCard, 1m);
         }
     }
 
-    // 升级后提升格挡，并把附魔目标数量从1张提高到2张。
+    // 升级后提升格挡，并把附魔范围改为所有符合条件的手牌。
     protected override void OnUpgrade()
     {
         base.DynamicVars.Block.UpgradeValueBy(4m);
+        RefreshEnchantTargetMode();
+    }
+
+    protected override void AfterDowngraded()
+    {
+        RefreshEnchantTargetMode();
+    }
+
+    private void RefreshEnchantTargetMode()
+    {
+        base.DynamicVars["EnchantAll"].BaseValue = base.IsUpgraded ? 1m : 0m;
     }
 }

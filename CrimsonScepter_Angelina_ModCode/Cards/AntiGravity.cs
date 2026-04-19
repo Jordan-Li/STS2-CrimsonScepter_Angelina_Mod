@@ -96,13 +96,11 @@ public sealed class AntiGravity : AngelinaCard
         base.DynamicVars.Damage.UpgradeValueBy(4m);
     }
 
-    // 给描述补充法术修正后的显示伤害
     protected override void AddExtraArgsToDescription(LocString description)
     {
         base.AddExtraArgsToDescription(description);
 
         decimal displayedDamage = base.DynamicVars.Damage.BaseValue;
-
         if (base.IsMutable && base.Owner?.Creature != null)
         {
             displayedDamage = SpellHelper.ModifySpellValue(base.Owner.Creature, displayedDamage);
@@ -111,3 +109,4 @@ public sealed class AntiGravity : AngelinaCard
         description.Add("DisplayedDamage", displayedDamage);
     }
 }
+

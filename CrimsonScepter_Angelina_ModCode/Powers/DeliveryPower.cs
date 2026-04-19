@@ -50,9 +50,9 @@ public sealed class DeliveryPower : AngelinaPower
     public override bool ShouldScaleInMultiplayer => false;
 
     /// <summary>
-    /// Cards 用于把完整寄送列表拼进悬浮说明。
+    /// QueuedCount 和 Cards 分别用于展示寄送数量与完整寄送列表。
     /// </summary>
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new StringVar("Cards")];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new IntVar("QueuedCount", 0m), new StringVar("Cards")];
 
     protected override object InitInternalData()
     {
@@ -241,11 +241,13 @@ public sealed class DeliveryPower : AngelinaPower
     private void RefreshQueueDisplay()
     {
         Data data = GetInternalData<Data>();
+        int queuedCount = data.QueuedCards.Count;
 
-        string fullCardList = data.QueuedCards.Count == 0
+        string fullCardList = queuedCount == 0
             ? "无"
             : string.Join("\n", data.QueuedCards.Select(card => $"• {card.Title}"));
 
+        base.DynamicVars["QueuedCount"].BaseValue = queuedCount;
         ((StringVar)base.DynamicVars["Cards"]).StringValue = fullCardList;
         InvokeDisplayAmountChanged();
     }

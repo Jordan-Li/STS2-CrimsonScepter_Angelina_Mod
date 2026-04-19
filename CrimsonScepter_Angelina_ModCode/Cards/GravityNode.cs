@@ -19,8 +19,8 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 /// 费用：2
 /// 稀有度：稀有
 /// 卡牌类型：攻击
-/// 效果：施加10点失衡，造成10点伤害。若此牌斩杀目标或失重，永久使此牌增加3点失衡和伤害。消耗。
-/// 升级后效果：施加10点失衡，造成10点伤害。若此牌斩杀目标或失重，永久使此牌增加5点失衡和伤害。消耗。
+/// 效果：施加10点失衡，造成10点伤害。若此牌造成失重，永久增加3点失衡；若此牌斩杀目标，永久增加3点伤害。消耗。
+/// 升级后效果：施加10点失衡，造成10点伤害。若此牌造成失重，永久增加5点失衡；若此牌斩杀目标，永久增加5点伤害。消耗。
 /// </summary>
 public sealed class GravityNode : AngelinaCard
 {
@@ -104,7 +104,7 @@ public sealed class GravityNode : AngelinaCard
     // 定义四个动态变量：
     // 1. 当前施加的失衡
     // 2. 当前造成的伤害
-    // 3. 每次进入失重后增加的失衡值
+    // 3. 每次造成失重后增加的失衡值
     // 4. 每次斩杀后增加的伤害值
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -118,11 +118,13 @@ public sealed class GravityNode : AngelinaCard
     // - 消耗
     // - 失衡
     // - 失重
+    // - 斩杀
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
         HoverTipFactory.FromPower<ImbalancePower>(),
-        HoverTipFactory.FromPower<WeightlessPower>()
+        HoverTipFactory.FromPower<WeightlessPower>(),
+        HoverTipFactory.Static(StaticHoverTip.Fatal)
     ];
 
     // 添加卡牌关键词：消耗
@@ -159,7 +161,7 @@ public sealed class GravityNode : AngelinaCard
         );
 
         // 如果目标原本没有失重，但施加后进入了失重，
-        // 说明这张牌满足了一个永久成长条件。
+        // 说明这张牌满足了“永久增加失衡”的成长条件。
         bool enteredWeightless = !wasWeightless && cardPlay.Target.GetPower<WeightlessPower>() != null;
 
         // 第二步：如果目标还活着，再造成伤害，并记录这次伤害是否完成了真正的斩杀。
@@ -175,13 +177,16 @@ public sealed class GravityNode : AngelinaCard
             fatalKilledTarget = shouldTriggerFatal && attackCommand.Results.Any(r => r.WasTargetKilled);
         }
 
-        // 只要这张牌让目标进入失重，或按游戏原生 Fatal 规则完成了斩杀，
-        // 就永久同时提高这张牌的失衡和伤害。
-        if (enteredWeightless || fatalKilledTarget)
+        // 造成失重时，只永久提高这张牌的失衡。
+        if (enteredWeightless)
         {
             BuffImbalance(base.DynamicVars["ImbalanceIncrease"].IntValue);
             (base.DeckVersion as GravityNode)?.BuffImbalance(base.DynamicVars["ImbalanceIncrease"].IntValue);
+        }
 
+        // 按游戏原生 Fatal 规则完成斩杀时，只永久提高这张牌的伤害。
+        if (fatalKilledTarget)
+        {
             BuffDamage(base.DynamicVars["DamageIncrease"].IntValue);
             (base.DeckVersion as GravityNode)?.BuffDamage(base.DynamicVars["DamageIncrease"].IntValue);
         }

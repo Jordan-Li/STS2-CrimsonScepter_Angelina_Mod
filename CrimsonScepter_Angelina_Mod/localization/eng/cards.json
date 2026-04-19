@@ -27,8 +27,8 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-TOUCH_AND_TUMBLE.upgraded_description": "[gold]Retain[/gold]. If the target has [gold]Imbalance[/gold], make it immediately become [gold]Weightless[/gold], remove its current [gold]Imbalance[/gold], make it lose HP equal to half that [gold]Imbalance[/gold], and [gold]Stun[/gold] it. Gain {Energy:energyIcons()} for every 20 [gold]Imbalance[/gold] removed this way. [gold]Exhaust[/gold].",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.title": "Gravity Node",
-  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.description": "Apply {ImbalancePower} [gold]Imbalance[/gold], then deal {Damage} damage. If this card deals a fatal blow or makes the target become [gold]Weightless[/gold], permanently increase this card's [gold]Imbalance[/gold] by {ImbalanceIncrease} and its damage by {DamageIncrease}.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.upgraded_description": "Apply {ImbalancePower} [gold]Imbalance[/gold], then deal {Damage} damage. If this card deals a fatal blow or makes the target become [gold]Weightless[/gold], permanently increase this card's [gold]Imbalance[/gold] by {ImbalanceIncrease} and its damage by {DamageIncrease}.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.description": "Apply {ImbalancePower} [gold]Imbalance[/gold], then deal {Damage} damage. If this card makes the target become [gold]Weightless[/gold], permanently increase this card's [gold]Imbalance[/gold] by {ImbalanceIncrease}; if this card deals a [gold]fatal[/gold] blow, permanently increase its damage by {DamageIncrease}.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_NODE.upgraded_description": "Apply {ImbalancePower} [gold]Imbalance[/gold], then deal {Damage} damage. If this card makes the target become [gold]Weightless[/gold], permanently increase this card's [gold]Imbalance[/gold] by {ImbalanceIncrease}; if this card deals a [gold]fatal[/gold] blow, permanently increase its damage by {DamageIncrease}.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_FLOW.title": "Delivery Flow",
   "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_FLOW.description": "Deal {Damage:diff()} damage. Send a card.",
@@ -134,8 +134,8 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-PRISM_RAY.upgraded_description": "Deal {DisplayedDamage} [gold]spell[/gold] damage. Transform all [gold]delivered[/gold] cards and upgrade them.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.title": "Bandage",
-  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.description": "Gain {Block:diff()} Block. Add an enchantment to 1 card in your hand: Delivered, upgrade it.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.upgraded_description": "Gain {Block:diff()} Block. Add an enchantment to 2 cards in your hand: Delivered, upgrade them.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.description": "Gain {Block:diff()} Block. Add an enchantment to {EnchantAll:cond:>0?all cards in your hand|1 card in your hand}: [gold]Delivered[/gold], {EnchantAll:cond:>0?they gain upgrades|it gains an upgrade} this combat.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.upgraded_description": "Gain {Block:diff()} Block. Add an enchantment to {EnchantAll:cond:>0?all cards in your hand|1 card in your hand}: [gold]Delivered[/gold], {EnchantAll:cond:>0?they gain upgrades|it gains an upgrade} this combat.",
   "BANDAGE.selectPrompt": "Choose card(s) to enchant",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-UPDRAFT.title": "Updraft",
@@ -205,8 +205,8 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-REALITY_MANIPULATION.upgraded_description": "Whenever a card enters or leaves your [gold]Exhaust[/gold] pile, gain {RealityManipulationPower:diff()} Block.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-INVERSION_SYMMETRY.title": "Inversion Symmetry",
-  "CRIMSONSCEPTER_ANGELINA_MOD-INVERSION_SYMMETRY.description": "Spend X Energy. Play the differently named cards among the top X cards of your discard pile from top to bottom.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-INVERSION_SYMMETRY.upgraded_description": "Spend X Energy. Play the differently named cards among the top X cards of your discard pile from top to bottom.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-INVERSION_SYMMETRY.description": "Spend X Energy. Play the first X non-Inversion Symmetry cards from the top of your discard pile, from top to bottom.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-INVERSION_SYMMETRY.upgraded_description": "Spend X Energy. Play the first X non-Inversion Symmetry cards from the top of your discard pile, from top to bottom.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-SCEPTER_ANTIGRAVITY_MODE.title": "Scepter Antigravity Mode",
   "CRIMSONSCEPTER_ANGELINA_MOD-SCEPTER_ANTIGRAVITY_MODE.description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold] and {TemporaryFlyPower:diff()} [gold]Temporary Fly[/gold] to all enemies. Deal {DisplayedDamage} [gold]spell[/gold] damage.",
@@ -239,9 +239,7 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.title": "Future Observation",
   "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.description": "When played, choose 5 cards in your deck to appear on top of your draw pile next combat.",
   "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.upgraded_description": "When played, choose 5 cards in your deck to appear on top of your draw pile next combat.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.multiplayerWarningTitle": "Multiplayer Warning",
-  "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.multiplayerWarningDescription": "This card may cause desyncs or other issues in multiplayer. Use or pick it with caution in multiplayer games!",
-
+  
   "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION.title": "Important Commission",
   "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION.description": "After this card has been played {Count} times, once per combat, playing it grants 1 random Relic and [gold]Exhausts[/gold] it. [gold]Delivered[/gold]: reduce the required count by 1 and reduce its cost this combat by {Energy:energyIcons()}.",
   "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION.upgraded_description": "After this card has been played {Count} times, once per combat, playing it grants 1 random Relic and [gold]Exhausts[/gold] it. [gold]Delivered[/gold]: reduce the required count by 1 and reduce its cost this combat by {Energy:energyIcons()}.",

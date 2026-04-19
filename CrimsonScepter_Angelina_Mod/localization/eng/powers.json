@@ -9,7 +9,7 @@
 
   "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_POWER.title": "Delivery",
   "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_POWER.description": "Sent cards return to your hand at the start of your next turn.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_POWER.smartDescription": "{Amount}cards are queued. At the start of your next turn, these cards return to your hand:\n{Cards}",
+  "CRIMSONSCEPTER_ANGELINA_MOD-DELIVERY_POWER.smartDescription": "{QueuedCount} cards are queued. At the start of your next turn, these cards return to your hand:\n{Cards}",
 
   "FOCUS_POWER.title": "Focus",
   "FOCUS_POWER.description": "Increases the effectiveness of Orb effects, as well as [gold]spell[/gold] damage and [gold]spell[/gold] Block.",

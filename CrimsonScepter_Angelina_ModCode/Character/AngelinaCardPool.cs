@@ -30,7 +30,7 @@ public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath(
     }*/
 
     //Color of small card icons
-    public override Color DeckEntryCardColor => new("ffffff");
+    public override Color DeckEntryCardColor => new("6CB8F6");
 
     public override bool IsColorless => false;
 }

@@ -66,16 +66,18 @@ public sealed class AnnihilationParticle : AngelinaCard
             .Where(enemy => enemy.IsAlive && enemy.Powers.All(power => power.ShouldOwnerDeathTriggerFatal()))
             .ToHashSet();
 
-        // 统一按法术规则造成全体伤害。
+        // 统一按法术规则造成全体伤害。不要走 AttackCommand，
+        // 否则会被依赖 AfterAttack + ValueProp.Move 的怪物机制误判成普通卡牌命中。
         decimal spellDamage = SpellHelper.ModifySpellValue(base.Owner.Creature, base.DynamicVars.Damage.BaseValue);
-        var attackCommand = await DamageCmd.Attack(spellDamage)
-            .Unpowered()
-            .FromCard(this)
-            .TargetingAllOpponents(base.CombatState)
-            .Execute(choiceContext);
+        IEnumerable<DamageResult> damageResults = await SpellHelper.DamageAll(
+            choiceContext,
+            base.Owner.Creature,
+            base.CombatState.HittableEnemies,
+            spellDamage,
+            this);
 
         // 只有真正按 Fatal 规则斩杀了非爪牙目标，才会封锁本场战斗的卡牌奖励。
-        bool triggeredFatal = attackCommand.Results.Any(result =>
+        bool triggeredFatal = damageResults.Any(result =>
             result.WasTargetKilled &&
             fatalEligibleTargets.Contains(result.Receiver));
 
@@ -105,7 +107,6 @@ public sealed class AnnihilationParticle : AngelinaCard
 
     protected override void AddExtraArgsToDescription(LocString description)
     {
-        // 为本地化描述补上法术修正后的实际显示伤害。
         base.AddExtraArgsToDescription(description);
 
         decimal displayedDamage = base.DynamicVars.Damage.BaseValue;
@@ -115,6 +116,7 @@ public sealed class AnnihilationParticle : AngelinaCard
         }
 
         description.Add("DisplayedDamage", displayedDamage);
+        description.Add("CalculatedDamage", displayedDamage);
     }
 
     // 奖励结算补丁会在战斗奖励生成时消费这条“移除卡牌奖励”记录。
@@ -123,3 +125,4 @@ public sealed class AnnihilationParticle : AngelinaCard
         return PendingNoCardRewards.Remove((room, playerNetId));
     }
 }
+

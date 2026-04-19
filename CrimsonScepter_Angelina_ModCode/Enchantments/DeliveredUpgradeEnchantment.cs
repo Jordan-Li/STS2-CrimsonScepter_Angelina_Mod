@@ -7,20 +7,20 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 
-namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Helpers;
+namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Enchantments;
 
 /// <summary>
 /// 附魔名：送达升级
-/// 附魔效果：当此牌因寄送回到手牌时，将其升级，然后移除此附魔。
-/// 额外卡面文本：送达时，升级
+/// 附魔效果：当此牌因寄送回到手牌时，使当前战斗中的这张牌获得升级，然后移除此附魔。
+/// 额外卡面文本：送达时，本场战斗中升级
 /// </summary>
 public sealed class DeliveredUpgradeEnchantment : EnchantmentModel
 {
     // 这类附魔需要在卡面上显示额外文本。
     public override bool HasExtraCardText => true;
 
-    // 让带有该附魔的牌显示金色高亮，方便玩家识别。
-    public override bool ShouldGlowGold => true;
+    // 不额外启用金色高亮，避免和普通重要提示混在一起。
+    public override bool ShouldGlowGold => false;
 
     // 额外悬浮说明：补一条“送达”的通用提示。
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -40,7 +40,8 @@ public sealed class DeliveredUpgradeEnchantment : EnchantmentModel
             return Task.CompletedTask;
         }
 
-        // 若此牌仍可升级，则在送达时将其升级。
+        // 若此牌仍可升级，则让当前战斗中的这张卡在送达时获得升级。
+        // 战斗中的手牌本来就是牌库牌的战斗实例，这里不会把牌库版本永久升级。
         if (card.IsUpgradable)
         {
             CardCmd.Upgrade(card);

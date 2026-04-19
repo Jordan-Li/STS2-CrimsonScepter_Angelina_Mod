@@ -14,8 +14,8 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 /// <summary>
 /// 费用：X+
 /// 稀有度：稀有
-/// 卡牌类型：能力
-/// 效果：消耗X点能量，依次打出弃牌堆顶的前X张牌。不会打出同名卡。
+/// 卡牌类型：技能
+/// 效果：消耗X点能量，依次打出弃牌堆顶开始数的前X张非反演对称牌。
 /// 升级后效果：保留。
 /// </summary>
 public sealed class InversionSymmetry : AngelinaCard
@@ -23,11 +23,11 @@ public sealed class InversionSymmetry : AngelinaCard
     // 升级后获得保留，关键字会由游戏自动追加到卡牌显示中。
     public override IEnumerable<CardKeyword> CanonicalKeywords => IsUpgraded ? [CardKeyword.Retain] : [];
 
-    // 这是一张 X 费能力牌，实际消耗在打出时结算。
+    // 这是一张 X 费技能牌，实际消耗在打出时结算。
     protected override bool HasEnergyCostX => true;
 
     public InversionSymmetry()
-        : base(-1, CardType.Power, CardRarity.Rare, TargetType.Self)
+        : base(-1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
     }
 
@@ -40,17 +40,12 @@ public sealed class InversionSymmetry : AngelinaCard
             return;
         }
 
-        // 只查看弃牌堆顶往下的前 X 张牌，并按从上到下的顺序处理。
+        // 从弃牌堆顶开始往下找，依次取前 X 张“非反演对称”的牌来打出。
         CardPile discardPile = PileType.Discard.GetPile(base.Owner);
-        List<CardModel> topCards = discardPile.Cards
+        List<CardModel> cards = discardPile.Cards
             .Reverse()
             .Where(card => card is not InversionSymmetry)
             .Take(spentEnergy)
-            .ToList();
-
-        // 同名牌只打出第一张，不向更深处补位。
-        List<CardModel> cards = topCards
-            .DistinctBy(card => card.Id)
             .ToList();
 
         // 按顺序依次打出这些牌；一旦战斗进入结束态，就停止继续打牌。

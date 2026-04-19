@@ -67,4 +67,10 @@ public class Angelina : PlaceholderCharacterModel
     public override string CustomCharacterSelectBg => "char_select_bg_angelina.tscn".CustomCharacterSelectBg();
     public override string CustomMerchantAnimPath => "angelina_merchant.tscn".CustomMerchantPath();
     
+    public override string CustomArmPointingTexturePath => "multiplayer_hand_angelina_point.png".HandUiPath();
+    public override string CustomArmRockTexturePath => "multiplayer_hand_angelina_rock.png".HandUiPath();
+    public override string CustomArmPaperTexturePath => "multiplayer_hand_angelina_paper.png".HandUiPath();
+    public override string CustomArmScissorsTexturePath => "multiplayer_hand_angelina_scissors.png".HandUiPath();
+
+    
 }

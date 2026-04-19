@@ -27,8 +27,6 @@ public sealed class ImportantCommission : DeliveredCardModel
 
     private int progressCount;
     private bool isCompleted;
-    private bool pendingRewardExhaust;
-
     // 只显示寄送提示；奖励锁应当只在真正获得对应 Power 后由 Power 自己显示。
     protected override IEnumerable<IHoverTip> ExtraHoverTips => WithDeliveredTip(
         HoverTipFactory.FromPower<DeliveryPower>());
@@ -90,8 +88,6 @@ public sealed class ImportantCommission : DeliveredCardModel
         _ = choiceContext;
         _ = cardPlay;
 
-        pendingRewardExhaust = false;
-
         ImportantCommission persistentCard = GetPersistentCard();
         SyncFromPersistent(persistentCard);
 
@@ -105,10 +101,7 @@ public sealed class ImportantCommission : DeliveredCardModel
             }
 
             SyncFromPersistent(persistentCard);
-        }
-
-        if (!persistentCard.IsCompleted)
-        {
+            // 第 8 次任务这张牌只负责“完成任务”，不会立刻领奖。
             return;
         }
 
@@ -150,7 +143,7 @@ public sealed class ImportantCommission : DeliveredCardModel
         PileType pileType,
         CardPilePosition position)
     {
-        if (card == this && pendingRewardExhaust)
+        if (card == this && ShouldExhaustForRewardThisPlay())
         {
             return (PileType.Exhaust, CardPilePosition.Bottom);
         }
@@ -169,7 +162,6 @@ public sealed class ImportantCommission : DeliveredCardModel
         var relic = RelicFactory.PullNextRelicFromFront(base.Owner).ToMutable();
         await RelicCmd.Obtain(relic, base.Owner);
         await PowerCmd.Apply<ImportantCommissionRewardLockPower>(base.Owner.Creature, 1m, base.Owner.Creature, this);
-        pendingRewardExhaust = true;
     }
 
     // 战斗中的复制体通过 DeckVersion 指回牌库中的持久版本。
@@ -196,5 +188,18 @@ public sealed class ImportantCommission : DeliveredCardModel
         base.DynamicVars["Count"].BaseValue = IsCompleted
             ? 0
             : Math.Max(CompletionThreshold - progressCount, 0);
+    }
+
+    // 已完成后的战斗内首次打出会领奖，并且这次打出应当直接进入 Exhaust。
+    private bool ShouldExhaustForRewardThisPlay()
+    {
+        ImportantCommission persistentCard = GetPersistentCard();
+
+        if (!persistentCard.IsCompleted)
+        {
+            return false;
+        }
+
+        return !base.Owner.Creature.HasPower<ImportantCommissionRewardLockPower>();
     }
 }
