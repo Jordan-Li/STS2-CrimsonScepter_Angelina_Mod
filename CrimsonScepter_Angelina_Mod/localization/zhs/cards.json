@@ -131,7 +131,8 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-COURIER_TRAINING.description": "每回合开始时，获得{CourierTrainingPower:diff()}层[gold]飞行[/gold]。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-QUICK_DISPATCH.title": "快速派送",
-  "CRIMSONSCEPTER_ANGELINA_MOD-QUICK_DISPATCH.description": "{IfUpgraded:show:|随机}选择1张已[gold]寄送[/gold]的牌，将其立即送达。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-QUICK_DISPATCH.description": "获得最近{DeliveredCards:diff()}张已[gold]寄送[/gold]的牌。[gold]寄送[/gold]{Cards:diff()}张牌。",
+  "QUICK_DISPATCH.sendPrompt": "选择要寄送的牌",
   "QUICK_DISPATCH.selectPrompt": "选择1张要立即送达的牌",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-IM_COMING_DOWN.title": "我下来啦！",

@@ -121,7 +121,8 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-COURIER_TRAINING.description": "At the start of each turn, gain {CourierTrainingPower:diff()} [gold]Fly[/gold].",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-QUICK_DISPATCH.title": "Quick Dispatch",
-  "CRIMSONSCEPTER_ANGELINA_MOD-QUICK_DISPATCH.description": "Randomly choose 1 [gold]delivered[/gold] card and deliver it immediately.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-QUICK_DISPATCH.description": "Gain the {DeliveredCards:diff()} most recently [gold]delivered[/gold] card(s). [gold]Send[/gold] {Cards:diff()} card(s).",
+  "QUICK_DISPATCH.sendPrompt": "Choose card(s) to send",
   "QUICK_DISPATCH.selectPrompt": "Choose a card to deliver immediately",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-PART_TIME_JOB.title": "Part Time Job",
