@@ -16,15 +16,3 @@ internal static class IllusionPowerCleanupPatch
         }
     }
 }
-
-[HarmonyPatch(typeof(ReattachPower), nameof(ReattachPower.ShouldPowerBeRemovedOnDeath))]
-internal static class ReattachPowerCleanupPatch
-{
-    private static void Postfix(PowerModel power, ref bool __result)
-    {
-        if (power is WeightlessPower)
-        {
-            __result = true;
-        }
-    }
-}
