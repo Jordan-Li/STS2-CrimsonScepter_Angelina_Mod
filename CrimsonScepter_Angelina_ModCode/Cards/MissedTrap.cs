@@ -107,7 +107,11 @@ public sealed class MissedTrap : AngelinaCard
     {
         _ = applier;
 
-        if (!_pendingGroundedCheck || TemporaryFlyPower.IsResolvingExpiration || cardSource != this)
+        // 这里不能再要求 cardSource == this。
+        // 落空陷阱打掉飞行时，实际触发的是 FlyPower.AfterDamageReceived -> PowerCmd.Decrement(this)，
+        // 这条链里的 cardSource 不是当前卡牌本身；如果卡死要求 cardSource == this，就会导致
+        // “确实把目标打落地了，但不回能”。
+        if (!_pendingGroundedCheck || TemporaryFlyPower.IsResolvingExpiration)
         {
             return Task.CompletedTask;
         }

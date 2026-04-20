@@ -106,7 +106,10 @@ public sealed class Starbeam : AngelinaCard
     {
         _ = applier;
 
-        if (!_pendingGroundedCheck || cardSource != this || TemporaryFlyPower.IsResolvingExpiration)
+        // 和落空陷阱同理：真正让目标掉飞行的是 FlyPower.AfterDamageReceived -> PowerCmd.Decrement(this)，
+        // 这条链里的 cardSource 不是当前牌本身。若这里强卡 cardSource == this，
+        // 就会导致第一段明明已经把目标打落地，后续仍错误地追加第二段伤害。
+        if (!_pendingGroundedCheck || TemporaryFlyPower.IsResolvingExpiration)
         {
             return Task.CompletedTask;
         }
