@@ -96,7 +96,7 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-SOARING_KIT.description": "Give yourself {FlyPower:diff()} [gold]Fly[/gold].\n[gold]Delivered[/gold]: Give all enemies 1 [gold]Fly[/gold]. [gold]Exhaust[/gold].",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-COMET_COMBO.title": "Comet Combo",
-"CRIMSONSCEPTER_ANGELINA_MOD-COMET_COMBO.description": "Deal {CalculatedDamage:diff()} [gold]spell[/gold] damage. If the target is in [gold]Imbalance[/gold], draw {Cards:diff()} cards.",
+"CRIMSONSCEPTER_ANGELINA_MOD-COMET_COMBO.description": "Deal {CalculatedDamage:diff()} [gold]spell[/gold] damage. If the target is in [gold]Weightless[/gold], draw {Cards:diff()} cards.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-PRISM_RAY.title": "Prism Ray",
 "CRIMSONSCEPTER_ANGELINA_MOD-PRISM_RAY.description": "Deal {CalculatedDamage:diff()} [gold]spell[/gold] damage. Transform all [gold]delivered[/gold] cards{IfUpgraded:show: and upgrade them}.",

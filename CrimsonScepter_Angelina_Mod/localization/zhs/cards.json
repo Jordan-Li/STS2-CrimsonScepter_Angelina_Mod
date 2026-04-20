@@ -96,7 +96,7 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-SOARING_KIT.description": "给予自己{FlyPower:diff()}层[gold]飞行[/gold]。\n[gold]送达[/gold]：给予所有敌方1层[gold]飞行[/gold]。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-COMET_COMBO.title": "彗星连击",
-"CRIMSONSCEPTER_ANGELINA_MOD-COMET_COMBO.description": "造成{CalculatedDamage:diff()}点[gold]法术[/gold]伤害。若目标处于[gold]失衡[/gold]，抽{Cards:diff()}张牌。",
+"CRIMSONSCEPTER_ANGELINA_MOD-COMET_COMBO.description": "造成{CalculatedDamage:diff()}点[gold]法术[/gold]伤害。若目标处于[gold]失重[/gold]，抽{Cards:diff()}张牌。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-PRISM_RAY.title": "棱镜射线",
 "CRIMSONSCEPTER_ANGELINA_MOD-PRISM_RAY.description": "造成{CalculatedDamage:diff()}点[gold]法术[/gold]伤害。变化所有[gold]寄送[/gold]的牌{IfUpgraded:show:并升级}。",
