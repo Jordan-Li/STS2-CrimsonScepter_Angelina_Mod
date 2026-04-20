@@ -142,10 +142,8 @@ public sealed class SecretCrimsonScepter : AngelinaRelic
         );
     }
 
-    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
     {
-        _ = choiceContext;
-
         if (side != base.Owner.Creature.Side)
         {
             return;
