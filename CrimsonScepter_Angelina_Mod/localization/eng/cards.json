@@ -186,6 +186,11 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION.title": "Important Commission",
   "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION.description": "{When this card is played or [gold]Delivered[/gold] {Count} times, once per combat, gain 1 random Relic, then reset the count and [gold]Exhaust[/gold].",
 
+  "CRIMSONSCEPTER_ANGELINA_MOD-SIRACUSAN_DELIVERY.title": "Siracusan Delivery",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SIRACUSAN_DELIVERY.description": "Draw {Cards:diff()} card(s). Add 1 [gold]Unclaimed Parcel[/gold] to your discard pile.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-UNCLAIMED_PARCEL.title": "Unclaimed Parcel",
+  "CRIMSONSCEPTER_ANGELINA_MOD-UNCLAIMED_PARCEL.description": " [gold]Delivered[/gold]: Send this card.",
+
   "CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE.title": "Annihilation Particle",
-"CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE.description": "Deal {CalculatedDamage:diff()} [gold]spell[/gold] damage to all enemies. If any target is [gold]Fatally[/gold] killed, this combat grants no card rewards."
+ "CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE.description": "Deal {CalculatedDamage:diff()} [gold]spell[/gold] damage to all enemies. If any target is [gold]Fatally[/gold] killed, this combat grants no card rewards."
 }

@@ -178,9 +178,8 @@ public sealed class DeliveryPower : AngelinaPower
             return null;
         }
 
-        await CardPileCmd.Add(card, PileType.Hand, source: this);
-
         data.QueuedCards.Remove(card);
+        await CardPileCmd.Add(card, PileType.Hand, source: this);
         await RefreshAfterQueueChanged();
 
         return card;
@@ -218,8 +217,8 @@ public sealed class DeliveryPower : AngelinaPower
                 continue;
             }
 
-            await CardPileCmd.Add(card, PileType.Hand, source: this);
             data.QueuedCards.Remove(card);
+            await CardPileCmd.Add(card, PileType.Hand, source: this);
             deliveredCount++;
         }
 
