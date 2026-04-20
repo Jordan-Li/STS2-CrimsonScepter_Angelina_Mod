@@ -85,16 +85,6 @@ public sealed class ImportantCommission : DeliveredCardModel
             persistentCard.ProgressCount = 0;
             var relic = RelicFactory.PullNextRelicFromFront(base.Owner).ToMutable();
             await RelicCmd.Obtain(relic, base.Owner);
-            if (persistentCard.Pile?.Type == PileType.Deck)
-            {
-                await CardPileCmd.RemoveFromDeck(persistentCard);
-            }
-            ImportantCommission card = base.Owner.RunState.CreateCard<ImportantCommission>(base.Owner);
-            if (persistentCard.IsUpgraded)
-            {
-                CardCmd.Upgrade(card);
-            }
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.Add(card, PileType.Deck));
             await PowerCmd.Apply<ImportantCommissionRewardLockPower>(base.Owner.Creature, 1m, base.Owner.Creature, this);
             shouldExhaustOnResolve = true;
 

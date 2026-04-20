@@ -7,7 +7,6 @@ position = Vector2(-2, 42)
 scale = Vector2(0.760006, 0.760006)
 
 [node name="SpineSprite" type="SpineSprite" parent="."]
-position = Vector2(68.4205, -9.21045)
 skeleton_data_res = ExtResource("1_42ll3")
 preview_skin = "default"
 preview_animation = "overgrowth_loop"
@@ -24,7 +23,6 @@ offset_bottom = -9.21045
 
 [node name="Hitbox" type="Control" parent="ControlRoot"]
 unique_name_in_owner = true
-layout_mode = 3
 anchors_preset = 0
 offset_left = -226.314
 offset_top = -276.3136
@@ -33,7 +31,6 @@ offset_bottom = 151.31458
 
 [node name="ThoughtBubbleRight" type="Control" parent="ControlRoot"]
 unique_name_in_owner = true
-layout_mode = 3
 anchors_preset = 0
 offset_left = 36.0
 offset_top = -230.0
@@ -42,7 +39,6 @@ offset_bottom = -230.0
 
 [node name="ThoughtBubbleLeft" type="Control" parent="ControlRoot"]
 unique_name_in_owner = true
-layout_mode = 3
 anchors_preset = 0
 offset_left = -210.0
 offset_top = -230.0

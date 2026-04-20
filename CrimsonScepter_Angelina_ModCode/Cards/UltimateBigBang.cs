@@ -21,8 +21,8 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 /// 费用：0
 /// 稀有度：稀有
 /// 卡牌类型：攻击
-/// 效果：保留。对敌方全体造成40点法术伤害。失去你最右侧的遗物，在本场战斗中此牌耗能增加1。
-/// 升级后效果：保留。对敌方全体造成50点法术伤害。失去你最右侧的遗物，在本场战斗中此牌耗能增加1。
+/// 效果：保留。对敌方全体造成40点法术伤害。失去你最右侧的遗物。
+/// 升级后效果：保留。对敌方全体造成50点法术伤害。失去你最右侧的遗物。
 /// </summary>
 public sealed class UltimateBigBang : AngelinaCard
 {
@@ -63,7 +63,7 @@ public sealed class UltimateBigBang : AngelinaCard
     // 打出时：
     // 1. 失去当前最右侧的遗物
     // 2. 对所有敌人造成法术伤害
-    // 3. 让此牌本场战斗耗能 +1
+    // 3. 不再提升此牌本场战斗耗能
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         // 再做一次保护，避免在异常情况下无遗物可失去。
@@ -93,9 +93,6 @@ public sealed class UltimateBigBang : AngelinaCard
             );
         }
 
-        // 本场战斗中此牌耗能 +1。
-        base.EnergyCost.AddThisCombat(1);
-        base.InvokeEnergyCostChanged();
     }
 
     // 升级后伤害从 40 提高到 50。

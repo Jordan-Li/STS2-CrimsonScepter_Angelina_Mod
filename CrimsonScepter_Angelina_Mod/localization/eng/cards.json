@@ -121,7 +121,8 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-COURIER_TRAINING.description": "At the start of each turn, gain {CourierTrainingPower:diff()} [gold]Fly[/gold].",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-QUICK_DISPATCH.title": "Quick Dispatch",
-  "CRIMSONSCEPTER_ANGELINA_MOD-QUICK_DISPATCH.description": "Randomly choose 1 [gold]delivered[/gold] card and deliver it immediately.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-QUICK_DISPATCH.description": "Gain the {DeliveredCards:diff()} most recently [gold]delivered[/gold] card(s). [gold]Send[/gold] {Cards:diff()} card(s).",
+  "QUICK_DISPATCH.sendPrompt": "Choose card(s) to send",
   "QUICK_DISPATCH.selectPrompt": "Choose a card to deliver immediately",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-PART_TIME_JOB.title": "Part Time Job",
@@ -162,7 +163,7 @@
 "CRIMSONSCEPTER_ANGELINA_MOD-SCEPTER_ANTIGRAVITY_MODE.description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold] and {TemporaryFlyPower:diff()} [gold]Temporary Fly[/gold] to all enemies. Deal {CalculatedDamage:diff()} [gold]spell[/gold] damage.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-ULTIMATE_BIG_BANG.title": "Ultimate Big Bang",
-"CRIMSONSCEPTER_ANGELINA_MOD-ULTIMATE_BIG_BANG.description": "Deal {CalculatedDamage:diff()} [gold]spell[/gold] damage to all enemies. Lose your rightmost Relic. This card costs 1 more this combat.",
+ "CRIMSONSCEPTER_ANGELINA_MOD-ULTIMATE_BIG_BANG.description": "Deal {CalculatedDamage:diff()} [gold]spell[/gold] damage to all enemies. Lose your rightmost Relic.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-SPECIAL_GRAVITY_MODULE.title": "Special Gravity Module",
   "CRIMSONSCEPTER_ANGELINA_MOD-SPECIAL_GRAVITY_MODULE.description": "Whenever you play an [gold]Attack[/gold], if its target is not [gold]Airborne[/gold], give it {FlyPower:diff()} [gold]Fly[/gold]. Whenever you play a card, [gold]Airborne[/gold] enemies take 2 damage.",
@@ -183,8 +184,14 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.description": "When played, choose 5 cards in your deck to appear on top of your draw pile next combat.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION.title": "Important Commission",
-  "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION.description": "When this card is played or [gold]Delivered[/gold] {Count} times, once per combat, gain 1 random Relic,remove this card from your deck, add {IfUpgraded:show:an [gold]Important Commission+[/gold]|an [gold]Important Commission[/gold]} to your deck.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-IMPORTANT_COMMISSION.description": "{When this card is played or [gold]Delivered[/gold] {Count} times, once per combat, gain 1 random Relic, then reset the count and [gold]Exhaust[/gold].",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-SIRACUSAN_DELIVERY.title": "Siracusan Delivery",
+  "CRIMSONSCEPTER_ANGELINA_MOD-SIRACUSAN_DELIVERY.description": "Draw {Cards:diff()} card(s). Add 1 [gold]Unclaimed Parcel[/gold] to your discard pile.",
+  
+  "CRIMSONSCEPTER_ANGELINA_MOD-UNCLAIMED_PARCEL.title": "Unclaimed Parcel",
+  "CRIMSONSCEPTER_ANGELINA_MOD-UNCLAIMED_PARCEL.description": " [gold]Delivered[/gold]: Send this card.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE.title": "Annihilation Particle",
-"CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE.description": "Deal {CalculatedDamage:diff()} [gold]spell[/gold] damage to all enemies. If any target is [gold]Fatally[/gold] killed, this combat grants no card rewards."
+ "CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE.description": "Deal {CalculatedDamage:diff()} [gold]spell[/gold] damage to all enemies. If any target is [gold]Fatally[/gold] killed, this combat grants no card rewards."
 }

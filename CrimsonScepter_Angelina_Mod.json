@@ -3,7 +3,7 @@
   "name": "CrimsonScepter_Angelina_Mod",
   "author": "绯红权杖攻略组",
   "description": "绯红权杖攻略组出品的明日方舟角色安洁莉娜的Mod",
-  "version": "v0.1.5",
+  "version": "v0.1.7",
   "has_pck": true,
   "has_dll": true,
   "dependencies": ["BaseLib"],

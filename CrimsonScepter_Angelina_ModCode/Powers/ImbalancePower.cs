@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -190,6 +191,15 @@ public sealed class ImbalancePower : AngelinaPower
                 PlayerCmd.EndTurn(base.Owner.Player, canBackOut: false);
             }
 
+            return;
+        }
+
+        // Some enemies switch into a special dead/revive move after death.
+        // Putting them into the built-in STUNNED move prevents that transition
+        // if they are killed later in the same action chain, leaving them in a
+        // fake-dead state with stale intents.
+        if (base.CombatState != null && !Hook.ShouldCreatureBeRemovedFromCombatAfterDeath(base.CombatState, base.Owner))
+        {
             return;
         }
 
