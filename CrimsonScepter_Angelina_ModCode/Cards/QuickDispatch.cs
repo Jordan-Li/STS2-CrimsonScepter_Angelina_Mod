@@ -1,10 +1,16 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Abstracts;
 using CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Powers;
+using MegaCrit.Sts2.Core.CardSelection;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 
 namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
@@ -13,54 +19,80 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 /// 费用：0
 /// 稀有度：罕见
 /// 卡牌类型：技能
-/// 效果：随机选择1张已寄送的牌，将其立即送达。
-/// 升级后效果：选择1张已寄送的牌，将其立即送达。
+/// 效果：获得最近1张已寄送的牌。寄送1张牌。
+/// 升级后效果：获得最近2张已寄送的牌。寄送2张牌。
 /// </summary>
 public sealed class QuickDispatch : AngelinaCard
 {
-    // 额外悬浮说明：寄送。
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromPower<DeliveryPower>()
     ];
 
-    // 只有存在已寄送的牌时，这张牌才能打出。
-    protected override bool IsPlayable =>
-        base.Owner?.Creature.GetPower<DeliveryPower>()?.GetQueuedCards().Count > 0;
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new CardsVar(1),
+        new IntVar("DeliveredCards", 1)
+    ];
 
-    // 有可送达目标时以金色发光提示。
-    protected override bool ShouldGlowGoldInternal => IsPlayable;
+    protected override bool IsPlayable => base.Owner?.PlayerCombatState?.Hand.Cards.Count > 0
+        || base.Owner?.Creature.GetPower<DeliveryPower>()?.GetQueuedCards().Count > 0;
 
-    // 初始化卡牌的基础信息：0费、技能、罕见、目标为自己。
     public QuickDispatch()
         : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
     }
 
-    // 打出时，立刻让已寄送的牌中的一张送达。
-    // 未升级时随机送达，升级后改为手动选择送达。
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 没有已寄送的牌时，不执行任何效果。
+        _ = cardPlay;
+
         DeliveryPower? deliveryPower = base.Owner.Creature.GetPower<DeliveryPower>();
-        if (deliveryPower == null || deliveryPower.GetQueuedCards().Count == 0)
+
+        int deliverCount = System.Math.Min(base.DynamicVars["DeliveredCards"].IntValue, deliveryPower?.GetQueuedCards().Count ?? 0);
+        for (int i = 0; i < deliverCount; i++)
+        {
+            if (deliveryPower == null || !await deliveryPower.DeliverLatestNow())
+            {
+                break;
+            }
+        }
+
+        int handCount = base.Owner.PlayerCombatState?.Hand.Cards.Count ?? 0;
+        int sendCount = System.Math.Min(base.DynamicVars.Cards.IntValue, handCount);
+        if (sendCount <= 0)
         {
             return;
         }
 
-        // 升级后由玩家选择要立即送达的牌；未升级时随机送达一张。
-        if (base.IsUpgraded)
+        List<CardModel> selectedCards = (await CardSelectCmd.FromHand(
+            context: choiceContext,
+            player: base.Owner,
+            prefs: new CardSelectorPrefs(new LocString("cards", "QUICK_DISPATCH.sendPrompt"), sendCount),
+            filter: null,
+            source: this)).ToList();
+
+        if (selectedCards.Count == 0)
         {
-            await deliveryPower.DeliverChosen(choiceContext, this);
+            return;
         }
-        else
+
+        deliveryPower ??= await PowerCmd.Apply<DeliveryPower>(base.Owner.Creature, 1m, base.Owner.Creature, this);
+        if (deliveryPower == null)
         {
-            await deliveryPower.DeliverRandom(choiceContext, this);
+            return;
+        }
+
+        foreach (CardModel selectedCard in selectedCards)
+        {
+            await CardCmd.Exhaust(choiceContext, selectedCard);
+            await deliveryPower.EnqueueCard(selectedCard);
         }
     }
 
-    // 升级本身不改数值，差异体现在改为手动选择送达目标。
     protected override void OnUpgrade()
     {
+        base.DynamicVars.Cards.UpgradeValueBy(1m);
+        base.DynamicVars["DeliveredCards"].UpgradeValueBy(1m);
     }
 }
