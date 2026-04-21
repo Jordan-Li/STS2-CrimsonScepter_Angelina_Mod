@@ -96,7 +96,7 @@
 
   "CRIMSONSCEPTER_ANGELINA_MOD-STAGGER_POWER.title": "Stagger",
   "CRIMSONSCEPTER_ANGELINA_MOD-STAGGER_POWER.description": "Take 10% more damage. Remove at end of turn.",
-  "CRIMSONSCEPTER_ANGELINA_MOD-STAGGER_POWER.smartDescription": "Take 10% more damage. Remove at end of turn.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-STAGGER_POWER.smartDescription": "Take {Percent}% more damage. Remove at end of turn.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-SPECIAL_GRAVITY_MODULE_POWER.title": "Special Gravity Module",
   "CRIMSONSCEPTER_ANGELINA_MOD-SPECIAL_GRAVITY_MODULE_POWER.description": "Whenever you play an [gold]Attack[/gold], if its target does not have [gold]Flight[/gold], give it Flight. Whenever you play a card, enemies with Flight take 2 damage.",

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Abstracts;
 using MegaCrit.Sts2.Core.Combat;
@@ -6,6 +7,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -17,11 +19,20 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Powers;
 /// </summary>
 public sealed class StaggerPower : AngelinaPower
 {
+    private const string PercentKey = "Percent";
+
     public override PowerType Type => PowerType.Debuff;
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
     public override bool ShouldScaleInMultiplayer => false;
+
+    public override int DisplayAmount => base.Amount * 10;
+
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new DynamicVar(PercentKey, 10m)
+    ];
 
     // 迟滞会提高目标承受的伤害倍率
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
@@ -40,6 +51,22 @@ public sealed class StaggerPower : AngelinaPower
         return Task.CompletedTask;
     }
 
+    public override Task AfterApplied(Creature? applier, CardModel? cardSource)
+    {
+        RefreshDisplay();
+        return Task.CompletedTask;
+    }
+
+    public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    {
+        if (power == this)
+        {
+            RefreshDisplay();
+        }
+
+        return Task.CompletedTask;
+    }
+
     // 到拥有者自己回合结束时移除
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
@@ -47,5 +74,11 @@ public sealed class StaggerPower : AngelinaPower
         {
             await PowerCmd.Remove(this);
         }
+    }
+
+    private void RefreshDisplay()
+    {
+        base.DynamicVars[PercentKey].BaseValue = base.Amount * 10m;
+        InvokeDisplayAmountChanged();
     }
 }
