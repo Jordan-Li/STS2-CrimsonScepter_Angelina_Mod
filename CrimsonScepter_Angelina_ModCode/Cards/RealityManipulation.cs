@@ -55,6 +55,6 @@ public sealed class RealityManipulation : AngelinaCard
     // 升级后每次触发获得的格挡值 +1。
     protected override void OnUpgrade()
     {
-        base.DynamicVars["RealityManipulationPower"].UpgradeValueBy(1m);
+        EnergyCost.SetCustomBaseCost(0);
     }
 }

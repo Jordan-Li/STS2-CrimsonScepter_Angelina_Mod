@@ -19,8 +19,8 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 /// 费用：0
 /// 稀有度：普通
 /// 卡牌类型：技能
-/// 效果：获得5点失衡。获得1层临时飞行。获得8点法术格挡。
-/// 升级后效果：获得5点失衡。获得1层临时飞行。获得11点法术格挡。
+/// 效果：获得8点失衡。获得1层临时飞行。获得8点法术格挡。
+/// 升级后效果：获得8点失衡。获得1层临时飞行。获得11点法术格挡。
 /// </summary>
 public sealed class EmergencyTakeoff : AngelinaCard
 {
@@ -46,7 +46,7 @@ public sealed class EmergencyTakeoff : AngelinaCard
     // 3. 法术格挡
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<ImbalancePower>(5m),
+        new PowerVar<ImbalancePower>(8m),
         new PowerVar<TemporaryFlyPower>(1m),
         new BlockVar(8m, ValueProp.Unpowered | ValueProp.Move),
         new CalculationBaseVar(8m),
