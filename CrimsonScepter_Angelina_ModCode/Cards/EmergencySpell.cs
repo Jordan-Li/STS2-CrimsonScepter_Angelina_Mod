@@ -18,7 +18,7 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 /// 费用：0
 /// 稀有度：罕见
 /// 卡牌类型：技能
-/// 效果：向弃牌堆中加入1张眩晕。获得1点能量。抽1张牌。
+/// 效果：向弃牌堆中加入1张眩晕。获得1点能量。抽2张牌。
 /// 升级后效果：向弃牌堆中加入1张眩晕。获得2点能量。抽2张牌。
 /// </summary>
 public sealed class EmergencySpell : AngelinaCard
@@ -38,7 +38,7 @@ public sealed class EmergencySpell : AngelinaCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new EnergyVar(1),
-        new CardsVar(1)
+        new CardsVar(2)
     ];
 
     // 初始化卡牌的基础信息：0费、技能、罕见、目标为自己。
@@ -63,10 +63,9 @@ public sealed class EmergencySpell : AngelinaCard
         await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
     }
 
-    // 升级后同时提高获得的能量与抽牌数量。
+    // 升级后只提高获得的能量。
     protected override void OnUpgrade()
     {
         base.DynamicVars.Energy.UpgradeValueBy(1m);
-        base.DynamicVars.Cards.UpgradeValueBy(1);
     }
 }

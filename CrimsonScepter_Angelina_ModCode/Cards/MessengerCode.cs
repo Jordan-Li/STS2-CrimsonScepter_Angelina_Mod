@@ -15,7 +15,7 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 /// 稀有度：稀有
 /// 卡牌类型：能力
 /// 效果：每回合额外抽1张牌，然后寄送1张牌。
-/// 升级后效果：固有。每回合额外抽1张牌，然后寄送3张牌。
+/// 升级后效果：固有。每回合额外抽1张牌，然后寄送1张牌。
 /// </summary>
 public sealed class MessengerCode : AngelinaCard
 {
@@ -49,12 +49,9 @@ public sealed class MessengerCode : AngelinaCard
     // 每回合额外抽1张牌，并在抽牌后额外寄送若干张牌。
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 升级前每回合寄送1张，升级后每回合寄送3张。
-        decimal deliveryCount = IsUpgraded ? 3m : 1m;
-
         // 先播放施法动作，再挂上持续 Power。
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<MessengerCodePower>(base.Owner.Creature, deliveryCount, base.Owner.Creature, this);
+        await PowerCmd.Apply<MessengerCodePower>(base.Owner.Creature, 1m, base.Owner.Creature, this);
     }
 
     // 升级后为这张能力牌添加固有。

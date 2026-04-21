@@ -20,6 +20,11 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-PORTABLE_STARGATE.description": "当你[gold]寄送[/gold]牌时，抽{Cards}张牌。随后休眠{Turns}回合。",
   "CRIMSONSCEPTER_ANGELINA_MOD-PORTABLE_STARGATE.flavor": "你不会希望对面送来什么东西的……",
 
+  "CRIMSONSCEPTER_ANGELINA_MOD-EXPRESS_LABEL.title": "速递标签",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EXPRESS_LABEL.description": "获得时，为{Cards}张牌附魔[gold]速递[/gold]。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EXPRESS_LABEL.selectionScreenPrompt": "选择至多2张牌以获得速递",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EXPRESS_LABEL.flavor": "贴好标签之后，剩下的事情就交给风。",
+
   "CRIMSONSCEPTER_ANGELINA_MOD-SECRET_CRIMSON_SCEPTER.title": "秘杖·绯红权杖",
   "CRIMSONSCEPTER_ANGELINA_MOD-SECRET_CRIMSON_SCEPTER.description": "当敌方角色从[gold]浮空[/gold]状态因受击脱离[gold]浮空[/gold]时，施加{ImbalancePower}点[gold]失衡[/gold]。每回合开始时，给予所有单位1层临时飞行。",
   "CRIMSONSCEPTER_ANGELINA_MOD-SECRET_CRIMSON_SCEPTER.flavor": "绯红，支配天空的权柄，承载着希望与未来的星之彼端。",

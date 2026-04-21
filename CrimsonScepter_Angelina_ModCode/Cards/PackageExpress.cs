@@ -19,15 +19,15 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 /// 费用：1
 /// 稀有度：罕见
 /// 卡牌类型：技能
-/// 效果：寄送1张牌。抽2张牌。
-/// 升级后效果：寄送1张牌。抽3张牌。
+/// 效果：寄送1张牌。抽3张牌。
+/// 升级后效果：寄送1张牌。抽4张牌。
 /// </summary>
 public sealed class PackageExpress : AngelinaCard
 {
-    // 动态变量：抽牌数，初始为2
+    // 动态变量：抽牌数，初始为3
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CardsVar(2)
+        new CardsVar(3)
     ];
 
     // 额外悬浮说明：寄送
@@ -76,7 +76,7 @@ public sealed class PackageExpress : AngelinaCard
         await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
     }
 
-    // 升级后：抽牌数 +1（2 -> 3）
+    // 升级后：抽牌数 +1（3 -> 4）
     protected override void OnUpgrade()
     {
         base.DynamicVars.Cards.UpgradeValueBy(1m);

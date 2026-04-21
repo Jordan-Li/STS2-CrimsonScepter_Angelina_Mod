@@ -33,11 +33,11 @@ public abstract class AngelinaCard(int cost, CardType type, CardRarity rarity, T
     {
         get
         {
-            if (Exists(BetaSmallPortraitPath))
-                return BetaSmallPortraitPath;
-
             if (Exists(SmallPortraitPath))
                 return SmallPortraitPath;
+
+            if (Exists(BetaSmallPortraitPath))
+                return BetaSmallPortraitPath;
 
             return FallbackPortrait.CardImagePath();
         }
@@ -47,18 +47,18 @@ public abstract class AngelinaCard(int cost, CardType type, CardRarity rarity, T
     {
         get
         {
-            if (Exists(BetaBigPortraitPath))
-                return BetaBigPortraitPath;
-
-            // 没有大图时，允许直接拿 beta 小图顶上
-            if (Exists(BetaSmallPortraitPath))
-                return BetaSmallPortraitPath;
-
             if (Exists(BigPortraitFilePath))
                 return BigPortraitFilePath;
 
             if (Exists(SmallPortraitPath))
                 return SmallPortraitPath;
+
+            if (Exists(BetaBigPortraitPath))
+                return BetaBigPortraitPath;
+
+            // 没有 beta 大图时，允许直接拿 beta 小图顶上
+            if (Exists(BetaSmallPortraitPath))
+                return BetaSmallPortraitPath;
 
             return FallbackPortrait.CardImagePath();
         }

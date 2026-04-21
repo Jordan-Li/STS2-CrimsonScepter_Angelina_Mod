@@ -1,5 +1,10 @@
 {
   "DELIVERED_UPGRADE_ENCHANTMENT.title": "送达升级",
   "DELIVERED_UPGRADE_ENCHANTMENT.description": "当此牌因[gold]送达[/gold]回到手牌时，使其在本场战斗中获得[gold]升级[/gold]，然后移除此效果。",
-  "DELIVERED_UPGRADE_ENCHANTMENT.extraCardText": "[gold]送达[/gold]时，本场战斗中升级"
+  "DELIVERED_UPGRADE_ENCHANTMENT.extraCardText": "[gold]送达[/gold]时，本场战斗中升级",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-EXPRESS_ENCHANTMENT.title": "速递",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EXPRESS_ENCHANTMENT.description": "打出此牌时，[gold]寄送[/gold]1张牌。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EXPRESS_ENCHANTMENT.extraCardText": "打出时，[gold]寄送[/gold]1张牌",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EXPRESS_ENCHANTMENT.sendPrompt": "选择要寄送的牌"
 }

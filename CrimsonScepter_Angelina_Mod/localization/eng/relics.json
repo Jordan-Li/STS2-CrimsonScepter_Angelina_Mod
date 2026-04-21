@@ -20,6 +20,11 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-PORTABLE_STARGATE.description": "Whenever you [gold]Deliver[/gold] a card, draw {Cards} card(s). Then go dormant for {Turns} turns.",
   "CRIMSONSCEPTER_ANGELINA_MOD-PORTABLE_STARGATE.flavor": "You really would not want to know what might come through it...",
 
+  "CRIMSONSCEPTER_ANGELINA_MOD-EXPRESS_LABEL.title": "Express Label",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EXPRESS_LABEL.description": "When obtained, apply [gold]Express[/gold] to {Cards} card(s).",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EXPRESS_LABEL.selectionScreenPrompt": "Choose up to 2 cards to gain Express",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EXPRESS_LABEL.flavor": "Stamped, sorted, and gone before anyone can ask questions.",
+
   "CRIMSONSCEPTER_ANGELINA_MOD-SECRET_CRIMSON_SCEPTER.title": "Secret Crimson Scepter",
   "CRIMSONSCEPTER_ANGELINA_MOD-SECRET_CRIMSON_SCEPTER.description": "Whenever an enemy loses [gold]Airborne[/gold], apply 15 [gold]Imbalance[/gold] to it. At the start of each turn, give all units 1 [gold]Temporary Flight[/gold].",
   "CRIMSONSCEPTER_ANGELINA_MOD-SECRET_CRIMSON_SCEPTER.flavor": "Crimson, the authority over the skies, bearing hope and the starlit future beyond.",

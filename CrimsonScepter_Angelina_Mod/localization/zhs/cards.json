@@ -191,9 +191,16 @@
 
   "CRIMSONSCEPTER_ANGELINA_MOD-SIRACUSAN_DELIVERY.title": "叙拉古式运送",
   "CRIMSONSCEPTER_ANGELINA_MOD-SIRACUSAN_DELIVERY.description": "抽{Cards:diff()}张牌。将1张[gold]无主快递[/gold]加入弃牌堆。",
-  
+
   "CRIMSONSCEPTER_ANGELINA_MOD-UNCLAIMED_PARCEL.title": "无主快递",
   "CRIMSONSCEPTER_ANGELINA_MOD-UNCLAIMED_PARCEL.description": "[gold]送达[/gold]：寄送此牌。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-MOMENTUM.title": "乘势",
+  "CRIMSONSCEPTER_ANGELINA_MOD-MOMENTUM.description": "所有单位每有1层[gold]飞行[/gold]，抽1张牌。造成{Damage:diff()}点伤害。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-LEVERAGE_DELIVERY.title": "借势投送",
+  "CRIMSONSCEPTER_ANGELINA_MOD-LEVERAGE_DELIVERY.description": "[gold]寄送[/gold]1张牌。每有1张牌正在被[gold]寄送[/gold]，对敌方全体造成{Damage:diff()}点伤害一次。",
+  "LEVERAGE_DELIVERY.selectPrompt": "选择1张要寄送的牌",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE.title": "湮灭粒子",
   "CRIMSONSCEPTER_ANGELINA_MOD-ANNIHILATION_PARTICLE.description": "对所有敌方造成{CalculatedDamage:diff()}点[gold]法术[/gold]伤害。如果有目标被[gold]斩杀[/gold]，则这场战斗不再有卡牌奖励。"

@@ -20,7 +20,7 @@ public sealed class FastChargeModePower : AngelinaPower
 {
     public override PowerType Type => PowerType.Buff;
 
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
 
     public override bool ShouldScaleInMultiplayer => false;
 
@@ -47,7 +47,13 @@ public sealed class FastChargeModePower : AngelinaPower
     {
         if (side == base.Owner.Side)
         {
-            await PowerCmd.Remove(this);
+            if (base.Amount <= 1m)
+            {
+                await PowerCmd.Remove(this);
+                return;
+            }
+
+            await PowerCmd.Apply<FastChargeModePower>(base.Owner, -1m, base.Owner, null);
         }
     }
 }

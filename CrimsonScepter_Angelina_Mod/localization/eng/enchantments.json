@@ -1,5 +1,10 @@
 {
   "DELIVERED_UPGRADE_ENCHANTMENT.title": "Delivered Upgrade",
   "DELIVERED_UPGRADE_ENCHANTMENT.description": "When this card returns to your hand via [gold]Delivered[/gold], it gains an [gold]upgrade[/gold] this combat, then remove this effect.",
-  "DELIVERED_UPGRADE_ENCHANTMENT.extraCardText": "On [gold]Delivered[/gold], upgrade this combat"
+  "DELIVERED_UPGRADE_ENCHANTMENT.extraCardText": "On [gold]Delivered[/gold], upgrade this combat",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-EXPRESS_ENCHANTMENT.title": "Express",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EXPRESS_ENCHANTMENT.description": "When this card is played, [gold]Send[/gold] 1 card.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-EXPRESS_ENCHANTMENT.extraCardText": "On play, [gold]Send[/gold] 1 card",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CEXPRESS_ENCHANTMENT.sendPrompt": "Choose a card to send"
 }
