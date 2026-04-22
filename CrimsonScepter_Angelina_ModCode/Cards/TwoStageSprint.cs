@@ -15,7 +15,7 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 
 /// <summary>
 /// 费用：1
-/// 稀有度：罕见
+/// 稀有度：普通
 /// 卡牌类型：技能
 /// 效果：获得8点格挡。若本场战斗中打出过同名牌，获得1层飞行。
 /// 升级后效果：获得12点格挡。若本场战斗中打出过同名牌，获得2层飞行。
@@ -45,7 +45,7 @@ public sealed class TwoStageSprint : AngelinaCard
     private bool HasBeenPlayedThisCombat => GetTimesPlayedThisCombat() >= 1;
 
     public TwoStageSprint()
-        : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+        : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
     }
 
