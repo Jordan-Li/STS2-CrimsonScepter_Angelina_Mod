@@ -18,5 +18,23 @@ public partial class MainFile : Node
         Harmony harmony = new(ModId);
 
         harmony.PatchAll();
+        LogStartupDiagnostics();
+    }
+
+    private static void LogStartupDiagnostics()
+    {
+        string assemblyVersion = typeof(MainFile).Assembly.GetName().Version?.ToString() ?? "unknown";
+        string assemblyLocation = typeof(MainFile).Assembly.Location;
+        string assemblyTimestamp = System.IO.File.Exists(assemblyLocation)
+            ? File.GetLastWriteTime(assemblyLocation).ToString("yyyy-MM-dd HH:mm:ss")
+            : "unknown";
+
+        const string restSiteScenePath = $"{ResPath}/scenes/rest_site/characters/angelina_rest_site.tscn";
+        const string merchantScenePath = $"{ResPath}/scenes/merchant/characters/angelina_merchant.tscn";
+
+        Logger.Info(
+            $"[Startup] version={assemblyVersion} assemblyTime={assemblyTimestamp} " +
+            $"restSiteScene={ResourceLoader.Exists(restSiteScenePath)} " +
+            $"merchantScene={ResourceLoader.Exists(merchantScenePath)}");
     }
 }

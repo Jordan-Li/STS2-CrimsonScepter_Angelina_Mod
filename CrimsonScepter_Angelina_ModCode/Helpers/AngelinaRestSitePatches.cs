@@ -3,6 +3,7 @@ using System.Linq;
 using CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Character;
 using Godot;
 using HarmonyLib;
+using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Helpers;
@@ -12,6 +13,53 @@ using MegaCrit.Sts2.Core.Nodes.RestSite;
 using MegaCrit.Sts2.Core.Random;
 
 namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Helpers;
+
+[HarmonyPatch(typeof(NRestSiteCharacter), nameof(NRestSiteCharacter.Create))]
+internal static class AngelinaRestSiteCreatePatch
+{
+    private static readonly ModelId AngelinaCharacterId = ModelDb.Character<Angelina>().Id;
+
+    private static readonly System.Reflection.FieldInfo PlayerBackingField =
+        AccessTools.Field(typeof(NRestSiteCharacter), "<Player>k__BackingField")!;
+
+    private static readonly System.Reflection.FieldInfo CharacterIndexField =
+        AccessTools.Field(typeof(NRestSiteCharacter), "_characterIndex")!;
+
+    private static bool Prefix(Player player, int characterIndex, ref NRestSiteCharacter __result)
+    {
+        if (player.Character?.Id != AngelinaCharacterId)
+        {
+            return true;
+        }
+
+        Node2D sceneRoot =
+            PreloadManager.Cache.GetScene(player.Character.RestSiteAnimPath).Instantiate<Node2D>(PackedScene.GenEditState.Disabled);
+
+        var restSiteCharacter = new NRestSiteCharacter
+        {
+            Name = sceneRoot.Name,
+            Position = sceneRoot.Position,
+            Rotation = sceneRoot.Rotation,
+            Scale = sceneRoot.Scale
+        };
+
+        // 原版这里会直接要求 NRestSiteCharacter，先把纯场景的子节点搬进去再继续后续初始化。
+        while (sceneRoot.GetChildCount() > 0)
+        {
+            Node child = sceneRoot.GetChild(0);
+            sceneRoot.RemoveChild(child);
+            restSiteCharacter.AddChild(child);
+            child.Owner = restSiteCharacter;
+        }
+
+        sceneRoot.Free();
+
+        PlayerBackingField.SetValue(restSiteCharacter, player);
+        CharacterIndexField.SetValue(restSiteCharacter, characterIndex);
+        __result = restSiteCharacter;
+        return false;
+    }
+}
 
 [HarmonyPatch(typeof(NRestSiteCharacter), nameof(NRestSiteCharacter._Ready))]
 internal static class AngelinaRestSiteSelectionReticlePatch

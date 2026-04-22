@@ -1,12 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://chonqx0cx551v"]
+[gd_scene load_steps=2 format=3 uid="uid://chonqx0cx551v"]
 
-[ext_resource type="Script" uid="uid://b7sqasnfofuhv" path="res://CrimsonScepter_Angelina_ModCode/Scripts/AngelinaRestSiteCharacter.cs" id="1_37i0h"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://exy61odq3eh2" path="res://CrimsonScepter_Angelina_Mod/spine_data/build_char_291_aglina_rest.tres" id="1_42ll3"]
 
 [node name="AngelinaRestSite" type="Node2D"]
 position = Vector2(-2, 42)
 scale = Vector2(0.760006, 0.760006)
-script = ExtResource("1_37i0h")
 
 [node name="SpineSprite" type="SpineSprite" parent="."]
 skeleton_data_res = ExtResource("1_42ll3")
