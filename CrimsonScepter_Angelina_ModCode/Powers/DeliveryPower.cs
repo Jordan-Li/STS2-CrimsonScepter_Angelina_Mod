@@ -97,6 +97,35 @@ public sealed class DeliveryPower : AngelinaPower
     }
 
     /// <summary>
+    /// 把寄送队列中的旧牌引用替换成变化后的新牌，避免队列残留已失效对象。
+    /// 这里不再重复走一次安检，因为这张牌本来就已经处于寄送流程中。
+    /// </summary>
+    public async Task ReplaceQueuedCard(CardModel originalCard, CardModel replacementCard)
+    {
+        Data data = GetInternalData<Data>();
+        int originalIndex = data.QueuedCards.IndexOf(originalCard);
+
+        if (originalIndex >= 0)
+        {
+            data.QueuedCards[originalIndex] = replacementCard;
+
+            for (int i = data.QueuedCards.Count - 1; i >= 0; i--)
+            {
+                if (i != originalIndex && data.QueuedCards[i] == replacementCard)
+                {
+                    data.QueuedCards.RemoveAt(i);
+                }
+            }
+        }
+        else if (!data.QueuedCards.Contains(replacementCard))
+        {
+            data.QueuedCards.Add(replacementCard);
+        }
+
+        await RefreshAfterQueueChanged();
+    }
+
+    /// <summary>
     /// 返回当前仍有效的寄送牌，只保留还在消耗牌堆中的牌。
     /// </summary>
     public IReadOnlyList<CardModel> GetQueuedCards()
@@ -233,7 +262,7 @@ public sealed class DeliveryPower : AngelinaPower
     private void CleanupQueue()
     {
         Data data = GetInternalData<Data>();
-        data.QueuedCards.RemoveAll(card => card == null || card.Pile?.Type != PileType.Exhaust);
+        data.QueuedCards.RemoveAll(card => card == null || card.HasBeenRemovedFromState || card.Pile?.Type != PileType.Exhaust);
     }
 
     /// <summary>

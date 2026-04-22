@@ -4,16 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Abstracts;
 using CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Helpers;
+using Godot;
 using CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
+using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
@@ -28,6 +33,8 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 /// </summary>
 public sealed class PrismRay : AngelinaCard
 {
+    private const string PreviewRootName = "AngelinaPrismRayPreviewRoot";
+
     public override bool IsSpell => true;
 
     // 额外悬浮说明：
@@ -88,25 +95,27 @@ public sealed class PrismRay : AngelinaCard
             return;
         }
 
-        List<CardModel> queuedCards = deliveryPower.GetQueuedCards().ToList();
-        if (queuedCards.Count == 0)
+        List<CardModel> transformableCards = deliveryPower.GetQueuedCards()
+            .Where(card => card.Pile?.Type == PileType.Exhaust && card.IsTransformable && CanTransformToRandom(card))
+            .ToList();
+
+        if (transformableCards.Count == 0)
         {
             return;
         }
 
+        Node2D? previewRoot = PreparePreviewRoot();
+
         // 逐张处理当前寄送队列中的牌。
-        foreach (CardModel queuedCard in queuedCards)
+        for (int i = 0; i < transformableCards.Count; i++)
         {
-            if (queuedCard.Pile?.Type != PileType.Exhaust || !queuedCard.IsTransformable)
-            {
-                continue;
-            }
+            CardModel queuedCard = transformableCards[i];
 
             // 将寄送中的牌变化为一张随机牌。
             CardPileAddResult result = await CardCmd.TransformToRandom(
                 queuedCard,
                 base.Owner.RunState.Rng.Niche,
-                CardPreviewStyle.HorizontalLayout);
+                CardPreviewStyle.None);
 
             CardModel transformedCard = result.cardAdded;
 
@@ -116,8 +125,71 @@ public sealed class PrismRay : AngelinaCard
                 CardCmd.Upgrade(transformedCard, CardPreviewStyle.None);
             }
 
-            // 把寄送队列中当前选中的牌更新为变化后的牌。
-            await deliveryPower.EnqueueCard(transformedCard);
+            // 寄送区的变化演出单独放到战斗 VFX 层，避免复用全局预览容器时反复重排位置。
+            ShowTransformPreview(previewRoot, queuedCard, transformedCard, i, transformableCards.Count);
+
+            // 直接替换寄送队列中的旧牌引用，避免残留已被变化移除的旧对象。
+            await deliveryPower.ReplaceQueuedCard(queuedCard, transformedCard);
         }
+    }
+
+    private static Node2D? PreparePreviewRoot()
+    {
+        Control? combatVfxContainer = NCombatRoom.Instance?.CombatVfxContainer;
+        if (combatVfxContainer == null)
+        {
+            return null;
+        }
+
+        foreach (Node child in combatVfxContainer.GetChildren())
+        {
+            if (child.Name != PreviewRootName)
+            {
+                continue;
+            }
+
+            child.QueueFree();
+        }
+
+        Node2D previewRoot = new()
+        {
+            Name = PreviewRootName
+        };
+
+        previewRoot.Position = combatVfxContainer.Size / 2f + Vector2.Down * 50f;
+        combatVfxContainer.AddChildSafely(previewRoot);
+
+        return previewRoot;
+    }
+
+    private static bool CanTransformToRandom(CardModel card)
+    {
+        try
+        {
+            return CardFactory.GetDefaultTransformationOptions(card, card.CombatState != null).Any();
+        }
+        catch (InvalidOperationException)
+        {
+            return false;
+        }
+    }
+
+    private static void ShowTransformPreview(Node2D? previewRoot, CardModel originalCard, CardModel transformedCard, int index, int totalCount)
+    {
+        if (previewRoot == null)
+        {
+            return;
+        }
+
+        NCardTransformVfx? transformVfx = NCardTransformVfx.Create(originalCard, transformedCard, null);
+        if (transformVfx == null)
+        {
+            return;
+        }
+
+        float startOffset = -((totalCount - 1) * 325f) * 0.5f;
+        transformVfx.Position = Vector2.Right * (startOffset + 325f * index);
+
+        previewRoot.AddChildSafely(transformVfx);
     }
 }

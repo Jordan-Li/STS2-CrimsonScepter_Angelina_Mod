@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Abstracts;
+using CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Helpers;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -12,6 +13,8 @@ using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Powers;
@@ -191,6 +194,21 @@ public sealed class ImbalancePower : AngelinaPower
                 PlayerCmd.EndTurn(base.Owner.Player, canBackOut: false);
             }
 
+            return;
+        }
+
+        // 寄生惧魔的幻象复活依赖自身的 REVIVE_MOVE。
+        // 这里不能走原版 CreatureCmd.Stun，但可以在存活状态下安全地强制插入一个 STUNNED move，
+        // 并保留它当前动作作为后续恢复点。
+        if (base.Owner.Monster is Parafright)
+        {
+            IllusionPower? illusionPower = base.Owner.GetPower<IllusionPower>();
+            if (illusionPower?.IsReviving == true)
+            {
+                return;
+            }
+
+            await StunHelper.ForceStun(base.Owner);
             return;
         }
 
