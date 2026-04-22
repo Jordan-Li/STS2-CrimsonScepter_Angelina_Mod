@@ -106,7 +106,7 @@ public sealed class PrismRay : AngelinaCard
             CardPileAddResult result = await CardCmd.TransformToRandom(
                 queuedCard,
                 base.Owner.RunState.Rng.Niche,
-                CardPreviewStyle.HorizontalLayout);
+                CardPreviewStyle.None);
 
             CardModel transformedCard = result.cardAdded;
 
@@ -116,8 +116,8 @@ public sealed class PrismRay : AngelinaCard
                 CardCmd.Upgrade(transformedCard, CardPreviewStyle.None);
             }
 
-            // 把寄送队列中当前选中的牌更新为变化后的牌。
-            await deliveryPower.EnqueueCard(transformedCard);
+            // 直接替换寄送队列中的旧牌引用，避免残留已被变化移除的旧对象。
+            await deliveryPower.ReplaceQueuedCard(queuedCard, transformedCard);
         }
     }
 }
