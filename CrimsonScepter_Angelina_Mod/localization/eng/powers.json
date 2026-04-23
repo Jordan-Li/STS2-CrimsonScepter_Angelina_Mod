@@ -60,6 +60,9 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-CHAIN_TECHNIQUE_TEMPORARY_FOCUS_POWER.title": "Chain Technique",
   "CRIMSONSCEPTER_ANGELINA_MOD-CHAIN_TECHNIQUE_TEMPORARY_FOCUS_POWER.description": "Gain [gold]Focus[/gold] this turn. Lose it at end of turn.",
   "CRIMSONSCEPTER_ANGELINA_MOD-CHAIN_TECHNIQUE_TEMPORARY_FOCUS_POWER.smartDescription": "Gain {Amount} [gold]Focus[/gold] this turn. Lose it at end of turn.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-TIME_CAPSULE_POWER.title": "Time Capsule",
+  "CRIMSONSCEPTER_ANGELINA_MOD-TIME_CAPSULE_POWER.description": "Cards [gold]Sent[/gold] by [gold]Time Capsule[/gold] cost 1 less the next time they are played after being [gold]Delivered[/gold].",
+  "CRIMSONSCEPTER_ANGELINA_MOD-TIME_CAPSULE_POWER.smartDescription": "{TrackedCount} card(s) will cost 1 less the next time they are played after being [gold]Delivered[/gold].",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-PART_TIME_JOB_POWER.title": "Part-Time Job",
   "CRIMSONSCEPTER_ANGELINA_MOD-PART_TIME_JOB_POWER.description": "At end of turn, if you did not play an Attack this turn, heal.",

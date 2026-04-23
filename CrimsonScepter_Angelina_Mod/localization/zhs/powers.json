@@ -47,6 +47,9 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-CHAIN_TECHNIQUE_TEMPORARY_FOCUS_POWER.title": "连锁技艺",
   "CRIMSONSCEPTER_ANGELINA_MOD-CHAIN_TECHNIQUE_TEMPORARY_FOCUS_POWER.description": "本回合内，获得[gold]集中[/gold]，回合结束时失去。",
   "CRIMSONSCEPTER_ANGELINA_MOD-CHAIN_TECHNIQUE_TEMPORARY_FOCUS_POWER.smartDescription": "本回合内，获得{Amount}点[gold]集中[/gold]，回合结束时失去。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-TIME_CAPSULE_POWER.title": "时光胶囊",
+  "CRIMSONSCEPTER_ANGELINA_MOD-TIME_CAPSULE_POWER.description": "被[gold]时光胶囊[/gold]寄送的牌在[gold]送达[/gold]时，下次打出前耗能-1。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-TIME_CAPSULE_POWER.smartDescription": "还有{TrackedCount}张牌会在[gold]送达[/gold]时，下次打出前耗能-1。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-PART_TIME_JOB_POWER.title": "兼职工作",
   "CRIMSONSCEPTER_ANGELINA_MOD-PART_TIME_JOB_POWER.description": "回合结束时，若你在本回合没有打出过攻击牌，恢复生命值。",

@@ -183,6 +183,10 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-CHAIN_TECHNIQUE.title": "Chain Technique",
   "CRIMSONSCEPTER_ANGELINA_MOD-CHAIN_TECHNIQUE.description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold]. Gain {ChainTechniqueTemporaryFocusPower:diff()} [gold]Temporary Focus[/gold]. If this card causes the target to become [gold]Weightless[/gold], gain {FocusPower:diff()} [gold]Focus[/gold] instead.",
 
+  "CRIMSONSCEPTER_ANGELINA_MOD-TIME_CAPSULE.title": "Time Capsule",
+  "CRIMSONSCEPTER_ANGELINA_MOD-TIME_CAPSULE.description": "[gold]Send[/gold] {Cards:diff()} cards. When they are [gold]Delivered[/gold], they cost 1 less until played.",
+  "TIME_CAPSULE.selectPrompt": "Choose cards to send",
+
   "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.title": "Future Observation",
   "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.description": "When played, choose 5 cards in your deck to appear on top of your draw pile next combat.",
 
