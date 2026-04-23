@@ -117,6 +117,9 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-EMERGENCY_SPELL.title": "Emergency Spell",
   "CRIMSONSCEPTER_ANGELINA_MOD-EMERGENCY_SPELL.description": "Shuffle 1 [gold]Dazed[/gold] into your discard pile. Gain {Energy:energyIcons()}. Draw {Cards:diff()} card(s).",
 
+  "CRIMSONSCEPTER_ANGELINA_MOD-CHANT.title": "Chant",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CHANT.description": "If you did not lose HP this turn, gain {ChantTemporaryFocusNextTurnPower:diff()} [gold]Focus[/gold] next turn.",
+
   "CRIMSONSCEPTER_ANGELINA_MOD-COURIER_TRAINING.title": "Courier Training",
   "CRIMSONSCEPTER_ANGELINA_MOD-COURIER_TRAINING.description": "At the start of each turn, gain {CourierTrainingPower:diff()} [gold]Fly[/gold].",
 
@@ -178,7 +181,11 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-SECURITY_CHECK.description": "Whenever you [gold]Deliver[/gold] a Status or Curse, [gold]Exhaust[/gold] it and apply {SecurityCheckPower} [gold]Imbalance[/gold] to all enemies.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-CHAIN_TECHNIQUE.title": "Chain Technique",
-  "CRIMSONSCEPTER_ANGELINA_MOD-CHAIN_TECHNIQUE.description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold]. Gain {ChantTemporaryFocusNextTurnPower:diff()} [gold]Temporary Focus[/gold]. If this card causes the target to become [gold]Weightless[/gold], gain {FocusPower:diff()} [gold]Focus[/gold] instead.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CHAIN_TECHNIQUE.description": "Apply {ImbalancePower:diff()} [gold]Imbalance[/gold]. Gain {ChainTechniqueTemporaryFocusPower:diff()} [gold]Temporary Focus[/gold]. If this card causes the target to become [gold]Weightless[/gold], gain {FocusPower:diff()} [gold]Focus[/gold] instead.",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-TIME_CAPSULE.title": "Time Capsule",
+  "CRIMSONSCEPTER_ANGELINA_MOD-TIME_CAPSULE.description": "[gold]Send[/gold] {Cards:diff()} cards. When they are [gold]Delivered[/gold], they cost 1 less until played.",
+  "TIME_CAPSULE.selectPrompt": "Choose cards to send",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.title": "Future Observation",
   "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.description": "When played, choose 5 cards in your deck to appear on top of your draw pile next combat.",

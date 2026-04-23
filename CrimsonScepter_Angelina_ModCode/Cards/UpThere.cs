@@ -20,7 +20,7 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 /// <summary>
 /// 卡牌名：在上面！
 /// 费用：1
-/// 稀有度：罕见
+/// 稀有度：普通
 /// 卡牌类型：技能
 /// 效果：保留。获得7点法术格挡。若你处于浮空，则对所有不处于浮空的敌方施加10点失衡。
 /// 升级后效果：保留。获得9点法术格挡。若你处于浮空，则对所有不处于浮空的敌方施加15点失衡。
@@ -68,9 +68,9 @@ public sealed class UpThere : AngelinaCard
         new PowerVar<ImbalancePower>(10m)
     ];
 
-    // 初始化卡牌的基础信息：1费、技能、罕见、目标为自己。
+    // 初始化卡牌的基础信息：1费、技能、普通、目标为自己。
     public UpThere()
-        : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+        : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
     }
 

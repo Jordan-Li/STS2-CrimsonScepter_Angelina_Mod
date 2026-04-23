@@ -212,6 +212,16 @@ public sealed class ImbalancePower : AngelinaPower
             return;
         }
 
+        // 千足虫的重组依赖自身的 DEAD_MOVE -> REATTACH_MOVE。
+        // 这里同样不能走原版 CreatureCmd.Stun，但可以在存活状态下插入一个 STUNNED move，
+        // 并显式保留当前 NextMove 作为后续恢复点。
+        if (base.Owner.Monster is DecimillipedeSegment decimillipedeSegment)
+        {
+            string? nextMoveId = decimillipedeSegment.NextMove?.Id;
+            await StunHelper.ForceStun(base.Owner, nextMoveId);
+            return;
+        }
+
         // Some enemies switch into a special dead/revive move after death.
         // Putting them into the built-in STUNNED move prevents that transition
         // if they are killed later in the same action chain, leaving them in a

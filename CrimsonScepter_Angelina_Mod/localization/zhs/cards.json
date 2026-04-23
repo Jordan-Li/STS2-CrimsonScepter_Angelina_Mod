@@ -102,7 +102,7 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-PRISM_RAY.description": "造成{CalculatedDamage:diff()}点[gold]法术[/gold]伤害。变化所有[gold]寄送[/gold]的牌{IfUpgraded:show:并升级}。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.title": "包扎带",
-  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.description": "获得{Block:diff()}点格挡。为{IfUpgraded:show:所有|1张}添加[gold]附魔[/gold]：[gold]送达[/gold]时，在本场战斗中获得升级。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BANDAGE.description": "获得{Block:diff()}点格挡。为{IfUpgraded:show:所有|1张}手牌添加[gold]附魔[/gold]：[gold]送达[/gold]时，在本场战斗中获得升级。",
   "BANDAGE.selectPrompt": "选择要添加附魔的手牌",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-UPDRAFT.title": "上升气流",
@@ -118,7 +118,7 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-EMERGENCY_SPELL.description": "向弃牌堆中加入1张[gold]眩晕[/gold]。获得{Energy:energyIcons()}。抽{Cards:diff()}张牌。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-CHANT.title": "吟唱",
-  "CRIMSONSCEPTER_ANGELINA_MOD-CHANT.description": "获得{CalculatedBlock:diff()}点[gold]法术[/gold]格挡。下回合获得{ChantTemporaryFocusNextTurnPower:diff()}点集中。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CHANT.description": "若本回合未失去生命，下回合获得{ChantTemporaryFocusNextTurnPower:diff()}点[gold]集中[/gold]。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-PART_TIME_JOB.title": "兼职工作",
   "CRIMSONSCEPTER_ANGELINA_MOD-PART_TIME_JOB.description": "回合结束时，若你在本回合没有打出过攻击牌，恢复{Heal:diff()}点生命值。",
@@ -181,7 +181,11 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-SECURITY_CHECK.description": "寄送一张状态牌或诅咒牌时，将其[gold]消耗[/gold]并对所有敌方施加{SecurityCheckPower}点[gold]失衡[/gold]。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-CHAIN_TECHNIQUE.title": "连锁技艺",
-  "CRIMSONSCEPTER_ANGELINA_MOD-CHAIN_TECHNIQUE.description": "施加{ImbalancePower:diff()}点[gold]失衡[/gold]，获得{ChantTemporaryFocusNextTurnPower:diff()}点[gold]临时集中[/gold]。若此牌使目标进入[gold]失重[/gold]，改为获得{FocusPower:diff()}点[gold]集中[/gold]。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-CHAIN_TECHNIQUE.description": "施加{ImbalancePower:diff()}点[gold]失衡[/gold]。获得{ChainTechniqueTemporaryFocusPower:diff()}点[gold]临时集中[/gold]。若此牌使目标进入[gold]失重[/gold]，改为获得{FocusPower:diff()}点[gold]集中[/gold]。",
+
+  "CRIMSONSCEPTER_ANGELINA_MOD-TIME_CAPSULE.title": "时光胶囊",
+  "CRIMSONSCEPTER_ANGELINA_MOD-TIME_CAPSULE.description": "[gold]寄送[/gold]{Cards:diff()}张牌。当这些牌[gold]送达[/gold]时，其下次打出前耗能减少1。",
+  "TIME_CAPSULE.selectPrompt": "选择要寄送的牌",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.title": "未来观测",
   "CRIMSONSCEPTER_ANGELINA_MOD-FUTURE_OBSERVATION.description": "打出时，选择5张卡组中的牌出现在你下次战斗的抽牌堆顶部。",

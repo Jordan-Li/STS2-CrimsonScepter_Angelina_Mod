@@ -33,7 +33,7 @@ public sealed class ChainTechnique : AngelinaCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<ImbalancePower>(10m),
-        new PowerVar<ChantTemporaryFocusNextTurnPower>(1m),
+        new PowerVar<ChainTechniqueTemporaryFocusPower>(1m),
         new PowerVar<FocusPower>(1m)
     ];
 
@@ -43,7 +43,7 @@ public sealed class ChainTechnique : AngelinaCard
         HoverTipFactory.FromPower<ImbalancePower>(),
         HoverTipFactory.FromPower<WeightlessPower>(),
         HoverTipFactory.FromPower<FocusPower>(),
-        HoverTipFactory.FromPower<ChantTemporaryFocusNextTurnPower>()
+        HoverTipFactory.FromPower<ChainTechniqueTemporaryFocusPower>()
     ];
 
     public ChainTechnique()
@@ -82,9 +82,9 @@ public sealed class ChainTechnique : AngelinaCard
         }
 
         // 若没有让目标进入失重，则改为获得临时集中。
-        await PowerCmd.Apply<ChantTemporaryFocusNextTurnPower>(
+        await PowerCmd.Apply<ChainTechniqueTemporaryFocusPower>(
             base.Owner.Creature,
-            base.DynamicVars["ChantTemporaryFocusNextTurnPower"].BaseValue,
+            base.DynamicVars["ChainTechniqueTemporaryFocusPower"].BaseValue,
             base.Owner.Creature,
             this
         );
@@ -95,7 +95,7 @@ public sealed class ChainTechnique : AngelinaCard
     {
         // 升级后同时提高失衡、临时集中和集中。
         base.DynamicVars["ImbalancePower"].UpgradeValueBy(3m);
-        base.DynamicVars["ChantTemporaryFocusNextTurnPower"].UpgradeValueBy(1m);
+        base.DynamicVars["ChainTechniqueTemporaryFocusPower"].UpgradeValueBy(1m);
         base.DynamicVars["FocusPower"].UpgradeValueBy(1m);
     }
 
