@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Abstracts;
 using CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -14,7 +15,7 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Enchantmen
 /// 附魔效果：当此牌因寄送回到手牌时，使当前战斗中的这张牌获得升级，然后移除此附魔。
 /// 额外卡面文本：送达时，本场战斗中升级
 /// </summary>
-public sealed class DeliveredUpgradeEnchantment : EnchantmentModel
+public sealed class DeliveredUpgradeEnchantment : AngelinaEnchantment
 {
     // 这类附魔需要在卡面上显示额外文本。
     public override bool HasExtraCardText => true;
