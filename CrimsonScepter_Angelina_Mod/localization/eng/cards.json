@@ -57,7 +57,7 @@
   "LITTLE_TRICK.selectPrompt": "Choose a card to copy and send",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-BUBBLE_WRAP.title": "Bubble Wrap",
-  "CRIMSONSCEPTER_ANGELINA_MOD-BUBBLE_WRAP.description": "Deal {CalculatedDamage:diff()} [gold]spell[/gold] damage. [gold]Send[/gold] a copy of this card.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BUBBLE_WRAP.description": "Deal {CalculatedDamage:diff()} [gold]spell[/gold] damage. If there are no sent cards, [gold]send[/gold] a copy of this card.",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-HOVER.title": "Hover",
   "CRIMSONSCEPTER_ANGELINA_MOD-HOVER.description": "Gain {TemporaryFlyPower:diff()} Temporary Fly. Draw {Cards} cards.",

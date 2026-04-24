@@ -57,7 +57,7 @@
   "LITTLE_TRICK.selectPrompt": "选择1张牌复制并寄送",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-BUBBLE_WRAP.title": "泡沫纸",
-  "CRIMSONSCEPTER_ANGELINA_MOD-BUBBLE_WRAP.description": "造成{CalculatedDamage:diff()}点[gold]法术[/gold]伤害。[gold]寄送[/gold]这张牌的复制品。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-BUBBLE_WRAP.description": "造成{CalculatedDamage:diff()}点[gold]法术[/gold]伤害。若没有牌被[gold]寄送[/gold]，则[gold]寄送[/gold]这张牌的复制品。",
 
   "CRIMSONSCEPTER_ANGELINA_MOD-HOVER.title": "悬停",
   "CRIMSONSCEPTER_ANGELINA_MOD-HOVER.description": "获得{TemporaryFlyPower:diff()}层临时飞行。抽{Cards}张牌。",
