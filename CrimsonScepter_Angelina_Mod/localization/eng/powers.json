@@ -37,6 +37,10 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_BARRIER_POWER.description": "This turn, whenever damage from an enemy is fully blocked, apply [gold]Imbalance[/gold] to the source.",
   "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_BARRIER_POWER.smartDescription": "This turn, whenever damage from an enemy is fully blocked, apply {Amount} [gold]Imbalance[/gold] to the source.",
 
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_MODE_POWER.title": "Gravity Mode",
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_MODE_POWER.description": "The first time each turn you deal [gold]spell[/gold] damage, apply [gold]Imbalance[/gold] to the target equal to that damage.",
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_MODE_POWER.smartDescription": "The first time each turn you deal [gold]spell[/gold] damage, apply [gold]Imbalance[/gold] to the target equal to that damage.",
+
   "CRIMSONSCEPTER_ANGELINA_MOD-PRECISION_ADJUSTMENT_POWER.title": "Precision Adjustment",
   "CRIMSONSCEPTER_ANGELINA_MOD-PRECISION_ADJUSTMENT_POWER.description": "At the start of next turn, lose [gold]Imbalance[/gold].",
   "CRIMSONSCEPTER_ANGELINA_MOD-PRECISION_ADJUSTMENT_POWER.smartDescription": "At the start of next turn, lose {Amount} [gold]Imbalance[/gold].",

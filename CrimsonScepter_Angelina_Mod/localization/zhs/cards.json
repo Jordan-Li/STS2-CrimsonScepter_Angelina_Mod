@@ -111,6 +111,9 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_BARRIER.title": "重力结界",
   "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_BARRIER.description": "获得{CalculatedBlock:diff()}点[gold]法术[/gold]格挡。本回合内，当来自敌方的伤害完全被格挡时，对伤害来源施加{GravityBarrierPower:diff()}点[gold]失衡[/gold]。",
 
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_MODE.title": "引力模式",
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_MODE.description": "每回合首次造成[gold]法术[/gold]伤害时，向目标施加等同于该伤害的[gold]失衡[/gold]。",
+
   "CRIMSONSCEPTER_ANGELINA_MOD-PRECISION_ADJUSTMENT.title": "精密调整",
   "CRIMSONSCEPTER_ANGELINA_MOD-PRECISION_ADJUSTMENT.description": "对所有敌方施加{ImbalancePower:diff()}点[gold]失衡[/gold]，并在下回合开始时失去{PrecisionAdjustmentPower}点[gold]失衡[/gold]。",
 

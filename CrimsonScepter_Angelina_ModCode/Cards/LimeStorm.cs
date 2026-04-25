@@ -24,6 +24,8 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 /// </summary>
 public sealed class LimeStorm : AngelinaCard
 {
+    public override bool IsSpell => true;
+
     // 额外悬浮说明：法术。
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [

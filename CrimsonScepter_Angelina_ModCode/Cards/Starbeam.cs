@@ -32,6 +32,8 @@ public sealed class Starbeam : AngelinaCard
 
     private bool _groundedByCurrentHit;
 
+    public override bool IsSpell => true;
+
     // 额外悬浮说明：
     // 1. 浮空
     // 2. 法术

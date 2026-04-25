@@ -37,6 +37,10 @@
   "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_BARRIER_POWER.description": "本回合内，当来自敌方的伤害完全被格挡时，对来源施加[gold]失衡值[/gold]。",
   "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_BARRIER_POWER.smartDescription": "本回合内，当来自敌方的伤害完全被格挡时，对来源施加{Amount}点[gold]失衡值[/gold]。",
 
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_MODE_POWER.title": "引力模式",
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_MODE_POWER.description": "每回合首次造成[gold]法术[/gold]伤害时，向目标施加等同于该伤害的[gold]失衡[/gold]。",
+  "CRIMSONSCEPTER_ANGELINA_MOD-GRAVITY_MODE_POWER.smartDescription": "每回合首次造成[gold]法术[/gold]伤害时，向目标施加等同于该伤害的[gold]失衡[/gold]。",
+
   "CRIMSONSCEPTER_ANGELINA_MOD-PRECISION_ADJUSTMENT_POWER.title": "精密调整",
   "CRIMSONSCEPTER_ANGELINA_MOD-PRECISION_ADJUSTMENT_POWER.description": "下回合开始时，失去[gold]失衡值[/gold]。",
   "CRIMSONSCEPTER_ANGELINA_MOD-PRECISION_ADJUSTMENT_POWER.smartDescription": "下回合开始时，失去{Amount}点[gold]失衡值[/gold]。",

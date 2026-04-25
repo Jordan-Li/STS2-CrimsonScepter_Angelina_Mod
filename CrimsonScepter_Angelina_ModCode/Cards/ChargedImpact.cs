@@ -26,6 +26,8 @@ namespace CrimsonScepter_Angelina_Mod.CrimsonScepter_Angelina_ModCode.Cards;
 /// </summary>
 public sealed class ChargedImpact : DeliveredCardModel
 {
+    public override bool IsSpell => true;
+
     // 额外悬浮说明：
     // 1. 失衡
     // 2. 送达
